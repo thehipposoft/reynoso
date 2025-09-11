@@ -1,6 +1,29 @@
-@import "tailwindcss";
+@import "tailwindcss"; 
+@import "variables";
 
+/* Configuración de tu tema, variables, etc. */
+@theme {
+  --color-primary-green: #33847D;
+}
 
 .fondo {
   background-color: #373737b4;
+}
+
+h2 {
+  color: #383838;
+}
+
+h3 {
+  color: $primary-green;
+  font-family: $baileys-regular;
+  font-size: 5.5rem;  
+  line-height: 3rem;
+  position: relative;
+  z-index: -1;
+}
+
+h5 {
+  font-weight: 300;
+  text-transform: uppercase;
 }

@@ -84,8 +84,8 @@ const Banner = () => {
                             <h2 className='text-white text-4xl uppercase tracking-widest'>alquileres</h2>
                             <Link href={val.href} className='group flex justify-center gap-2 items-center mt-6'>
                                 <div className='border relative border-white rounded-full  h-13 w-13 overflow-hidden flex justify-center items-center'>
-                                    <svg width="25" height="25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m21.1058 12.1776-17.99984.0678M15.1284 18.2002l5.9774-6.0226-6.0226-5.97732" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                    <svg className='absolute left-12 group-hover:left-0 duration-300' width="25" height="25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m21.1058 12.1776-17.99984.0678M15.1284 18.2002l5.9774-6.0226-6.0226-5.97732" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    <svg width="25" height="25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m21.1058 12.1776-17.99984.0678M15.1284 18.2002l5.9774-6.0226-6.0226-5.97732" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                                    <svg className='absolute left-12 group-hover:left-0 duration-300' width="25" height="25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m21.1058 12.1776-17.99984.0678M15.1284 18.2002l5.9774-6.0226-6.0226-5.97732" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                                 </div>
                                 <p className='uppercase tracking-widest text-white'>descubrir</p>
                             </Link>
