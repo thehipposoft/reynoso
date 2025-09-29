@@ -4,7 +4,7 @@ const Desarrollo = () => {
   return (
     <div className='flex pt-12 flex-col w-[90vw] md:w-[1300px] mx-auto'>
         <div className='flex flex-col md:px-12 px-6'>
-            <h1 className='font-inter text-4xl'>Una nueva forma<br /> de vivir cada</h1>
+            <h2 className='font-inter text-4xl'>Una nueva forma<br /> de vivir cada</h2>
             <h3 className='text-4xl'>Desarrollo</h3>
         </div>
         <div className='bg-black/70 mt-8 md:mt-0 w-full h-[600px] flex flex-col gap-16 justify-center items-center md:translate-y-16'>

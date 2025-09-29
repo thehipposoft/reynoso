@@ -1,17 +1,29 @@
 @import "tailwindcss"; 
 @import "variables";
 
-/* Configuración de tu tema, variables, etc. */
 @theme {
   --color-primary-green: #33847D;
+  --color-primary-gray: #3A3938;
+  --color-dark-blue: #090B19;
+  --color-overlay-bg: #3A3937;
+  --font-jakarta: 'Plus Jakarta Sans', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-kadwa: 'Kadwa', serif;
 }
 
 .fondo {
   background-color: #373737b4;
 }
 
-h2 {
+h2, h1 {
   color: #383838;
+  position: relative;
+  z-index: 2;
+  font-family: $jakarta;
+  font-weight: 600;
+  font-size: 50px;
+  letter-spacing: -3.9px;
+  line-height: 93.6%;
 }
 
 h3 {
@@ -19,8 +31,6 @@ h3 {
   font-family: $baileys-regular;
   font-size: 5.5rem;  
   line-height: 3rem;
-  position: relative;
-  z-index: -1;
 }
 
 h5 {
