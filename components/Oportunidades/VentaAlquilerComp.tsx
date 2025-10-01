@@ -56,17 +56,17 @@ const VentaAlquilerComp = () => {
     <div className='bg-[#E6E6E6] relative' ref={container}>
         <Image src={'/assets/images/vectors/lines.png'} alt='' width={197} height={240} className='absolute -left-28' />
           <div className='flex py-20 flex-col md:w-[1300px] w-[90vw] mx-auto'>
-              <div className='flex justify-between md:px-12 px-6'>
+              <div className='flex md:flex-row flex-col justify-between md:px-12 px-6'>
                 <div className='flex flex-col gap-8 pt-8'>
                     <div className='flex flex-col'>
                         <h2 className='title__one font-inter text-4xl font-inter'>Oportunidades<br /> Inmobiliarias</h2>
                         <h3 className='title__two text-4xl font-baileys'>A Medida</h3>
                     </div>
                     <p className='content md:w-[410px] text-[17px]'>Ya sea que busques alquilar, comprar o vender, te ofrecemos oportunidades inmobiliarias pensadas para vos.</p>
-                    <div className='content flex gap-16'>
+                    <div className='content flex md:flex-row flex-col md:gap-16 gap-8'>
                         <div className='flex flex-col gap-4'>
                             <h4 className='font-bold text-xl'>¿Buscás alquilar?</h4>
-                            <p className='w-52 font-light text-justify'>Te ayudamos a encontrar la propiedad que se ajuste a tus necesidades, con el respaldo y la claridad que nos caracteriza</p>
+                            <p className='md:w-52 font-light text-justify'>Te ayudamos a encontrar la propiedad que se ajuste a tus necesidades, con el respaldo y la claridad que nos caracteriza</p>
                             <Link 
                                 href={'/'}
                                 className='group cursor-pointer relative z-40 text-white w-fit bg-primary-green rounded-xl overflow-hidden
@@ -78,7 +78,7 @@ const VentaAlquilerComp = () => {
                         <div className='h-full w-[1px] bg-[#333333]' />
                         <div className='flex flex-col gap-4'>
                             <h4 className='font-bold text-xl'>Venta de propiedades</h4>
-                            <p className='w-52 font-light'>Sabemos que la venta de propiedades no es tarea sencilla.<br />Tasamos tu propiedad y la vendemos al mejor precio del mercado.</p>
+                            <p className='md:w-52 font-light'>Sabemos que la venta de propiedades no es tarea sencilla.<br />Tasamos tu propiedad y la vendemos al mejor precio del mercado.</p>
                             <Link 
                                 href={'/'}
                                 className='group cursor-pointer relative z-40 text-white w-fit bg-primary-green rounded-xl overflow-hidden
@@ -89,7 +89,7 @@ const VentaAlquilerComp = () => {
                         </div>
                     </div>
                 </div>
-                <div className='content bg-slate-50 md:w-[496px] md:h-[600px] relative'>
+                <div className='content bg-slate-50 md:w-[496px] md:h-[600px] relative hidden md:block'>
                     <Image src={'/assets/images/oportunidades/oportunidades-1.webp'} alt='' fill className='object-cover' />
                     <div className='logo__ md:w-[165px] md:h-[130px] flex justify-center items-center bg-primary-gray absolute z-10 -bottom-10 -left-24 rounded-xl'>
                         <Image src={'/assets/images/logo/logo-notext.svg'} alt='Reynoso Logo' width={110} height={80}  />

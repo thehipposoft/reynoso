@@ -4,6 +4,7 @@ import { gsap } from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import React, { useRef } from 'react'
 import OportunidadesGrid from './OportunidadesGrid'
+import Counter from './Counter';
 gsap.registerPlugin(ScrollTrigger);
 
 const Oportunidades = () => {
@@ -27,7 +28,7 @@ const Oportunidades = () => {
           duration: 1,
           ease: "power4.out",
       })
-      gsap.from(".grid", {
+      gsap.from(".grid__", {
           scrollTrigger: {
             trigger: container.current,
             start: "10% 40%",
@@ -42,15 +43,15 @@ const Oportunidades = () => {
 
     return (
           <div ref={container} className='flex py-12 flex-col md:w-[1300px] w-[90vw] mx-auto'>
-              <div className='flex justify-between md:px-0 px-6 pt-12 pb-4'>
+              <div className='flex md:flex-row flex-col justify-between pt-12 pb-4'>
                 <div className='titles flex flex-col'>
-                  <h1 className='title__one text-4xl'>¡Invertí sin preocupaciones!</h1>
+                  <h2 className='title__one'>¡Invertí sin preocupaciones!</h2>
                 </div>
-                <div className='bg-amber-100 w-[600px] h-[120px]'>
-                  COUNTER
+                <div className='bg-amber-100 md:w-[600px]'>
+                  <Counter />
                 </div>
               </div>
-              <div className='grid'>
+              <div className='grid__ hidden md:block'>
                 <OportunidadesGrid />
               </div>
           </div>

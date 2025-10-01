@@ -49,22 +49,22 @@ const BannerCarrousel = ({proyectos}:BannerCarrouselTypes) => {
         </div>
       ))}
 
-      <div className="relative z-40 w-full h-full flex flex-col gap-8 justify-center items-center bg-[#33847d80]  hover:backdrop-blur-none backdrop-blur-xs  duration-500">
+      <div className="relative z-40 w-full h-full flex flex-col md:gap-8 justify-center items-center bg-[#33847d80]  hover:backdrop-blur-none backdrop-blur-xs  duration-500">
         {proyectos.map((val:Proyecto, index:number) => (
           <div
             key={index}
-            className={`absolute flex flex-col justify-center items-center gap-6 transition-opacity duration-500`}
+            className={`absolute flex flex-col justify-center items-center md:gap-6 transition-opacity duration-500`}
             style={{
               opacity: currentSlideIndex === index ? 1 : 0,
               zIndex: currentSlideIndex === index ? 50 : 20,
             }}
           >
-            <Image src={val.logo} alt={`Logo de proyecto: ${val.nombre}`} width={260} height={160} />
+            <Image src={val.logo} alt={`Logo de proyecto: ${val.nombre}`} width={260} height={160} className='scale-75 md:scale-100' />
             <p className="uppercase tracking-[3px] text-center text-white text-xs font-extralight">
               {val.titulo}
             </p>
-                <Link href={`desarrollos/${handleSlug(val.nombre)}`} className='group flex justify-center items-center mt-6 gap-8 '>
-                    <div className='border relative border-white rounded-full h-13 w-13 overflow-hidden flex justify-center items-center group-hover:scale-125 duration-700'>
+                <Link href={`desarrollos/${handleSlug(val.nombre)}`} className='group flex  justify-center items-center mt-6 md:gap-8 gap-2'>
+                    <div className='border relative border-white rounded-full md:h-13 md:w-13 p-1 md:p-0 overflow-hidden flex justify-center items-center group-hover:scale-125 duration-700'>
                         <svg width="25" height="25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m21.1058 12.1776-17.99984.0678M15.1284 18.2002l5.9774-6.0226-6.0226-5.97732" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                     </div>
                     <p className='group-hover:scale-105 duration-500 group-hover:underline  uppercase tracking-[3px] text-center text-white text-xs font-extralight'>descubrí nuestras desarrollos</p>
@@ -72,7 +72,7 @@ const BannerCarrousel = ({proyectos}:BannerCarrouselTypes) => {
           </div>
         ))}
 
-        <div className="flex absolute bottom-20 space-x-3 z-50">
+        <div className="flex absolute md:bottom-20 bottom-8 space-x-3 z-50">
           {proyectos.map((_:Proyecto, index:number) => (
             <button
               key={index}

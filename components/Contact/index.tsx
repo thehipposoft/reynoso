@@ -4,7 +4,7 @@ import { Form }from '../Form'
 
 const Contact = () => {
   return (
-    <div className='h-screen relative flex justify-center'>
+    <div className='md:h-screen md:py-0 py-12 relative flex justify-center'>
       <Image 
         src={'/assets/images/banner/banner-1.png'} 
         alt='Contact section background:' 
@@ -12,8 +12,8 @@ const Contact = () => {
         sizes='100vw'
         className='object-cover'
        />
-       <div className='w-1/3 h-[95vh] bg-primary-green/40 backdrop-blur-md flex flex-col gap-6'>
-          <h4 className='text-white text-4xl pt-20 px-16'>Contactanos</h4>
+       <div className='md:w-1/3 w-[90vw] md:h-[95vh] bg-primary-green/40 backdrop-blur-md flex flex-col gap-6'>
+          <h4 id='contacto' className='text-white text-4xl pt-20 px-16'>Contactanos</h4>
           <Form
               fields={[
                   {
@@ -50,7 +50,7 @@ const Contact = () => {
               submitButtonLabel={'Enviar'}
               emailServiceURL={'https://thehippoapi.netlify.app/.netlify/functions/api/tem-architecture-email'}
           />
-        <div className='bg-white w-full h-full flex flex-col text-center justify-center items-center '>
+        <div className='bg-white w-full h-full flex flex-col text-center justify-center items-center py-8 md:py-0'>
               <h4 className='font-jakarta text-3xl leading-6'>Un paso más <br /> cerca de tu</h4>
               <h3 className='md:pl-8'>proyecto</h3>
         </div>

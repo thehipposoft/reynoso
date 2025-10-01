@@ -46,7 +46,7 @@ const Menu = () => {
   return (
     <div ref={container} className='fixed w-20 h-20 md:top-7 md:right-8 top-0 right-0 z-50'>
         <button 
-            className='fixed px-1 py-1 duration-500 cursor-pointer top-7 right-8 hover:bg-black/30 rounded-xl'
+            className='fixed z-50 px-1 py-1 duration-500 cursor-pointer top-7 right-8 hover:bg-black/30 rounded-xl'
             onClick={openMenuFunc}
         >
             <svg width="35" height="35" viewBox="0 0 30 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -55,21 +55,21 @@ const Menu = () => {
                 <rect className={`duration-700  origin-left ${openMenu ? '-rotate-45 translate-y-[6px]' : ''}`} y="12.25" width="30" height="2.75" rx="1.375" fill="#D9D9D9"/>
             </svg>
         </button>
-        <div className={`menu -right-88 opacity-0 rounded-xl md:w-80 w-[90vw] h-[90vh] md:h-auto absolute md:top-12 bg-primary-green flex flex-col justify-center gap-20 md:gap-0 md:justify-between px-12 py-6  z-40`}>
+        <div className={`menu md:-right-88 -right-96 opacity-0 rounded-xl md:w-80 w-screen h-screen md:h-auto absolute md:top-12 bg-primary-green flex flex-col justify-center gap-20 md:gap-0 md:justify-between px-12 py-6  z-40`}>
             <ul className='menu__items flex flex-col gap-6 md:gap-3'>
-                <Link href={'/'} onClick={openMenuFunc} className='menu_item border-b border-white py-2 text-center text-white '>
+                <Link href={'/'} onClick={openMenuFunc} className='menu_item border-b border-white py-2 text-center text-white font-medium font-jakarta'>
                     Inicio
                 </Link>
-                <Link href={'/'} onClick={openMenuFunc} className='menu_item border-b border-white py-2 text-center text-white '>
+                <Link href={'/'} onClick={openMenuFunc} className='menu_item border-b border-white py-2 text-center text-white font-medium font-jakarta'>
                     Desarrollos
                 </Link>
-                <Link href={'/'} onClick={openMenuFunc} className='menu_item border-b border-white py-2 text-center text-white'>
+                <Link href={'/'} onClick={openMenuFunc} className='menu_item border-b border-white py-2 text-center text-white font-medium font-jakarta'>
                     Alquileres
                 </Link>
-                <Link href={'/'} onClick={openMenuFunc} className='menu_item border-b border-white py-2 text-center text-white'>
+                <Link href={'/'} onClick={openMenuFunc} className='menu_item border-b border-white py-2 text-center text-white font-medium font-jakarta'>
                     Ventas
                 </Link>
-                <Link href={'/'} onClick={openMenuFunc} className='menu_item border-b border-white py-2 text-center text-white'>
+                <Link href={'/'} onClick={openMenuFunc} className='menu_item border-b border-white py-2 text-center text-white font-medium font-jakarta'>
                     Nosotros
                 </Link> 
             </ul>

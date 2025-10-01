@@ -38,3 +38,9 @@ h5 {
   font-weight: 300;
   text-transform: uppercase;
 }
+
+@media (max-width: 600px) {
+  h2, h1 {
+  font-size: 45px;
+}
+}

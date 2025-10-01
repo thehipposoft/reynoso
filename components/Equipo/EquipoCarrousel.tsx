@@ -1,14 +1,29 @@
 'use client'
 import { useState, useRef } from "react";
+// Asumiendo que EQUIPO y su estructura ya están definidos y exportados en './constants'
+import { EQUIPO } from "./constants";
+
+// Define una interfaz para un miembro del equipo para seguridad de tipos
+interface MiembroEquipo {
+    nombre: string;
+    puesto: string;
+    imagen: string; // URL de la imagen
+    redes: string[]; // URLs o identificadores de las redes sociales
+}
+
+// Sobreescribe el tipo de EQUIPO si no está tipado en constants.ts
+// const EQUIPO: MiembroEquipo[] = [...]; 
 
 export default function EquipoCarrousel() {
+  // 1. Usar la longitud de EQUIPO para el total de slides
+  const totalSlides = EQUIPO.length;
   const [current, setCurrent] = useState(0);
-  const totalSlides = 6;
 
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
 
   const nextSlide = () => {
+    // Usamos totalSlides aquí
     if (current < totalSlides - 1) setCurrent((prev) => prev + 1);
   };
 
@@ -16,17 +31,14 @@ export default function EquipoCarrousel() {
     if (current > 0) setCurrent((prev) => prev - 1);
   };
 
-  // manejar el inicio del toque
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.targetTouches[0].clientX;
   };
 
-  // manejar el movimiento del toque
   const handleTouchMove = (e: React.TouchEvent) => {
     touchEndX.current = e.targetTouches[0].clientX;
   };
 
-  // manejar el final del toque
   const handleTouchEnd = () => {
     if (!touchStartX.current || !touchEndX.current) return;
     const distance = touchStartX.current - touchEndX.current;
@@ -49,7 +61,6 @@ export default function EquipoCarrousel() {
 
   return (
     <div className="md:hidden w-[90vw] overflow-hidden my-8 mx-auto relative">
-      {/* Contenedor del carrusel */}
       <div
         className="flex transition-transform duration-500 ease-in-out"
         style={{ transform: `translateX(-${current * 90}vw)` }}
@@ -57,44 +68,25 @@ export default function EquipoCarrousel() {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {/* Primeras 3 slides */}
-        {[1, 2, 3].map((i) => (
+        {EQUIPO.map((miembro: MiembroEquipo, index: number) => (
           <div
-            key={i}
+            key={index}
             className="min-w-[90vw] h-[430px] bg-black/30 relative flex items-end justify-end pb-16 pr-8"
+            style={{ backgroundImage: `url(${miembro.imagen})`, backgroundSize: 'cover' }}
           >
             <div className="flex flex-col items-end">
-              <h4 className="font-bold text-2xl text-white">
-                Oscar A. Reynoso
+              <h4 className="font-bold text-2xl text-white text-right">
+                {miembro.nombre}
               </h4>
               <span className="uppercase tracking-[4px] font-light text-sm text-white">
-                socio fundador
+                {miembro.puesto}
               </span>
-              <SocialIcons />
-            </div>
-          </div>
-        ))}
-
-        {/* Últimas 3 slides */}
-        {[4, 5, 6].map((i) => (
-          <div
-            key={i}
-            className="min-w-[90vw] h-[430px] bg-black/30 relative flex pt-16 pl-8"
-          >
-            <div className="flex flex-col">
-              <h4 className="font-bold text-2xl text-white">
-                Oscar A. Reynoso
-              </h4>
-              <span className="uppercase tracking-[4px] font-light text-sm text-white">
-                socio fundador
-              </span>
-              <SocialIcons />
+              <SocialIcons /> 
             </div>
           </div>
         ))}
       </div>
 
-      {/* Botones de navegación */}
       <div className="flex justify-between items-center mt-4">
         <button
           onClick={prevSlide}
@@ -121,7 +113,6 @@ function SocialIcons() {
   return (
     <div className="flex gap-2 pt-4">
       <div className="w-12 h-12 rounded-full flex items-center justify-center bg-white">
-        {/* Instagram */}
         <svg
           className="scale-[175%]"
           xmlns="http://www.w3.org/2000/svg"
@@ -136,7 +127,6 @@ function SocialIcons() {
         </svg>
       </div>
       <div className="w-12 h-12 rounded-full flex items-center justify-center bg-white">
-        {/* Facebook */}
         <svg
           className="scale-[175%]"
           xmlns="http://www.w3.org/2000/svg"
@@ -151,7 +141,6 @@ function SocialIcons() {
         </svg>
       </div>
       <div className="w-12 h-12 rounded-full flex items-center justify-center bg-white">
-        {/* LinkedIn */}
         <svg
           className="scale-[175%]"
           xmlns="http://www.w3.org/2000/svg"
@@ -166,7 +155,6 @@ function SocialIcons() {
         </svg>
       </div>
       <div className="w-12 h-12 rounded-full flex items-center justify-center bg-white">
-        {/* YouTube */}
         <svg
           className="scale-[175%]"
           xmlns="http://www.w3.org/2000/svg"
