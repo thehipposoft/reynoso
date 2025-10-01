@@ -2,8 +2,13 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Proyecto } from '@/types';
 
-const BannerCarrousel = ({proyectos}:any) => {
+type BannerCarrouselTypes = {
+  proyectos: Proyecto[],
+}
+
+const BannerCarrousel = ({proyectos}:BannerCarrouselTypes) => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
   useEffect(() => {
@@ -25,7 +30,7 @@ const BannerCarrousel = ({proyectos}:any) => {
   return (
     <div className="relative w-full h-full">
       {/* Slides */}
-      {proyectos.map((val:any, index:any) => (
+      {proyectos.map((val:Proyecto, index:number) => (
         <div
           key={index}
           className={`absolute inset-0 h-screen w-screen transition-opacity duration-[1500ms] ease-in-out`}
@@ -45,7 +50,7 @@ const BannerCarrousel = ({proyectos}:any) => {
       ))}
 
       <div className="relative z-40 w-full h-full flex flex-col gap-8 justify-center items-center bg-[#33847d80]  hover:backdrop-blur-none backdrop-blur-xs  duration-500">
-        {proyectos.map((val:any, index:any) => (
+        {proyectos.map((val:Proyecto, index:number) => (
           <div
             key={index}
             className={`absolute flex flex-col justify-center items-center gap-6 transition-opacity duration-500`}
@@ -54,9 +59,9 @@ const BannerCarrousel = ({proyectos}:any) => {
               zIndex: currentSlideIndex === index ? 50 : 20,
             }}
           >
-            <Image src={val.logo} alt="logo" width={260} height={160} />
+            <Image src={val.logo} alt={`Logo de proyecto: ${val.nombre}`} width={260} height={160} />
             <p className="uppercase tracking-[3px] text-center text-white text-xs font-extralight">
-              {val.texto}
+              {val.titulo}
             </p>
                 <Link href={`desarrollos/${handleSlug(val.nombre)}`} className='group flex justify-center items-center mt-6 gap-8 '>
                     <div className='border relative border-white rounded-full h-13 w-13 overflow-hidden flex justify-center items-center group-hover:scale-125 duration-700'>
@@ -68,7 +73,7 @@ const BannerCarrousel = ({proyectos}:any) => {
         ))}
 
         <div className="flex absolute bottom-20 space-x-3 z-50">
-          {proyectos.map((_:any, index:any) => (
+          {proyectos.map((_:Proyecto, index:number) => (
             <button
               key={index}
               className={`h-3 w-3 rounded-full cursor-pointer transition-colors duration-300 ${

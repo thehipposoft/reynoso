@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Proyecto } from '@/types'
+import { Proyecto, ServiciosType } from '@/types'
 
 type ProyectoLayoutProps = {
   proyecto: Proyecto
@@ -41,9 +41,9 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
                 <div className='h-[1px] bg-[#E2E7F1] w-1/2 mx-auto' />
                 <div className='flex justify-between md:w-[1000px] mx-auto relative pt-4'>
                     {
-                        proyecto.servicios.map((item:any, index:number) => (
+                        proyecto.servicios.map((item:ServiciosType, index:number) => (
                             <div className='flex flex-col justify-center items-center gap-2' key={index}>
-                                <Image src={item.icono_servicio.url} alt='' width={80} height={50} className='z-20 relative max-h-16' />
+                                <Image src={item.icono_servicio.url} alt={`Servicios Icono: ${item.nombre_servicio}`} width={80} height={50} className='z-20 relative max-h-16' />
                                 <p className='text-sm text-white'>{item.nombre_servicio}</p>
                             </div>
                         ))

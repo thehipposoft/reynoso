@@ -3,9 +3,10 @@ import React, {useState} from 'react'
 import BannerCarrousel from './BannerCarrousel'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Proyecto } from '@/types'
 
 type Props = {
-  proyectos: any[];
+  proyectos: Proyecto[];
 }
 
 
@@ -32,11 +33,9 @@ const Banner = ({
     setIsSecondHovered(false);
   }
 
-  console.log('Proyectos en Banner:', proyectos);
-
   return (
     <div className='flex h-screen bg-black/60'>
-        <Image src={'/assets/images/banner/banner.jpg'} alt='' fill className={`${isSecondHovered ? 'opacity-100 z-10' : '-z-10'} duration-700 object-cover z-10 opacity-0`} />
+        <Image src={'/assets/images/banner/banner.jpg'} alt='Descubri oportunidades inmobiliarias imagen' fill className={`${isSecondHovered ? 'opacity-100 z-10' : '-z-10'} duration-700 object-cover z-10 opacity-0`} />
         <div onMouseEnter={handleFirstMouseEnter} onMouseLeave={handleFirstMouseLeave} className={`${isSecondHovered ? 'opacity-0 z-10' : 'opacity-100 -z-10'} w-1/2 flex justify-center items-center relative z-10 duration-700`}>
           <BannerCarrousel proyectos={proyectos} />
         </div>

@@ -8,7 +8,7 @@ const Desarrollo = () => {
     const container = useRef(null);
 
     useGSAP(() => {
-        let tl = gsap.timeline({
+        const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: container.current,
                 start: "top 70%",
