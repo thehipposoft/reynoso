@@ -10,11 +10,11 @@ const VentaAlquilerComp = () => {
     const container = useRef(null);
 
     useGSAP(() => {
-        let tl = gsap.timeline({
+        const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: container.current,
-                start: "top 80%",
-                end: "top 45%",
+                start: "top 70%",
+                end: "top 40%",
                 scrub: 3,
             },
         });
@@ -33,7 +33,7 @@ const VentaAlquilerComp = () => {
         gsap.from(".content", {
             scrollTrigger: {
                 trigger: container.current,
-                start: "top 40%",
+                start: "15% 40%",
                 end: "top 10%",
                 scrub: 3,
             },

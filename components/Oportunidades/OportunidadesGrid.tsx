@@ -135,14 +135,17 @@ const OportunidadesGrid = () => {
                      })
                 }
             </div>
-            <div className='bg-[#F5F5F5] row-span-4 flex justify-center items-center py-8 md:py-0'>
+            <div className='bg-[#F5F5F5] row-span-4 flex justify-center items-center py-8 md:py-0 relative'>
                 <Link 
                     href={'/#contacto'}
-                    className='uppercase group relative tracking-[3px] text-xs text-white font-thin bg-primary-green rounded-4xl overflow-hidden
-                    py-5 px-10  before:w-full before:h-full hover:before:translate-y-0 before:duration-300 before:ease-out before:absolute before:bg-[#333333] before:left-0 before:top-0 before:rounded-4xl before:translate-y-full'>
+                    className=' group relative text-white bg-primary-green rounded-lg overflow-hidden
+                    py-3 px-8 before:w-full before:h-full hover:before:translate-y-0 before:duration-300 before:ease-out before:absolute before:bg-[#333333] before:left-0 before:top-0 before:rounded-lg before:translate-y-full'>
                     
-                    <p className='relative z-10 '>contactanos</p>
+                    <p className='relative z-10 font-jakarta'>Contactanos</p>
                 </Link>
+                <div className='absolute w-14 h-full -right-14'>
+                    <Image src={'/assets/images/vectors/greenvg.svg'} alt='Green shape' fill className='object-cover' />
+                </div>
             </div>
             <div className='flex flex-col min-h-48 row-span-6 overflow-hidden flex-nowrap'>
                 {

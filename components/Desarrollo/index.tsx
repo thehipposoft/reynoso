@@ -1,11 +1,40 @@
-import React from 'react'
+'use client'
+import React, {useRef} from 'react'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 
 const Desarrollo = () => {
+
+    const container = useRef(null);
+
+    useGSAP(() => {
+        let tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: container.current,
+                start: "top 70%",
+                end: "top 40%",
+                scrub: 3,
+            },
+        });
+        tl.from(".title__one", {
+            opacity: 0,
+            y: 70,
+            x: 20,
+            rotate: 5,
+            duration: 1,
+            ease: "power4.out",
+        })
+        .from(".title__two", {
+            opacity: 0,
+            y: 5,
+        })
+    }, {scope: container});
+
   return (
-    <div className='flex pt-12 flex-col w-[90vw] md:w-[1300px] mx-auto'>
+    <div ref={container} className='flex pt-12 flex-col w-[90vw] md:w-[1300px] mx-auto'>
         <div className='flex flex-col md:px-12 px-6'>
-            <h2 className='font-inter text-4xl'>Una nueva forma<br /> de vivir cada</h2>
-            <h3 className='text-4xl'>Desarrollo</h3>
+            <h2 className='title__one font-inter text-4xl'>Una nueva forma<br /> de vivir cada</h2>
+            <h3 className='title__two text-4xl'>Desarrollo</h3>
         </div>
         <div className='bg-black/70 mt-8 md:mt-0 w-full h-[600px] flex flex-col gap-16 justify-center items-center md:translate-y-16'>
             <h5 className='text-white'>explore me</h5>
@@ -19,13 +48,13 @@ const Desarrollo = () => {
         </div>
         <div className='bg-[#F3F6FC] w-11/12 hidden md:grid grid-cols-3 h-32 mx-auto relative z-10'>
             <div className='flex justify-center items-center'>
-                <h5 className='text-center tracking-[4px]'>disposición<br/> de lótes</h5>
+                <h6 className='text-center tracking-[4px]  uppercase'>disposición<br/> de lótes</h6>
             </div>
             <div className='flex justify-center items-center'>
-                <h5 className='text-center tracking-[4px]'>estados<br/> actualizados</h5>
+                <h6 className='text-center tracking-[4px] uppercase'>estados<br/> actualizados</h6>
             </div>
             <div className='flex justify-center items-center'>
-                <h5 className='text-center tracking-[4px]'>detalles de<br/> cada unidad</h5>
+                <h6 className='text-center tracking-[4px] uppercase'>detalles de<br/> cada unidad</h6>
             </div>
         </div>
   </div>

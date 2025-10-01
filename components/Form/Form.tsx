@@ -79,7 +79,7 @@ const MyCustomForm = ({
         });
     };
 
-    const handleSubmit = (event:any) => {
+    const handleSubmit = (event:React.FormEvent<HTMLFormElement>) => {
         if (event) event.preventDefault();
 
         setIsAPILoading(true);
@@ -113,7 +113,7 @@ const MyCustomForm = ({
 
     return (
         <form
-            className={`form `}
+            className={`form px-16`}
             onSubmit={(event) => handleSubmit(event)}
         >
             {
@@ -129,7 +129,7 @@ const MyCustomForm = ({
                                         name={name}
                                         id={name}
                                         value={values[name]}
-                                        rows={8}
+                                        rows={4}
                                         cols={40}
                                         className='resize-none py-3 border-b text-white lg:w-full lg:max-w-[500px] w-full max-w-[70vw] md:max-w-[525px] border-b-[#89ADCD] focus:outline-none focus:placeholder:text-white/70 placeholder:text-white'
                                         placeholder={placeholder}

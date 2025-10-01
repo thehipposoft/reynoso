@@ -1,6 +1,7 @@
 import { ResolvingMetadata, Metadata } from "next";
 import getProject from "@/api/getProject";
 import ProyectoLayout from "@/components/Proyecto/ProyectoLayout";
+import { Proyecto } from "@/types";
 
 type Params = {
     params: Promise<{
@@ -12,7 +13,7 @@ export async function generateMetadata({
   params
 }: Params, parent: ResolvingMetadata): Promise<Metadata> {
   const resolvedParams = await params;
-  const project = await getProject(resolvedParams.slug).then((res:any) => res);
+  const project:Proyecto | null = await getProject(resolvedParams.slug);
 
   if (project) {
     const previousImages = (await parent).openGraph?.images || [];
@@ -21,11 +22,11 @@ export async function generateMetadata({
       title: `Reynoso | ${project.nombre} `,
       openGraph: {
         images: [
-          project.imagen_principal_banner,
+          project.imagen_banner,
           ...previousImages,
         ],
       },
-      description: project.leyenda,
+      description: project.titulo,
     };
   }
 
@@ -37,7 +38,7 @@ export async function generateMetadata({
 
 export default async function ProjectPage({ params }: Params) {
   const resolvedParams = await params;
-  const project = await getProject(resolvedParams.slug);
+  const project:Proyecto | null = await getProject(resolvedParams.slug);
 
   return(
     <div>

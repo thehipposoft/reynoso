@@ -1,20 +1,27 @@
 export default async function getAllProjects() {
-    const res = await fetch('https://propiedades.reynosobienesraices.com.ar/wp-json/wp/v2/desarrollos/?acf_format=standard&acf_format=standard&_fields=id,title,slug,acf');
+    const res = await fetch('https://propiedades.reynosobienesraices.com.ar/wp-json/wp/v2/desarrollos/?acf_format=standard');
     const data:any = await res.json();
 
     const result = data.map((proyecto: any) => {
             return (
                 {
                     id: proyecto.id,
-                    nombre: proyecto.acf.nombre,
-                    titulo: proyecto.acf.titulo,
-                    logo: proyecto.acf.logo,
-                    color_primario: proyecto.acf.color_primario,
-                    color_secundario: proyecto.acf.color_secundario,
-                    servicios: proyecto.acf.servicios,
-                    mapa_imagen: proyecto.acf.mapa_imagen,
-                    mapa_url: proyecto.acf.mapa_url,
-                    ubicacion: proyecto.acf.ubicacion,
+                    imagen_banner: proyecto.acf.primera_seccion.imagen_banner.url,
+                    nombre: proyecto.acf.primera_seccion.nombre,
+                    titulo: proyecto.acf.primera_seccion.titulo,
+                    logo: proyecto.acf.primera_seccion.logo,
+                    color_primario: proyecto.acf.primera_seccion.color_primario,
+                    color_secundario: proyecto.acf.primera_seccion.color_secundario,
+                    servicios: proyecto.acf.primera_seccion.servicios,
+                    galeria: proyecto.acf.segunda_seccion.galeria,
+                    imagen_deco: proyecto.acf.segunda_seccion.imagen_deco.url,
+                    subtitulo: proyecto.acf.segunda_seccion.subtitulo.url,
+                    subtitulo_bicolor_primera: proyecto.acf.segunda_seccion.subtitulo_bicolor_primera,
+                    subtitulo_bicolor_segunda: proyecto.acf.segunda_seccion.subtitulo_bicolor_segunda,
+                    mapa_imagen: proyecto.acf.tercera_seccion.mapa_imagen.url,
+                    mapa_url: proyecto.acf.tercera_seccion.mapa_url,
+                    imagen_decorativa_dos: proyecto.acf.tercera_seccion.imagen_decorativa_dos.url,
+                    ubicacion: proyecto.acf.tercera_seccion.ubicacion,
                 }
             )
         }   

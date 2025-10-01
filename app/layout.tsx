@@ -1,7 +1,7 @@
 import "./globals.scss"
 import type { Metadata } from "next";
 import Menu from "@/components/Menu";
-import { Plus_Jakarta_Sans, Inter } from 'next/font/google';
+import { Plus_Jakarta_Sans, Inter, Kadwa, Poppins } from 'next/font/google';
 import Footer from "@/components/commons/Footer";
 import SmoothScroll from "@/components/commons/SmoothScroll";
 
@@ -18,6 +18,17 @@ const inter = Inter({
 
 });
 
+const kadwa = Kadwa({
+  subsets: ['latin'],
+  weight: ['400','700'],
+  variable: '--font-kadwa',
+});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400','500','600','700'],
+  variable: '--font-poppins',
+});
 
 export const metadata: Metadata = {
   title: "Reynoso Bienes Raices | Oportunidades Inmobiliarias",
@@ -31,7 +42,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" >
-      <body className={`${inter.variable} ${jakarta.variable}`}
+      <body className={`${inter.variable} ${jakarta.variable} ${kadwa.variable} ${poppins.variable}`}
       >
         <SmoothScroll>
           <Menu />

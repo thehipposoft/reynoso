@@ -1,8 +1,14 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Proyecto } from '@/types'
 
-const ProyectoLayout = ({proyecto}:any) => {
+type ProyectoLayoutProps = {
+  proyecto: Proyecto
+}
+
+
+const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
   return (
     <div>
         <div className='h-screen w-screen flex relative'>
@@ -47,8 +53,10 @@ const ProyectoLayout = ({proyecto}:any) => {
         </div>
         <div className='max-w-[1450px] mx-auto flex flex-col my-8'>
             <Image src={proyecto.imagen_deco} alt='Imagen Deco' width={490} height={220} className='absolute -right-40' />
-            <div className='flex justify-between relative md:w-[1250px] mx-auto'>
-                <Image src={proyecto.subtitulo} alt='Subtitulo' width={450} height={220} className='object-contain' />
+            <div className='flex flex-col justify-between relative md:w-[1250px] pt-12 mx-auto'>
+                <h4 className='font-jakarta text-5xl -tracking-wider font-bold' style={{color: `${proyecto.color_primario}`}}>{proyecto.subtitulo_bicolor_primera}</h4>
+                <h4 className='font-jakarta text-5xl -tracking-wider font-bold pl-12' style={{color: `${proyecto.color_secundario}`}}>{proyecto.subtitulo_bicolor_segunda}</h4>
+                <Image src={proyecto.subtitulo} alt='Subtitulo' width={450} height={220} className='object-contain hidden' />
             </div>
             <div className='h-[500px] flex justify-center items-center'>
                 <h2>Galeria</h2>
