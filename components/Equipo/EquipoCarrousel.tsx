@@ -11,8 +11,6 @@ interface MiembroEquipo {
     redes: string[]; // URLs o identificadores de las redes sociales
 }
 
-// Sobreescribe el tipo de EQUIPO si no está tipado en constants.ts
-// const EQUIPO: MiembroEquipo[] = [...]; 
 
 export default function EquipoCarrousel() {
   // 1. Usar la longitud de EQUIPO para el total de slides

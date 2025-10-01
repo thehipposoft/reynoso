@@ -110,7 +110,7 @@ const OportunidadesGrid = () => {
 
   return (
     <div>
-        <div className='md:grid flex flex-col md:grid-cols-3 md:grid-rows-10 md:h-[615px] my-12'>
+        <div className='md:grid hidden flex-col md:grid-cols-3 md:grid-rows-10 md:h-[615px] my-12'>
             <div className={`flex flex-col flex-wrap relative min-h-60 md:row-span-10 overflow-hidden`}>
                 {
                     GRID_DATA.map((item, index) => {

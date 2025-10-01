@@ -5,6 +5,7 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import React, { useRef } from 'react'
 import OportunidadesGrid from './OportunidadesGrid'
 import Counter from './Counter';
+import OportunidadesGridMobile from './OportunidadesGridMobile';
 gsap.registerPlugin(ScrollTrigger);
 
 const Oportunidades = () => {
@@ -43,16 +44,17 @@ const Oportunidades = () => {
 
     return (
           <div ref={container} className='flex py-12 flex-col md:w-[1300px] w-[90vw] mx-auto'>
-              <div className='flex md:flex-row flex-col justify-between pt-12 pb-4'>
+              <div className='flex md:flex-row flex-col justify-between pt-12 pb-4 gap-8 md:gap-0'>
                 <div className='titles flex flex-col'>
                   <h2 className='title__one'>¡Invertí sin preocupaciones!</h2>
                 </div>
-                <div className='bg-amber-100 md:w-[600px]'>
+                <div className='md:w-[650px]'>
                   <Counter />
                 </div>
               </div>
-              <div className='grid__ hidden md:block'>
+              <div className='grid__ '>
                 <OportunidadesGrid />
+                <OportunidadesGridMobile />
               </div>
           </div>
       )
