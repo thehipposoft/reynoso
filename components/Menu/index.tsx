@@ -5,11 +5,17 @@ import React, {useState, useEffect, useRef} from 'react'
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
-const Menu = () => {
+type MenuTypes = {
+    hiddeOnDesktop?: boolean;
+}
+
+const Menu = ({hiddeOnDesktop}:MenuTypes) => {
 
     const [openMenu, setOpenMenu] = useState<boolean>(false);
+    const [openDesarrollos, setOpenDesarrollos] = useState<boolean>(false);
 
     const openMenuFunc = () => setOpenMenu(!openMenu);
+    const openDesarrolloFunc = () => setOpenDesarrollos(!openDesarrollos);
     const container = useRef<HTMLDivElement>(null);
     const tl = useRef<gsap.core.Timeline>(null);
     const { contextSafe } = useGSAP({ scope: container });
@@ -24,12 +30,12 @@ const Menu = () => {
             ease: 'power2.inOut',
             duration: .7,
         })
-        .from(".menu__items > *" , {
+ /*        .from(".menu__items > *" , {
             y: 25,
             autoAlpha: 0,
             stagger: 0.1,
             delay: -0.2,
-        })
+        }) */
         .from(".menu__image" , {
             opacity: 0,
             y: 10,
@@ -44,7 +50,7 @@ const Menu = () => {
     }, [openMenu])
 
   return (
-    <div ref={container} className='fixed w-20 h-20 md:top-7 md:right-8 top-0 right-0 z-50'>
+    <div ref={container} className={`${hiddeOnDesktop ? 'md:hidden block' : ''} fixed top-0 right-0 z-50`}>
         <button 
             className='fixed z-50 px-1 py-1 duration-500 cursor-pointer top-7 right-8 hover:bg-black/30 rounded-xl'
             onClick={openMenuFunc}
@@ -55,26 +61,48 @@ const Menu = () => {
                 <rect className={`duration-700  origin-left ${openMenu ? '-rotate-45 translate-y-[6px]' : ''}`} y="12.25" width="30" height="2.75" rx="1.375" fill="#D9D9D9"/>
             </svg>
         </button>
-        <div className={`menu md:-right-88 -right-96 opacity-0 rounded-xl md:w-80 w-screen h-screen md:h-auto absolute md:top-12 bg-primary-green flex flex-col justify-center gap-20 md:gap-0 md:justify-between px-12 py-6  z-40`}>
+        <nav className={`menu top-0 opacity-0 md:rounded-xl md:w-lg w-screen h-screen absolute bg-primary-green flex flex-col justify-center gap-20 md:gap-0 md:justify-between px-12 py-6 z-40`}>
             <ul className='menu__items flex flex-col gap-6 md:gap-3'>
-                <Link href={'/'} onClick={openMenuFunc} className='menu_item border-b border-white py-2 text-center text-white font-medium font-jakarta'>
+                <Link href={'/'} onClick={openMenuFunc} className='hover:text-title-color hover:border-title-color duration-500 text-left menu_item border-b border-white py-2 uppercase text-2xl text-white font-medium font-jakarta'>
                     Inicio
                 </Link>
-                <Link href={'/'} onClick={openMenuFunc} className='menu_item border-b border-white py-2 text-center text-white font-medium font-jakarta'>
-                    Desarrollos
-                </Link>
-                <Link href={'/'} onClick={openMenuFunc} className='menu_item border-b border-white py-2 text-center text-white font-medium font-jakarta'>
+                <div className='relative overflow-hidden'>
+                    <h4 onClick={openDesarrolloFunc} className='hover:text-title-color hover:border-title-color duration-500 text-left menu_item border-b border-white py-2 uppercase text-2xl text-white max-h-fit overflow-hidden cursor-pointer'>Desarrollos</h4>
+                    <div className={`${openDesarrollos ? 'top-0 ' : '-top-full opacity-0'} relative overflow-hidden duration-500 flex flex-col `}>
+                        <div className='bg-black flex justify-center'>
+                            <Image src={'/assets/images/desarrollos/citadinop.png'} alt='' width={200} height={200} />
+                        </div>
+                        <div className='bg-black flex justify-center'>
+                            <Image src={'/assets/images/desarrollos/citadinop.png'} alt='' width={200} height={200} />
+                        </div>
+                    </div>
+                </div>
+{/*                 <div className='hover:text-title-color hover:border-title-color duration-300 text-left menu_item border-b border-white py-2 uppercase text-2xl text-white max-h-fit overflow-hidden'>
+                    <h4 className='cursor-pointer' onClick={openDesarrolloFunc}>Desarrollos</h4>
+                    <div className={`${openDesarrollos ? '' : 'scale-50'} duration-300 flex flex-col`}>
+                        <div className='bg-black flex justify-center'>
+                            <Image src={'/assets/images/desarrollos/citadinop.png'} alt='' width={200} height={200} />
+                        </div>
+                        <div className='bg-black flex justify-center'>
+                            <Image src={'/assets/images/desarrollos/citadinop.png'} alt='' width={200} height={200} />
+                        </div>
+                    </div>
+                </div> */}
+                <Link href={'https://propiedades.reynosobienesraices.com.ar/listado-de-propiedades/'} rel='noreferrer' target='_blank' onClick={openMenuFunc} className='hover:text-title-color hover:border-title-color duration-500 text-left menu_item border-b border-white py-2 uppercase text-2xl text-white font-medium font-jakarta'>
                     Alquileres
                 </Link>
-                <Link href={'/'} onClick={openMenuFunc} className='menu_item border-b border-white py-2 text-center text-white font-medium font-jakarta'>
+                <Link href={'https://propiedades.reynosobienesraices.com.ar/listado-de-propiedades/'} rel='noreferrer' target='_blank' onClick={openMenuFunc} className='hover:text-title-color hover:border-title-color duration-500 text-left menu_item border-b border-white py-2 uppercase text-2xl  text-white font-medium font-jakarta'>
                     Ventas
                 </Link>
-                <Link href={'/'} onClick={openMenuFunc} className='menu_item border-b border-white py-2 text-center text-white font-medium font-jakarta'>
+                <Link href={'/#nosotros'} onClick={openMenuFunc} className='hover:text-title-color hover:border-title-color duration-500 text-left menu_item border-b border-white py-2 uppercase text-2xl  text-white font-medium font-jakarta'>
                     Nosotros
+                </Link> 
+                <Link href={'/#contacto'} onClick={openMenuFunc} className='hover:text-title-color hover:border-title-color duration-500 text-left menu_item border-b border-white py-2 uppercase text-2xl  text-white font-medium font-jakarta'>
+                    Contacto
                 </Link> 
             </ul>
             <Image src={'/assets/images/logo/logo-white.svg'} alt='logo' width={160} height={120} className='menu__image mx-auto mt-6'/>
-        </div>
+        </nav>
     </div>
   )
 }

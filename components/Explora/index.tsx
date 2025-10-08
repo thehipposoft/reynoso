@@ -1,18 +1,52 @@
-import React from 'react'
+'use client'
+import React, { useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+
 
 const Explora = () => {
+
+  const container = useRef(null)
+
+  useGSAP(() => {
+        gsap.from(".box", {
+          scrollTrigger: {
+              trigger: container.current,
+              start: "top 70%",
+              end: "top 40%",
+              scrub: 3,
+          },
+            opacity: 0,
+            y: 70,
+            rotate: 5,
+            duration: 1,
+            ease: "power4.out",
+        });
+        gsap.from(".box2", {
+          scrollTrigger: {
+              trigger: container.current,
+              start: "top center",
+              end: "top 20%",
+              scrub: 3,
+          },
+            opacity: 0,
+            duration: 1,
+            ease: "power4.out",
+        });
+  })
+
   return (
-    <div className='flex flex-col items-center md:w-[1300px] w-[90vw] mx-auto my-2'>
-        <div className='flex'>
+    <div ref={container} className='flex flex-col items-center md:w-[1300px] w-[90vw] mx-auto my-2'>
+        <div className='flex box'>
             <div className='w-7 h-36 bg-primary-green'/>
             <div className='flex flex-col items-center justify-center text-center md:w-[450px] shadow-2xl'>
                 <h4 className='text-3xl font-jakarta'>Nuestros</h4>
                 <h3>Proyectos</h3>
             </div>
         </div>
-        <div className='bg-[#f5f5f5] md:w-[935px] w-[90vw] md:h-72 flex flex-col md:px-16 px-8 py-10 md:py-0 gap-12 justify-center'>
+        <div className='box2 bg-[#f5f5f5] md:w-[935px] w-[90vw] md:h-72 flex flex-col md:px-16 px-8 py-10 md:py-0 gap-12 justify-center'>
             <p className='font-semibold md:text-3xl md:-tracking-wide text-4xl leading-7'>Explorá nuestros Desarrollos Inmobiliarios</p>
             <div className='grid md:grid-cols-5 grid-cols-2 gap-4'>
               <Link href={''}><Image className='hover:grayscale-0 duration-500 hover:scale-110 grayscale-100' src={'/assets/images/logo/citadino-p.png'} alt='' width={200} height={100} /></Link>

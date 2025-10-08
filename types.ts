@@ -7,22 +7,25 @@ export type ServiciosType = {
 
 export type Proyecto = {
     id: number,
+    slug: string,
     imagen_banner: string,
     nombre: string,
     titulo: string,
     logo: string,
     color_primario: string,
     color_secundario: string,
+    texto_blanco: string[],
     servicios: ServiciosType[],
     galeria: [],
     imagen_deco: string,
-    subtitulo: string,
+    brochure: string,
     subtitulo_bicolor_primera: string,
     subtitulo_bicolor_segunda: string,
     mapa_imagen: string,
     mapa_url: string,
     imagen_decorativa_dos: string,
     ubicacion: string,
+    agotado: string[],
 }
 
 export type Proyectos = {

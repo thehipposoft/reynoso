@@ -151,7 +151,7 @@ const OportunidadesGrid = () => {
                 {
                     GRID_DATA.map((item, index) => 
                         (
-                            <div key={index} onClick={() => setCurrentIndex(index)} className='item__one group min-h-[369px] h-full relative  flex justify-center items-center overflow-hidden'>
+                            <div key={index} onClick={() => setCurrentIndex(index)} className='item__one cursor-pointer group min-h-[369px] h-full relative  flex justify-center items-center overflow-hidden'>
                                 <div className='absolute top-0 left-0 h-full w-full bg-overlay-bg opacity-60 group-hover:opacity-20 duration-700 z-10' />
                                 <h4 className='text-white text-2xl relative z-10 font-bold'>{item.title}</h4>
                                 <Image className='object-cover group-hover:scale-105 duration-500' src={item.image} fill alt={item.alt} />
@@ -163,7 +163,7 @@ const OportunidadesGrid = () => {
                 {
                     GRID_DATA.map((item, index) => 
                         (
-                            <div key={index} onClick={() => setCurrentIndex(index)} className='item__two group min-h-[369px] h-full relative  flex justify-center items-center overflow-hidden'>
+                            <div key={index} onClick={() => setCurrentIndex(index)} className='item__two cursor-pointer group min-h-[369px] h-full relative  flex justify-center items-center overflow-hidden'>
                                 <div className='absolute top-0 left-0 h-full w-full bg-overlay-bg opacity-60 group-hover:opacity-20 duration-700 z-10' />
                                 <h4 className='text-white text-2xl relative z-10 font-bold'>{item.title}</h4>
                                 <Image className='object-cover group-hover:scale-105 duration-500' src={item.image} fill alt={item.alt} />

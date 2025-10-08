@@ -5,7 +5,7 @@ const Redes = () => {
     <div className='flex pt-12 flex-col w-screen 2xl:w-[1300px] mx-auto'>
         <div className='flex md:flex-row flex-col md:items-center relative gap-12 md:gap-0'>
             <div className='flex flex-col md:px-12 px-6 bg-[#F3F6FC] w-[75vw] md:w-1/2 h-44 justify-center'>
-                <h1 className='font-inter text-4xl'>Encontranos en</h1>
+                <h2 className='font-inter text-4xl'>Encontranos en</h2>
                 <h3 className='text-4xl'>Redes Sociales</h3>
             </div>
             <div className='flex flex-col md:flex-row md:absolute right-0 md:pl-16 pl-8 py-4 md:py-0 self-end md:self-auto items-center bg-[#038C7F] md:h-14 gap-2 md:gap-36 w-[75vw] md:w-[55vw] 2xl:w-[800px]'>

@@ -14,7 +14,7 @@ const Equipo = () => {
       const tl = gsap.timeline({
           scrollTrigger: {
               trigger: container.current,
-              start: "top 60%",
+              start: "top 70%",
               end: "top 15%",
               scrub: 4,
           },
@@ -30,9 +30,11 @@ const Equipo = () => {
               start: "17% 60%",
           },
           opacity: 0,
+          y: 70,
+          x: 20,
+          rotate: 5,
+          duration: 1,
           ease: "sine.inOut",
-          duration: 1.5,
-          xPercent: -100,
       })
 
       gsap.from(".equipo", {
@@ -48,7 +50,7 @@ const Equipo = () => {
   }, {scope: container})
 
   return (
-    <div ref={container} className='relative'>
+    <div ref={container} className='relative' id='nosotros'>
       <Image className='absolute hidden md:block right-0 -top-[10%] -z-10' src={"/assets/images/dots.png"} alt='' width={300} height={400} />
       <div className='flex relative flex-col md:max-w-[1300px] w-[90vw] md:w-auto mx-auto mb-16'>
         <div className='flex md:flex-row flex-col-reverse items-start md:items-end justify-between'>

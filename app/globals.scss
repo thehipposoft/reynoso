@@ -3,6 +3,8 @@
 
 @theme {
   --color-primary-green: #33847D;
+  --color-green-title: #038C7F;
+  --color-green-blur: #33847d80;
   --color-primary-gray: #3A3938;
   --color-dark-blue: #090B19;
   --color-overlay-bg: #3A3937;
@@ -10,6 +12,10 @@
   --font-jakarta: 'Plus Jakarta Sans', sans-serif;
   --font-inter: 'Inter', sans-serif;
   --font-kadwa: 'Kadwa', serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 .fondo {
@@ -34,13 +40,36 @@ h3 {
   line-height: 3rem;
 }
 
+.font-bailey {
+  font-family: $baileys-regular;
+}
+
 h5 {
   font-weight: 300;
   text-transform: uppercase;
 }
 
-@media (max-width: 600px) {
-  h2, h1 {
-  font-size: 45px;
+.mySwiper {
+  max-width: 1200px;
+  margin: 0 auto;
 }
+
+.swiper-pagination-bullet-active {
+  background: #33847D !important;
+}
+
+.SwiperBanner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+
+@media (max-width: 600px) {
+    h2, h1 {
+    font-size: 45px;
+  }
+  .swiper {
+    max-width: 95vw;
+  }
 }

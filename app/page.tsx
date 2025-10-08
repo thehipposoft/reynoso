@@ -7,6 +7,8 @@ import Explora from "@/components/Explora";
 import Oportunidades from "@/components/Oportunidades";
 import VentaAlquilerComp from "@/components/Oportunidades/VentaAlquilerComp";
 import Redes from "@/components/Redes";
+import Footer from "@/components/commons/Footer";
+import Menu from "@/components/Menu";
 
 export default async function Home() {
 
@@ -14,6 +16,9 @@ export default async function Home() {
   
   return (
     <div className="">
+      <header>
+          <Menu />
+      </header>
       <main className="">
         <Banner proyectos={proyectos} />
         <Explora />
@@ -24,7 +29,8 @@ export default async function Home() {
         <Redes />
         <Contact />
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
+      <footer>
+        <Footer proyectos={proyectos} />
       </footer>
     </div>
   );

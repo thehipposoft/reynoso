@@ -2,7 +2,6 @@ import "./globals.scss"
 import type { Metadata } from "next";
 import Menu from "@/components/Menu";
 import { Plus_Jakarta_Sans, Inter, Kadwa, Poppins } from 'next/font/google';
-import Footer from "@/components/commons/Footer";
 import SmoothScroll from "@/components/commons/SmoothScroll";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -45,9 +44,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${jakarta.variable} ${kadwa.variable} ${poppins.variable}`}
       >
         <SmoothScroll>
-          <Menu />
           {children}
-          <Footer />
         </SmoothScroll>
       </body>
     </html>
