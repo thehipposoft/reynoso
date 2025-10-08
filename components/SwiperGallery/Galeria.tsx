@@ -40,7 +40,7 @@ export default function Galeria({images}:GaleriaTypes) {
       >
         {
             images.map((item, index) => (
-                <SwiperSlide>
+                <SwiperSlide key={index}>
                     <div 
                         className='relative md:w-[1200px] md:h-[600px] overflow-hidden group cursor-pointer'
                         onClick={() => {
@@ -50,7 +50,6 @@ export default function Galeria({images}:GaleriaTypes) {
                     >
                         <div className='absolute left-0 top-0 w-full h-full bg-black/10 z-10 group-hover:bg-black/5 duration-300' />
                         <Image 
-                            key={index} 
                             src={item.url} 
                             alt={item.alt} 
                             fill

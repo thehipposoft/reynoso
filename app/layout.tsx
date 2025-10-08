@@ -1,6 +1,5 @@
 import "./globals.scss"
 import type { Metadata } from "next";
-import Menu from "@/components/Menu";
 import { Plus_Jakarta_Sans, Inter, Kadwa, Poppins } from 'next/font/google';
 import SmoothScroll from "@/components/commons/SmoothScroll";
 

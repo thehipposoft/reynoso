@@ -50,8 +50,8 @@ export default function SwiperGallery({images}:GallerySliderProps) {
       >
         {
             images.map((slide, index) => (
-                <SwiperSlide>
-                    <div 
+                <SwiperSlide key={index}>
+                    <div
                         className='flex relative md:w-[400px] w-[95vw] h-[400px] overflow-hidden group cursor-pointer'
                         onClick={() => {
                             setLightboxIndex(index);
@@ -60,7 +60,6 @@ export default function SwiperGallery({images}:GallerySliderProps) {
                     >
                         <div className='absolute left-0 top-0 w-full h-full bg-black/10 group-hover:opacity-0 duration-500 z-10' />
                         <Image 
-                            key={index}
                             src={slide.url} 
                             alt={slide.alt} 
                             fill
