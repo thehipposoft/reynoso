@@ -2,7 +2,7 @@ import React from 'react'
 
 const Redes = () => {
   return (
-    <div className='flex pt-12 flex-col w-screen 2xl:w-[1300px] mx-auto'>
+    <div className='hidden  pt-12 flex-col w-screen 2xl:w-[1300px] mx-auto'>
         <div className='flex md:flex-row flex-col md:items-center relative gap-12 md:gap-0'>
             <div className='flex flex-col md:px-12 px-6 bg-[#F3F6FC] w-[75vw] md:w-1/2 h-44 justify-center'>
                 <h2 className='font-inter text-4xl'>Encontranos en</h2>

@@ -30,8 +30,6 @@ export default async function getAllProjects() {
         }   
     ).reverse();
 
-    console.log('Proyectos' , result)
-
     if (!res.ok) {
         throw new Error('Failed to fetch data')
     }

@@ -57,9 +57,6 @@ const Footer = ({proyectos, backgroundColor}:FooterProps) => {
                         </div>
                     </div>
                 </div>
-                <div className='flex justify-between'>
-                    marcas
-                </div>
             </div>
             <div className='flex pt-8 pb-4 justify-center items-center'>
                 <Link className='text-center text-white font-jakarta hover:underline' href={'www.thehipposoft.com'} rel='noreferrer' target='_blank'>Created by <strong>HippoSoft</strong> | All Right Reserved</Link>

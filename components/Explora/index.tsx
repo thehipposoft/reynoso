@@ -4,9 +4,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import { Proyecto } from '@/types'
 
 
-const Explora = () => {
+type ExploraTypes = {
+    desarrollos: Proyecto[];
+}
+
+const Explora = ({desarrollos}:ExploraTypes) => {
 
   const container = useRef(null)
 
@@ -19,8 +24,7 @@ const Explora = () => {
               scrub: 3,
           },
             opacity: 0,
-            y: 70,
-            rotate: 5,
+            y: 20,
             duration: 1,
             ease: "power4.out",
         });
@@ -46,14 +50,26 @@ const Explora = () => {
                 <h3>Proyectos</h3>
             </div>
         </div>
-        <div className='box2 bg-[#f5f5f5] md:w-[935px] w-[90vw] md:h-72 flex flex-col md:px-16 px-8 py-10 md:py-0 gap-12 justify-center'>
+        <div className='box2 bg-black/15 md:w-[935px] w-[90vw] md:h-72 flex flex-col md:px-16 px-8 py-10 md:py-0 gap-12 justify-center'>
             <p className='font-semibold md:text-3xl md:-tracking-wide text-4xl leading-7'>Explorá nuestros Desarrollos Inmobiliarios</p>
-            <div className='grid md:grid-cols-5 grid-cols-2 gap-4'>
-              <Link href={''}><Image className='hover:grayscale-0 duration-500 hover:scale-110 grayscale-100' src={'/assets/images/logo/citadino-p.png'} alt='' width={200} height={100} /></Link>
-              <Link href={''}><Image className='hover:grayscale-0 duration-500 hover:scale-110 grayscale-100' src={'/assets/images/logo/cauce-p.png'} alt='' width={200} height={100} /></Link>
-              <Link href={''}><Image className='hover:grayscale-0 duration-500 hover:scale-110 grayscale-100' src={'/assets/images/logo/maruyama-p.png'} alt='' width={200} height={100} /></Link>
-              <Link href={''}><Image className='hover:grayscale-0 duration-500 hover:scale-110 grayscale-100' src={'/assets/images/logo/campo-p.png'} alt='' width={200} height={100} /></Link>
-              <Link href={''}><Image className='hover:grayscale-0 duration-500 hover:scale-110 grayscale-100' src={'/assets/images/logo/senderos-p.png'} alt='' width={200} height={100} /></Link>
+            <div className='flex flex-wrap md:flex-nowrap items-center justify-around gap-4'>
+              {
+                desarrollos.map((val, index) => (
+                  <Link 
+                    key={index} 
+                    href={`/desarrollos/${val.slug}`}
+                    className='relative h-36 w-36 hover:bg-primary-green/20 duration-300 rounded-lg'
+                  >
+                    <Image
+                      src={val.logo}
+                      alt={`Logo ${val.nombre}`}
+                      fill
+                      className='hover:grayscale-0 duration-500 hover:scale-110 grayscale-100 object-contain p-4'
+                     />
+                  </Link>
+                )
+              )
+              }
             </div>
         </div>
     </div>

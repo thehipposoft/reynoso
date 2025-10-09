@@ -6,7 +6,7 @@ const Contact = () => {
   return (
     <div className='md:h-screen md:py-0 py-12 relative flex justify-center'>
       <Image 
-        src={'/assets/images/banner/banner-1.png'} 
+        src={'/assets/images/contact.jpg'} 
         alt='Contact section background:' 
         fill
         sizes='100vw'

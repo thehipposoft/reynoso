@@ -35,7 +35,7 @@ const Banner = ({
 
 
   return (
-    <div className='flex md:flex-row flex-col h-screen bg-black/60'>
+    <div className='flex md:flex-row flex-col h-screen bg-black/60 relative'>
         <Image 
           src={'/assets/images/banner/banner.jpg'} 
           alt='Descubri oportunidades inmobiliarias imagen' 

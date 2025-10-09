@@ -17,11 +17,11 @@ export default async function Home() {
   return (
     <div className="">
       <header>
-          <Menu />
+          <Menu desarrollos={proyectos} />
       </header>
       <main className="">
         <Banner proyectos={proyectos} />
-        <Explora />
+        <Explora desarrollos={proyectos} />
         <VentaAlquilerComp />
         <Oportunidades />
         <Desarrollo />

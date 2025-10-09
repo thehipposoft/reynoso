@@ -104,8 +104,8 @@ export default function OportunidadesGridMobile() {
                     </span>
                     </div>
                 </div>
-                <div className="flex justify-center items-center py-2 px-6 text-lg leading-5">
-                    <p>{item.descripcion}</p>
+                <div className="flex justify-center items-center py-4 px-4 text-lg leading-5">
+                    <p className="font-jakarta">{item.descripcion}</p>
                 </div>
             </div>
         ))}

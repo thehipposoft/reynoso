@@ -49,8 +49,7 @@ export default async function ProjectPage({ params }: Params) {
 
   return(
     <div>
-      <DynamicMenu proyectos={proyectos} />
-      <Menu hiddeOnDesktop />
+      <Menu desarrollos={proyectos}  />
       {
         project && <ProyectoLayout proyecto={project} />
       }

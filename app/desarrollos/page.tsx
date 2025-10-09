@@ -13,7 +13,7 @@ export default async function DesarrollosPage() {
     <div>
         <header>
             <MenuDesarrollos proyectos={proyectos} />
-            <Menu hiddeOnDesktop />
+            <Menu desarrollos={proyectos} hiddeOnDesktop />
         </header>
         <main>
             <div className='flex flex-col'>
