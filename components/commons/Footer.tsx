@@ -34,7 +34,7 @@ const Footer = ({proyectos, backgroundColor}:FooterProps) => {
                         <Link href={'https://propiedades.reynosobienesraices.com.ar/listado-de-propiedades/'} rel='noreferrer' target='_blank' className='text-white text-lg font-bold font-jakarta hover:underline'>Alquileres</Link>
                         <Link href={'/#nosotros'} className='text-white text-lg font-bold font-jakarta hover:underline'>Nosotros</Link>
                         <Link href={'/#contacto'} className='text-white text-lg font-bold font-jakarta hover:underline'>Contacto</Link>
-                        <Link href={''} className='text-white text-lg font-bold font-jakarta hover:underline'>Explore Me</Link>
+                        <Link href={'/#explora'} className='text-white text-lg font-bold font-jakarta hover:underline'>Explora</Link>
                         <div className='flex flex-col justify-between'>
                             <Link href={'https://propiedades.reynosobienesraices.com.ar/listado-de-propiedades/'} rel='noreferrer' target='_blank' className='text-white text-lg font-bold font-jakarta hover:underline'>Venta</Link>
                             <div className='flex flex-col pt-4'>

@@ -80,7 +80,12 @@ const Menu = ({hiddeOnDesktop, desarrollos}:MenuTypes) => {
                                     style={{backgroundColor: `${desarrollo.color_primario}`}} 
                                     className='flex justify-center overflow-hidden group'
                                 >
-                                    <Image src={desarrollo.logo} alt={`Logo ${desarrollo.nombre}`} width={200} height={200} className='w-28 min-h-12 max-h-12 object-contain group-hover:scale-125 duration-500' />
+                                    <Image 
+                                    src={desarrollo.logo} 
+                                    alt={`Logo ${desarrollo.nombre}`} 
+                                    width={200} 
+                                    height={200} 
+                                    className='w-28 min-h-12 max-h-12 object-contain group-hover:scale-125 duration-500 brightness-0 invert-100' />
                                 </Link>
                             ))
                         }

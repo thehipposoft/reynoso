@@ -50,7 +50,7 @@ const Explora = ({desarrollos}:ExploraTypes) => {
                 <h3>Proyectos</h3>
             </div>
         </div>
-        <div className='box2 bg-black/15 md:w-[935px] w-[90vw] md:h-72 flex flex-col md:px-16 px-8 py-10 md:py-0 gap-12 justify-center'>
+        <div className='box2 bg-[#f7f7f7] md:w-auto w-[90vw] md:h-72 flex flex-col md:px-16 px-8 py-10 md:py-0 gap-12 justify-center'>
             <p className='font-semibold md:text-3xl md:-tracking-wide text-4xl leading-7'>Explorá nuestros Desarrollos Inmobiliarios</p>
             <div className='flex flex-wrap md:flex-nowrap items-center justify-around gap-4'>
               {
@@ -58,13 +58,13 @@ const Explora = ({desarrollos}:ExploraTypes) => {
                   <Link 
                     key={index} 
                     href={`/desarrollos/${val.slug}`}
-                    className='relative h-36 w-36 hover:bg-primary-green/20 duration-300 rounded-lg'
+                    className='relative h-36 w-28 hover:bg-black/10 duration-300 rounded-lg'
                   >
                     <Image
                       src={val.logo}
                       alt={`Logo ${val.nombre}`}
                       fill
-                      className='hover:grayscale-0 duration-500 hover:scale-110 grayscale-100 object-contain p-4'
+                      className='hover:brightness-100 duration-500 hover:scale-110 brightness-0 object-contain p-4'
                      />
                   </Link>
                 )

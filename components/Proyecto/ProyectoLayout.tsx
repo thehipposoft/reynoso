@@ -19,7 +19,13 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
             <div className='flex max-w-[1450px] h-screen'>
                 <div className='flex flex-col justify-between md:min-w-[40vw] min-w-screen h-full relative z-20  '>
                     <div className='flex flex-col items-center justify-between pb-10 pt-[30vh]'>
-                        <Image src={proyecto.logo} alt={`Logo proyecto: ${proyecto.nombre}`} width={280} height={200} className='z-20 relative ' />
+                        <Image 
+                            src={proyecto.logo} 
+                            alt={`Logo proyecto: ${proyecto.nombre}`} 
+                            width={280} 
+                            height={200} 
+                            className='z-20 relative brightness-0 invert-100' 
+                        />
                         <h5 className='text-lg tracking-[4px] text-white'>{proyecto.titulo}</h5>
                     </div>
                     <div className='bg-white flex w-screen md:w-auto'>
@@ -44,16 +50,16 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
             <div className='w-24 h-16 md:flex hidden justify-center items-center bg-[#F3F6FC]'>
                 <svg className='w-6' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12h16m-8-8v16" stroke="#080A18" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </div>
-            <div style={{backgroundColor: `${proyecto.color_primario}`}} className='md:px-24 px-6 md:h-56 flex flex-col gap-2'>
+            <div style={{backgroundColor: `${proyecto.color_primario}`}} className='md:px-24 px-6 flex flex-col gap-2 md:gap-6 '>
                 <div className='flex pl-12 pt-4'>
-                    <p className='text-white font-semibold font-jakarta'>Servicios</p>
+                    <p className='text-white font-semibold text-xl font-jakarta'>Servicios</p>
                 </div>
-                <div className='h-[1px] bg-[#E2E7F1] md:w-1/2 w-3/4 mx-auto' />
-                <div className='flex gap-6 md:gap-2 flex-wrap justify-center md:justify-between md:w-[1000px] mx-auto relative md:py-4 py-8'>
+                <div className='h-[1px] bg-[#E2E7F1] w-3/4 mx-auto' />
+                <div className='flex gap-6 md:gap-16 flex-wrap justify-center md:justify-start mx-auto relative md:py-6 py-8'>
                     {
                         proyecto.servicios.map((item:ServiciosType, index:number) => (
                             <div className='flex flex-col justify-center items-center gap-2' key={index}>
-                                <Image src={item.icono_servicio.url} alt={`Servicios Icono: ${item.nombre_servicio}`} width={80} height={50} className='z-20 relative max-h-16 w-auto h-auto' />
+                                <Image src={item.icono_servicio.url} alt={`Servicios Icono: ${item.nombre_servicio}`} width={80} height={50} className='z-20 relative w-auto h-20 max-h-24' />
                                 <p className='text-sm text-white font-jakarta'>{item.nombre_servicio}</p>
                             </div>
                         ))
@@ -68,14 +74,20 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
                 <h4 className='font-jakarta text-4xl md:text-5xl -tracking-wider font-bold pl-12' style={{color: `${proyecto.color_secundario}`}}>{proyecto.subtitulo_bicolor_segunda}</h4>
             </div>
             {
-                proyecto.agotado.length > 0 ?
+                proyecto.agotado.length > 0 && proyecto.galeria.length > 0 ?
                 <div className=''>
                     <Galeria images={proyecto.galeria} />
                 </div>
                 :
+                <></>
+            }
+            {
+                proyecto.agotado.length === 0 && proyecto.galeria.length > 0 ?
                 <div className='max-h-[500px]'>
                     <SwiperGallery images={proyecto.galeria}/>
                 </div>
+                :
+                <></>
             }
             {
                 proyecto.brochure &&
@@ -101,10 +113,22 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
         <div className='h-screen hidden bg-black/30  justify-center items-center '>
             <h2>Video</h2>
         </div>
-        <div className='flex md:flex-row flex-col justify-between md:items-end md:w-[1300px] w-[90vw] py-8 mx-auto md:min-h-screen'>
-            <Image src={proyecto.mapa_imagen} alt='Mapa del desarrollo' width={525} height={800} className='max-h-[650px]' />
-            <div className='md:w-[550px] flex flex-col justify-between gap-20'>
-                <Image src={`${proyecto.imagen_decorativa_dos ? proyecto.imagen_decorativa_dos : proyecto.imagen_deco}`} alt='Imagen Decorativa' width={455} height={350} className='hidden w-[400px] h-auto md:block' />
+        <div className='flex md:flex-row flex-col justify-center md:gap-40 md:items-end md:max-w-[1250px] w-[90vw] py-8 mx-auto md:min-h-screen'>
+            <Image 
+                src={proyecto.mapa_imagen} 
+                alt='Mapa del desarrollo' 
+                width={525} 
+                height={800}
+                className='max-h-[650px] md:min-h-[500px] object-cover my-auto'
+             />
+            <div className='md:w-[450px] flex flex-col justify-between gap-20'>
+                <Image 
+                    src={`${proyecto.imagen_decorativa_dos ? proyecto.imagen_decorativa_dos : proyecto.imagen_deco}`} 
+                    alt='Imagen Decorativa' 
+                    width={455} 
+                    height={350} 
+                    className='hidden w-[400px] h-auto md:block ' 
+                />
                 <div className='flex flex-col md:gap-8 gap-6 pt-8 md:pt-0 px-4 md:px-0'>
                     <Link
                         href={proyecto.mapa_url}
@@ -119,7 +143,7 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
                         <h2>Estratégicamente</h2>
                         <h3 style={{color: `${proyecto.color_secundario}`}}>Ubicado</h3>
                     </div>
-                    <h4 className='font-light text-xl w-1/3'>{proyecto.ubicacion}</h4>
+                    <h4 className='font-light text-xl w-3/5'>{proyecto.ubicacion}</h4>
                 </div>
             </div>
         </div>

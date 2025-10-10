@@ -55,7 +55,13 @@ const BannerCarrousel = ({proyectos}:BannerCarrouselTypes) => {
               zIndex: currentSlideIndex === index ? 50 : 20,
             }}
           >
-            <Image src={val.logo} alt={`Logo de proyecto: ${val.nombre}`} width={260} height={160} className='scale-75 md:scale-100' />
+            <Image 
+              src={val.logo} 
+              alt={`Logo de proyecto: ${val.nombre}`} 
+              width={260} 
+              height={160} 
+              className='scale-75 md:scale-100 brightness-0 invert-100' 
+              />
             <p className="uppercase tracking-[3px] text-center text-white text-xs font-extralight">
               {val.titulo}
             </p>

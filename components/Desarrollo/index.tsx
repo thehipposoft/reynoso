@@ -36,14 +36,14 @@ const Desarrollo = () => {
     const toggleModal = () => setOpenModal(!openModal)
 
   return (
-    <div className='relative'>
+    <div className='relative' id='explora'>
         <div ref={container} className='flex pt-12 flex-col w-[90vw] md:w-[1300px] mx-auto '>
             <div className='flex flex-col md:px-12 px-6'>
                 <h2 className='title__one font-inter text-4xl'>Una nueva forma<br /> de vivir cada</h2>
                 <h3 className='title__two text-4xl'>Desarrollo</h3>
             </div>
             <div className='relative z-10 mt-8 md:mt-0 w-full md:h-[95vh] h-[60vh] overflow-hidden flex flex-col gap-16 justify-center items-center md:translate-y-16'>
-                <h5 className='text-white'>explore me</h5>
+                <h5 className='text-white hidden'>explore me</h5>
                 <h4 className='text-white text-center font-jakarta font-semibold text-3xl'>Conocé nuestros desarrollos como si estuvieras ahí.</h4>
                 <button 
                     onClick={toggleModal}
