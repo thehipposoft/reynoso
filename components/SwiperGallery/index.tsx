@@ -63,6 +63,7 @@ export default function SwiperGallery({images}:GallerySliderProps) {
                             src={slide.url} 
                             alt={slide.alt} 
                             fill
+                            sizes='(max-width: 600) 90vw, 400px'
                             className='group-hover:scale-110 duration-500 object-cover'
 
                         />

@@ -8,7 +8,7 @@ const EquipoGrid = () => {
   return (
     <div className='hidden md:grid md:grid-cols-3 grid-cols-1 grid-rows-2 mt-8 w-[90vw] md:w-full mx-auto md:mx-0 gap-2'>
         <div className='md:min-w-[430px] h-[430px] bg-black/30 relative flex items-end justify-end pb-16 pr-8'>
-            <Image src={EQUIPO[0].imagen} alt={`${EQUIPO[0].nombre} foto de perfil`} fill className='object-cover' />
+            <Image src={EQUIPO[0].imagen} alt={`${EQUIPO[0].nombre} foto de perfil`} fill sizes='430px' className='object-cover' />
             <div className='flex flex-col items-end relative z-10'>
                 <h4 className='font-bold text-2xl text-white'>{EQUIPO[0].nombre}</h4>
                 <span className='uppercase tracking-[4px] font-light text-sm text-white'>{EQUIPO[0].puesto}</span>
@@ -26,7 +26,7 @@ const EquipoGrid = () => {
             </div>
         </div>
         <div className='md:translate-y-16 md:min-w-[430px] h-[430px] bg-black/30 relative flex items-end justify-end pb-16 pr-8'>
-            <Image src={EQUIPO[1].imagen} alt={`${EQUIPO[1].nombre} foto de perfil`} fill className='object-cover' />
+            <Image src={EQUIPO[1].imagen} alt={`${EQUIPO[1].nombre} foto de perfil`} fill sizes='430px' className='object-cover' />
             <div className='flex flex-col items-end relative z-10'>
                 <h4 className='font-bold text-2xl text-white'>{EQUIPO[1].nombre}</h4>
                 <span className='uppercase tracking-[4px] font-light text-sm text-white'>{EQUIPO[1].puesto}</span>
@@ -44,7 +44,7 @@ const EquipoGrid = () => {
             </div>
         </div>
         <div className='md:translate-y-32 md:min-w-[430px] h-[430px] bg-black/30 relative flex items-end justify-start pb-16 pl-8'>
-            <Image src={EQUIPO[2].imagen} alt={`${EQUIPO[2].nombre} foto de perfil`} fill className='object-cover' />
+            <Image src={EQUIPO[2].imagen} alt={`${EQUIPO[2].nombre} foto de perfil`} fill sizes='430px' className='object-cover' />
             <div className='flex flex-col items-start relative z-10'>
                 <h4 className='font-bold text-2xl text-white'>{EQUIPO[2].nombre}</h4>
                 <span className='uppercase tracking-[4px] font-light text-sm text-white'>{EQUIPO[2].puesto}</span>
@@ -62,7 +62,7 @@ const EquipoGrid = () => {
             </div>
         </div>
         <div className='md:min-w-[430px] h-[430px] bg-black/30 relative flex pt-16 pl-8'>
-            <Image src={EQUIPO[3].imagen} alt={`${EQUIPO[3].nombre} foto de perfil`} fill className='object-cover' />
+            <Image src={EQUIPO[3].imagen} alt={`${EQUIPO[3].nombre} foto de perfil`} fill sizes='430px' className='object-cover' />
             <div className='flex flex-col relative z-10'>
                 <h4 className='font-bold text-2xl text-white w-4/6'>{EQUIPO[3].nombre}</h4>
                 <span className='uppercase tracking-[4px] font-light text-sm text-white'>{EQUIPO[3].puesto}</span>
@@ -80,7 +80,7 @@ const EquipoGrid = () => {
             </div>
         </div>
         <div className='md:mt-16 md:min-w-[430px] h-[430px] bg-black/30 relative flex pt-16 pl-8'>
-            <Image src={EQUIPO[4].imagen} alt={`${EQUIPO[4].nombre} foto de perfil`} fill className='object-cover' />
+            <Image src={EQUIPO[4].imagen} alt={`${EQUIPO[4].nombre} foto de perfil`} fill sizes='430px' className='object-cover' />
             <div className='flex flex-col relative z-10'>
                 <h4 className='font-bold text-2xl text-white'>{EQUIPO[4].nombre}</h4>
                 <span className='uppercase tracking-[4px] font-light text-sm text-white'>{EQUIPO[4].puesto}</span>
@@ -98,7 +98,7 @@ const EquipoGrid = () => {
             </div>
         </div>
         <div className='md:mt-32 md:min-w-[430px] h-[430px] bg-black/30 relative flex  pt-16 pl-8'>
-            <Image src={EQUIPO[5].imagen} alt={`${EQUIPO[5].nombre} foto de perfil`} fill className='object-cover' />
+            <Image src={EQUIPO[5].imagen} alt={`${EQUIPO[5].nombre} foto de perfil`} fill sizes='430px' className='object-cover' />
             <div className='flex flex-col relative z-10'>
                 <h4 className='font-bold text-2xl text-white'>{EQUIPO[5].nombre}</h4>
                 <span className='uppercase tracking-[4px] font-light text-sm text-white'>${EQUIPO[5].puesto}</span>

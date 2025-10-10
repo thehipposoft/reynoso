@@ -90,9 +90,15 @@ const VentaAlquilerComp = () => {
                     </div>
                 </div>
                 <div className='content bg-slate-50 md:w-[496px] md:h-[600px] relative hidden md:block'>
-                    <Image src={'/assets/images/banner/banner.jpg'} alt='' fill className='object-cover object-left' />
+                    <Image 
+                        src={'/assets/images/banner/banner.jpg'} 
+                        alt='Oportunidades alquileres fondo de familia' 
+                        sizes='500px'
+                        fill 
+                        className='object-cover object-left'
+                     />
                     <div className='logo__ md:w-[165px] md:h-[130px] flex justify-center items-center bg-primary-gray absolute z-10 -bottom-10 -left-24 rounded-xl'>
-                        <Image src={'/assets/images/logo/logo-notext.svg'} alt='Reynoso Logo' width={110} height={80}  />
+                        <Image src={'/assets/images/logo/logo-notext.svg'} alt='Reynoso Logo' width={110} height={80} className='w-auto max-w-[120px]'  />
                     </div>
                     <div className='md:w-[105px] md:h-[115px] flex overflow-hidden flex-col justify-around items-center bg-[#046658] absolute z-10 top-0 right-0 rounded-b-xl'>
                         <div className='h-[60px] relative flex justify-center items-center'>

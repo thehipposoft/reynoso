@@ -58,13 +58,14 @@ const Explora = ({desarrollos}:ExploraTypes) => {
                   <Link 
                     key={index} 
                     href={`/desarrollos/${val.slug}`}
-                    className='relative h-36 w-28 hover:bg-black/10 duration-300 rounded-lg'
+                    className='relative h-36 md:w-28 w-36 hover:bg-black/10 duration-300 rounded-lg'
                   >
                     <Image
                       src={val.logo}
                       alt={`Logo ${val.nombre}`}
                       fill
-                      className='hover:brightness-100 duration-500 hover:scale-110 brightness-0 object-contain p-4'
+                      className='hover:brightness-100 duration-500 hover:scale-110 brightness-0 object-contain md:p-4 p-1'
+                      sizes='120px'
                      />
                   </Link>
                 )

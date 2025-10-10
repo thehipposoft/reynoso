@@ -15,7 +15,13 @@ const Footer = ({proyectos, backgroundColor}:FooterProps) => {
         <div className='max-w-[80vw] md:max-w-[1250px] mx-auto flex flex-col'>
             <div className='flex flex-col py-12 border-b border-primary-green'>
                 <div className='flex flex-col md:flex-row justify-between items-center gap-8 md:gap-0'>
-                    <Image src={'/assets/images/logo/reynoso.svg'} alt='Logo Reynoso' width={260} height={140} />
+                    <Image 
+                        src={'/assets/images/logo/reynoso.svg'} 
+                        alt='Logo Reynoso' 
+                        width={260} 
+                        height={140}
+                        className='w-auto max-w-[260px]' 
+                    />
                     <div className='flex justify-between flex-wrap gap-12'>
                         <ul className='flex flex-col gap-2'>
                             <h4 className='text-white font-bold text-lg font-jakarta'>Desarrollos</h4>
@@ -31,10 +37,10 @@ const Footer = ({proyectos, backgroundColor}:FooterProps) => {
                                 ))
                             }
                         </ul>
-                        <Link href={'https://propiedades.reynosobienesraices.com.ar/listado-de-propiedades/'} rel='noreferrer' target='_blank' className='text-white text-lg font-bold font-jakarta hover:underline'>Alquileres</Link>
-                        <Link href={'/#nosotros'} className='text-white text-lg font-bold font-jakarta hover:underline'>Nosotros</Link>
-                        <Link href={'/#contacto'} className='text-white text-lg font-bold font-jakarta hover:underline'>Contacto</Link>
-                        <Link href={'/#explora'} className='text-white text-lg font-bold font-jakarta hover:underline'>Explora</Link>
+                        <Link href={'https://propiedades.reynosobienesraices.com.ar/listado-de-propiedades/'} rel='noreferrer' target='_blank' className='text-white h-fit text-lg font-bold font-jakarta hover:underline'>Alquileres</Link>
+                        <Link href={'/#nosotros'} className='text-white h-fit text-lg font-bold font-jakarta hover:underline'>Nosotros</Link>
+                        <Link href={'/#contacto'} className='text-white h-fit text-lg font-bold font-jakarta hover:underline'>Contacto</Link>
+                        <Link href={'/#explora'} className='text-white h-fit text-lg font-bold font-jakarta hover:underline'>Explora</Link>
                         <div className='flex flex-col justify-between'>
                             <Link href={'https://propiedades.reynosobienesraices.com.ar/listado-de-propiedades/'} rel='noreferrer' target='_blank' className='text-white text-lg font-bold font-jakarta hover:underline'>Venta</Link>
                             <div className='flex flex-col pt-4'>
@@ -59,7 +65,7 @@ const Footer = ({proyectos, backgroundColor}:FooterProps) => {
                 </div>
             </div>
             <div className='flex pt-8 pb-4 justify-center items-center'>
-                <Link className='text-center text-white font-jakarta hover:underline' href={'www.thehipposoft.com'} rel='noreferrer' target='_blank'>Created by <strong>HippoSoft</strong> | All Right Reserved</Link>
+                <Link className='text-center text-white font-jakarta hover:underline' href={'https://www.thehipposoft.com/'} rel='noreferrer' target='_blank'>Created by <strong>HippoSoft</strong> | All Right Reserved</Link>
             </div>
         </div>
     </div>

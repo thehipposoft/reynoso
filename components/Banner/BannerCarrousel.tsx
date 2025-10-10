@@ -60,7 +60,7 @@ const BannerCarrousel = ({proyectos}:BannerCarrouselTypes) => {
               alt={`Logo de proyecto: ${val.nombre}`} 
               width={260} 
               height={160} 
-              className='scale-75 md:scale-100 brightness-0 invert-100' 
+              className='scale-75 md:scale-100 brightness-0 invert-100 w-auto' 
               />
             <p className="uppercase tracking-[3px] text-center text-white text-xs font-extralight">
               {val.titulo}

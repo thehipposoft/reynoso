@@ -14,7 +14,7 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
   return (
     <div>
         <div className='h-screen w-screen flex md:flex-row flex-col-reverse justify-between md:items-center items-end relative'>
-            <Image src={proyecto.imagen_banner} alt={`Imagen principal proyecto: ${proyecto.nombre}`} fill className='duration-700 object-cover z-10' />
+            <Image src={proyecto.imagen_banner} alt={`Imagen principal proyecto: ${proyecto.nombre}`} fill sizes='100vw' className='duration-700 object-cover z-10' />
             <div className='absolute left-0 top-0 w-full h-full bg-black/30 z-20' />
             <div className='flex max-w-[1450px] h-screen'>
                 <div className='flex flex-col justify-between md:min-w-[40vw] min-w-screen h-full relative z-20  '>
@@ -24,6 +24,7 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
                             alt={`Logo proyecto: ${proyecto.nombre}`} 
                             width={280} 
                             height={200} 
+                            priority
                             className='z-20 relative brightness-0 invert-100' 
                         />
                         <h5 className='text-lg tracking-[4px] text-white'>{proyecto.titulo}</h5>
@@ -68,7 +69,7 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
             </div>
         </div>
         <div className='max-w-[1450px] relative mx-auto flex flex-col my-8 overflow-hidden gap-8'>
-            {proyecto.imagen_deco ? <Image src={proyecto.imagen_deco} alt='Imagen Deco' width={490} height={220} className='absolute -right-40' /> : <></>}
+            {proyecto.imagen_deco ? <Image src={proyecto.imagen_deco} alt='Imagen Deco' width={490} height={220} className='absolute -right-40 w-auto max-w-[490px]' /> : <></>}
             <div className='flex flex-col justify-between relative w-[90vw] md:w-[1250px] pt-12 mx-auto'>
                 <h4 className='font-jakarta text-4xl md:text-5xl -tracking-wider font-bold' style={{color: `${proyecto.color_primario}`}}>{proyecto.subtitulo_bicolor_primera}</h4>
                 <h4 className='font-jakarta text-4xl md:text-5xl -tracking-wider font-bold pl-12' style={{color: `${proyecto.color_secundario}`}}>{proyecto.subtitulo_bicolor_segunda}</h4>
@@ -119,7 +120,7 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
                 alt='Mapa del desarrollo' 
                 width={525} 
                 height={800}
-                className='max-h-[650px] md:min-h-[500px] object-cover my-auto'
+                className='max-h-[650px] md:min-h-[500px] object-cover my-auto w-auto md:min-w-[525px]'
              />
             <div className='md:w-[450px] flex flex-col justify-between gap-20'>
                 <Image 
@@ -127,7 +128,7 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
                     alt='Imagen Decorativa' 
                     width={455} 
                     height={350} 
-                    className='hidden w-[400px] h-auto md:block ' 
+                    className='hidden w-[400px] h-auto md:block' 
                 />
                 <div className='flex flex-col md:gap-8 gap-6 pt-8 md:pt-0 px-4 md:px-0'>
                     <Link

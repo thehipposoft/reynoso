@@ -24,7 +24,7 @@ export default async function DesarrollosPage() {
                                 <h4 className=' font-jakarta text-3xl text-center'>Nuestros</h4>
                                 <h3 className=' text-4xl'>Proyectos</h3>
                             </div>
-                            <Image className='hidden md:block' src={'/assets/images/logo-reynoso.png'} alt='Logo Reynoso Bienes Raices' width={260} height={200}  />
+                            <Image className='hidden md:block w-auto max-w-[250px]' src={'/assets/images/logo-reynoso.png'} alt='Logo Reynoso Bienes Raices' width={260} height={200}  />
                         </div>
                     </div>
                 </div>

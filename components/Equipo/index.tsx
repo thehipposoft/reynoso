@@ -51,7 +51,13 @@ const Equipo = () => {
 
   return (
     <div ref={container} className='relative' id='nosotros'>
-      <Image className='absolute hidden md:block right-0 -top-[10%] -z-10' src={"/assets/images/dots.png"} alt='' width={300} height={400} />
+      <Image 
+        className='absolute hidden md:block right-0 -top-[10%] -z-10 w-auto min-w-[300px]' 
+        src={"/assets/images/dots.png"} 
+        alt='Nuestro Equipo imagen decorativa' 
+        width={300} 
+        height={400}
+       />
       <div className='flex relative flex-col md:max-w-[1300px] w-[90vw] md:w-auto mx-auto mb-16'>
         <div className='flex md:flex-row flex-col-reverse items-start md:items-end justify-between'>
           <div className='flex flex-col mt-12 md:mt-0'>
@@ -77,7 +83,13 @@ const Equipo = () => {
           <EquipoGrid />
           <EquipoCarrousel />
         </div>
-        <Image className='absolute hidden md:block left-0 -bottom-12 -z-10' src={"/assets/images/dots.png"} alt='' width={140} height={140} />
+        <Image 
+          className='absolute hidden md:block left-0 -bottom-12 -z-10 w-auto' 
+          src={"/assets/images/dots.png"}
+          alt='Nuestro Equipo imagen decorativa' 
+          width={140} 
+          height={140}
+        />
       </div>
     </div>
   )

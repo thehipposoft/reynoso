@@ -53,7 +53,7 @@ const Menu = ({hiddeOnDesktop, desarrollos}:MenuTypes) => {
   return (
     <div ref={container} className={`${hiddeOnDesktop ? 'md:hidden block' : ''} fixed top-0 right-0 z-50`}>
         <button 
-            className='fixed z-50 px-1 py-1 duration-500 cursor-pointer top-7 right-8 hover:bg-black/30 rounded-xl'
+            className='fixed z-50 px-1 py-1 duration-500 cursor-pointer top-7 right-8 hover:bg-black/30 bg-green-title rounded-xl'
             onClick={openMenuFunc}
         >
             <svg width="35" height="35" viewBox="0 0 30 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -112,7 +112,12 @@ const Menu = ({hiddeOnDesktop, desarrollos}:MenuTypes) => {
                     </Link> 
                 </div>
             </ul>
-            <Image src={'/assets/images/logo/logo-white.svg'} alt='Reynoso Bienes Raices Logo' width={160} height={120} className='menu__image mx-auto mt-6 w-44'/>
+            <Image 
+                src={'/assets/images/logo/logo-white.svg'} 
+                alt='Reynoso Bienes Raices Logo' 
+                width={160} 
+                height={120} 
+                className='menu__image mx-auto mt-6 w-44'/>
         </nav>
     </div>
   )
