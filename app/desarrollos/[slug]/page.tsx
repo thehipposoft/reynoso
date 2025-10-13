@@ -3,7 +3,6 @@ import getProject from "@/api/getProject";
 import getAllProjects from "@/api/getAllProjects";
 import ProyectoLayout from "@/components/Proyecto/ProyectoLayout";
 import { Proyecto } from "@/types";
-import DynamicMenu from "@/components/commons/DynamicMenu";
 import Footer from "@/components/commons/Footer";
 import Menu from "@/components/Menu";
 import Contact from "@/components/Contact";

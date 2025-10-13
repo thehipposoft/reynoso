@@ -45,7 +45,7 @@ const BannerCarrousel = ({proyectos}:BannerCarrouselTypes) => {
         </div>
       ))}
 
-      <div className="relative z-40 w-full h-full flex flex-col md:gap-8 justify-center items-center bg-[#33847d80]  hover:backdrop-blur-none backdrop-blur-xs  duration-500">
+      <div className="relative z-40 w-full h-full flex flex-col md:gap-8 justify-center items-center bg-[#33847d80] hover:backdrop-blur-none backdrop-blur-xs  duration-500">
         {proyectos.map((val:Proyecto, index:number) => (
           <div
             key={index}
@@ -65,7 +65,7 @@ const BannerCarrousel = ({proyectos}:BannerCarrouselTypes) => {
             <p className="uppercase tracking-[3px] text-center text-white text-xs font-extralight">
               {val.titulo}
             </p>
-                <Link href={`desarrollos/${val.slug}`} className='group flex  justify-center items-center mt-6 md:gap-8 gap-2'>
+                <Link href={`desarrollos/${val.slug}`} className='group flex  justify-center items-center md:mt-6 md:gap-8 gap-2'>
                     <div className='border relative border-white rounded-full md:h-13 md:w-13 p-1 md:p-0 overflow-hidden flex justify-center items-center group-hover:scale-125 duration-700'>
                         <svg width="25" height="25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m21.1058 12.1776-17.99984.0678M15.1284 18.2002l5.9774-6.0226-6.0226-5.97732" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                     </div>

@@ -12,9 +12,9 @@ const Footer = ({proyectos, backgroundColor}:FooterProps) => {
 
   return (
     <div style={{backgroundColor: `${backgroundColor}`}} className='bg-[#3A3937]'>
-        <div className='max-w-[80vw] md:max-w-[1250px] mx-auto flex flex-col'>
+        <div className='max-w-[80vw] lg:max-w-[1250px] mx-auto flex flex-col'>
             <div className='flex flex-col py-12 border-b border-primary-green'>
-                <div className='flex flex-col md:flex-row justify-between items-center gap-8 md:gap-0'>
+                <div className='flex flex-col md:flex-row justify-between items-center gap-8 lg:gap-0'>
                     <Image 
                         src={'/assets/images/logo/reynoso.svg'} 
                         alt='Logo Reynoso' 
@@ -45,7 +45,7 @@ const Footer = ({proyectos, backgroundColor}:FooterProps) => {
                             <Link href={'https://propiedades.reynosobienesraices.com.ar/listado-de-propiedades/'} rel='noreferrer' target='_blank' className='text-white text-lg font-bold font-jakarta hover:underline'>Venta</Link>
                             <div className='flex flex-col pt-4'>
                                 <h4 className='text-white text-lg font-bold font-jakarta'>Seguinos!</h4>
-                                <div className='flex gap-2 pt-4'>
+                                <div className='flex lg:gap-2 gap-4 pt-4'>
                                     <Link href={'https://www.instagram.com/reynosobienesraicessalta'} rel='noreferrer' target='_blank' className='w-12 h-12 rounded-full flex items-center justify-center group hover:bg-white/10 hover:scale-110 bg-white duration-500'>
                                         <svg className='scale-[175%]' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"><path className='group-hover:fill-white duration-300' fill="#090B19" d="M5.12.96A4.163 4.163 0 0 0 .96 5.12v5.76a4.163 4.163 0 0 0 4.16 4.16h5.76a4.163 4.163 0 0 0 4.16-4.16V5.12A4.163 4.163 0 0 0 10.88.96H5.12Zm6.72 2.56a.641.641 0 0 1 0 1.28.641.641 0 0 1 0-1.28ZM8 4.48A3.522 3.522 0 0 1 11.52 8 3.522 3.522 0 0 1 8 11.52 3.522 3.522 0 0 1 4.48 8 3.522 3.522 0 0 1 8 4.48Zm0 .64A2.884 2.884 0 0 0 5.12 8 2.884 2.884 0 0 0 8 10.88 2.884 2.884 0 0 0 10.88 8 2.884 2.884 0 0 0 8 5.12Z"/></svg>
                                     </Link>

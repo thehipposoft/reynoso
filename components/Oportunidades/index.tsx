@@ -43,8 +43,8 @@ const Oportunidades = () => {
   }, {scope: container})
 
     return (
-          <div ref={container} className='flex py-12 flex-col md:w-[1300px] w-[90vw] mx-auto'>
-              <div className='flex md:flex-row flex-col justify-between pt-12 pb-4 gap-8 md:gap-0'>
+          <div ref={container} className='flex py-12 flex-col lg:w-[1300px] w-[90vw] mx-auto'>
+              <div className='flex lg:flex-row flex-col justify-between pt-12 pb-4 gap-8 md:gap-0'>
                 <div className='titles flex flex-col'>
                   <h2 className='title__one'>¡Invertí sin preocupaciones!</h2>
                 </div>

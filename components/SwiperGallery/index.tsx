@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -52,7 +52,7 @@ export default function SwiperGallery({images}:GallerySliderProps) {
             images.map((slide, index) => (
                 <SwiperSlide key={index}>
                     <div
-                        className='flex relative md:w-[400px] w-[95vw] h-[400px] overflow-hidden group cursor-pointer'
+                        className='flex relative lg:w-[400px] md:w-[45vw] w-[95vw] h-[400px] overflow-hidden group cursor-pointer'
                         onClick={() => {
                             setLightboxIndex(index);
                             setLightboxOpen(true);

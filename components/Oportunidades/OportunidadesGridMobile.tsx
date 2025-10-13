@@ -80,7 +80,7 @@ export default function OportunidadesGridMobile() {
   };
 
   return (
-    <div className="md:hidden w-[90vw] overflow-hidden my-8 mx-auto relative">
+    <div className="lg:hidden w-[90vw] overflow-hidden my-8 mx-auto relative">
       <div
         className="flex transition-transform duration-500 ease-in-out"
         style={{ transform: `translateX(-${current * 90}vw)` }}

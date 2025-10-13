@@ -18,7 +18,7 @@ export default async function DesarrollosPage() {
         <main>
             <div className='flex flex-col'>
                 <div className='bg-[#E9EAE9]'>
-                    <div className='flex flex-col w-[90vw] md:w-[1200px] mx-auto'>
+                    <div className='flex flex-col w-[90vw] lg:w-[1200px] mx-auto'>
                         <div className='flex md:justify-between justify-center items-center'>
                             <div className='flex flex-col md:px-12 px-6 py-12 md:py-0'>
                                 <h4 className=' font-jakarta text-3xl text-center'>Nuestros</h4>

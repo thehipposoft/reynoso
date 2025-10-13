@@ -13,28 +13,28 @@ type ProyectoLayoutProps = {
 const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
   return (
     <div>
-        <div className='h-screen w-screen flex md:flex-row flex-col-reverse justify-between md:items-center items-end relative'>
+        <div className='h-screen w-screen flex lg:flex-row flex-col-reverse justify-between lg:items-center items-end relative'>
             <Image src={proyecto.imagen_banner} alt={`Imagen principal proyecto: ${proyecto.nombre}`} fill sizes='100vw' className='duration-700 object-cover z-10' />
             <div className='absolute left-0 top-0 w-full h-full bg-black/30 z-20' />
             <div className='flex max-w-[1450px] h-screen'>
-                <div className='flex flex-col justify-between md:min-w-[40vw] min-w-screen h-full relative z-20  '>
-                    <div className='flex flex-col items-center justify-between pb-10 pt-[30vh]'>
+                <div className='flex flex-col justify-between lg:min-w-[40vw] min-w-screen h-full relative z-20  '>
+                    <div className='flex flex-col items-center justify-between pb-10 md:pt-[30vh] pt-[25vh]'>
                         <Image 
                             src={proyecto.logo} 
                             alt={`Logo proyecto: ${proyecto.nombre}`} 
                             width={280} 
-                            height={200} 
+                            height={200}
                             priority
-                            className='z-20 relative brightness-0 invert-100' 
+                            className='z-20 relative brightness-0 invert-100 w-auto max-w-[260px]' 
                         />
                         <h5 className='text-lg tracking-[4px] text-white'>{proyecto.titulo}</h5>
                     </div>
-                    <div className='bg-white flex w-screen md:w-auto'>
+                    <div className='bg-white flex w-screen lg:w-auto'>
                         <div style={{backgroundColor: `${proyecto.color_secundario}`}} className='p-2 w-24 h-40 flex justify-center items-center text-xs tracking-[3px]'>
                             <h5 style={{color: `${proyecto.texto_blanco.length === 0 ? '#383838' : '#FFFFFF'}`}} className='-rotate-90'>descubrir</h5>
                         </div>
                         <div className='flex justify-center items-center w-full'>
-                            <h5 className='tracking-[3px] text-xs'>{proyecto.nombre}, {proyecto.titulo}</h5>
+                            <h5 className='tracking-[3px] text-xs text-center px-2'>{proyecto.nombre}, {proyecto.titulo}</h5>
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
             {
                 proyecto.agotado.length === 0 ?
                  <></> : 
-                <div className='flex justify-center top-40 md:top-0 items-center bg-green-blur backdrop-blur-xs relative z-30 h-fit rounded-tl-2xl rounded-bl-2xl'>
+                <div className='flex justify-center top-40 lg:top-0 items-center bg-green-blur backdrop-blur-xs relative z-30 h-fit rounded-tl-2xl rounded-bl-2xl'>
                     <h4 className='font-extrabold text-white font-jakarta text-2xl md:text-5xl 2xl:text-6xl uppercase md:py-12 py-6 md:px-20 px-12'>unidades agotadas</h4>
                 </div>
             }
@@ -51,16 +51,22 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
             <div className='w-24 h-16 md:flex hidden justify-center items-center bg-[#F3F6FC]'>
                 <svg className='w-6' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12h16m-8-8v16" stroke="#080A18" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </div>
-            <div style={{backgroundColor: `${proyecto.color_primario}`}} className='md:px-24 px-6 flex flex-col gap-2 md:gap-6 '>
+            <div style={{backgroundColor: `${proyecto.color_primario}`}} className='md:px-24 px-6 flex flex-col gap-2 md:gap-4'>
                 <div className='flex pl-12 pt-4'>
                     <p className='text-white font-semibold text-xl font-jakarta'>Servicios</p>
                 </div>
                 <div className='h-[1px] bg-[#E2E7F1] w-3/4 mx-auto' />
-                <div className='flex gap-6 md:gap-16 flex-wrap justify-center md:justify-start mx-auto relative md:py-6 py-8'>
+                <div className='flex gap-6 md:gap-16 flex-wrap justify-center lg:justify-start mx-auto relative py-8'>
                     {
                         proyecto.servicios.map((item:ServiciosType, index:number) => (
                             <div className='flex flex-col justify-center items-center gap-2' key={index}>
-                                <Image src={item.icono_servicio.url} alt={`Servicios Icono: ${item.nombre_servicio}`} width={80} height={50} className='z-20 relative w-auto h-20 max-h-24' />
+                                <Image 
+                                    src={item.icono_servicio.url} 
+                                    alt={`Servicios Icono: ${item.nombre_servicio}`} 
+                                    width={80} 
+                                    height={50} 
+                                    className='z-20 relative w-auto h-20 max-h-24' 
+                                />
                                 <p className='text-sm text-white font-jakarta'>{item.nombre_servicio}</p>
                             </div>
                         ))
@@ -70,7 +76,7 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
         </div>
         <div className='max-w-[1450px] relative mx-auto flex flex-col my-8 overflow-hidden gap-8'>
             {proyecto.imagen_deco ? <Image src={proyecto.imagen_deco} alt='Imagen Deco' width={490} height={220} className='absolute -right-40 w-auto max-w-[490px]' /> : <></>}
-            <div className='flex flex-col justify-between relative w-[90vw] md:w-[1250px] pt-12 mx-auto'>
+            <div className='flex flex-col justify-between relative w-[90vw] lg:w-[1250px] pt-12 mx-auto'>
                 <h4 className='font-jakarta text-4xl md:text-5xl -tracking-wider font-bold' style={{color: `${proyecto.color_primario}`}}>{proyecto.subtitulo_bicolor_primera}</h4>
                 <h4 className='font-jakarta text-4xl md:text-5xl -tracking-wider font-bold pl-12' style={{color: `${proyecto.color_secundario}`}}>{proyecto.subtitulo_bicolor_segunda}</h4>
             </div>
@@ -114,13 +120,13 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
         <div className='h-screen hidden bg-black/30  justify-center items-center '>
             <h2>Video</h2>
         </div>
-        <div className='flex md:flex-row flex-col justify-center md:gap-40 md:items-end md:max-w-[1250px] w-[90vw] py-8 mx-auto md:min-h-screen'>
+        <div className='flex lg:flex-row flex-col justify-center lg:gap-40 md:gap-12 lg:items-end md:items-center md:max-w-[1250px] w-[90vw] py-8 mx-auto md:min-h-screen'>
             <Image 
                 src={proyecto.mapa_imagen} 
                 alt='Mapa del desarrollo' 
                 width={525} 
                 height={800}
-                className='max-h-[650px] md:min-h-[500px] object-cover my-auto w-auto md:min-w-[525px]'
+                className='max-h-[650px] lg:min-h-[500px] object-cover my-auto w-auto md:min-w-[525px]'
              />
             <div className='md:w-[450px] flex flex-col justify-between gap-20'>
                 <Image 
@@ -128,7 +134,7 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
                     alt='Imagen Decorativa' 
                     width={455} 
                     height={350} 
-                    className='hidden w-[400px] h-auto md:block' 
+                    className='hidden w-[400px] h-auto lg:block' 
                 />
                 <div className='flex flex-col md:gap-8 gap-6 pt-8 md:pt-0 px-4 md:px-0'>
                     <Link

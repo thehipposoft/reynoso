@@ -58,12 +58,12 @@ const Equipo = () => {
         width={300} 
         height={400}
        />
-      <div className='flex relative flex-col md:max-w-[1300px] w-[90vw] md:w-auto mx-auto mb-16'>
-        <div className='flex md:flex-row flex-col-reverse items-start md:items-end justify-between'>
+      <div className='flex relative flex-col lg:max-w-[1300px] w-[90vw] lg:w-auto mx-auto mb-16'>
+        <div className='flex lg:flex-row flex-col-reverse items-start lg:items-end justify-between'>
           <div className='flex flex-col mt-12 md:mt-0'>
-            <h4 className='equipo font-poppins leading-9 -tracking-wider font-bold text-title-color text-[38px] md:pb-14'>Nuestro Equipo de Profesionales</h4>
+            <h4 className='equipo font-poppins leading-9 -tracking-wider font-bold text-title-color text-[38px] lg:pb-14 md:pb-8'>Nuestro Equipo de Profesionales</h4>
           </div>
-          <div className='md:w-[700px] w-[90vw] mx-auto md:mx-0 flex gap-2 items-end overflow-hidden'>
+          <div className='lg:w-[700px] w-[90vw] mx-auto md:mx-0 flex gap-2 items-end overflow-hidden'>
             <div className='shape bg-primary-green w-40 pb-4 h-[320px] rounded-b-full flex items-end justify-center'>
               <div className='h-[115px] relative flex justify-center items-center mb-4'>
                 <div className='flex relative z-20'>

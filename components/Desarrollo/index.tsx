@@ -37,12 +37,12 @@ const Desarrollo = () => {
 
   return (
     <div className='relative' id='explora'>
-        <div ref={container} className='flex pt-12 flex-col w-[90vw] md:w-[1300px] mx-auto '>
+        <div ref={container} className='flex pt-12 flex-col w-[90vw] lg:w-[1300px] mx-auto '>
             <div className='flex flex-col md:px-12 px-6'>
                 <h2 className='title__one font-inter text-4xl'>Una nueva forma<br /> de vivir cada</h2>
                 <h3 className='title__two text-4xl'>Desarrollo</h3>
             </div>
-            <div className='relative z-10 mt-8 md:mt-0 w-full md:h-[95vh] h-[60vh] overflow-hidden flex flex-col gap-16 justify-center items-center md:translate-y-16'>
+            <div className='relative z-10 mt-8 md:mt-0 w-full lg:h-[95vh] h-[60vh] overflow-hidden flex flex-col gap-16 justify-center items-center md:translate-y-16'>
                 <h5 className='text-white hidden'>explore me</h5>
                 <h4 className='text-white text-center font-jakarta font-semibold text-3xl'>Conocé nuestros desarrollos como si estuvieras ahí.</h4>
                 <button 
@@ -55,7 +55,7 @@ const Desarrollo = () => {
                 <div className='absolute left-0 top-0 w-full h-full bg-black/30 -z-10' />
                 <video 
                     src="https://res.cloudinary.com/hipposoft/video/upload/v1759981849/Reynoso/HD_ELCAUCE_pmlcnj.mp4"
-                    className='absolute -z-20 object-cover md:h-auto h-[60vh]'
+                    className='absolute -z-20 object-cover lg:h-auto h-[60vh]'
                     autoPlay={true}
                     muted
                     loop

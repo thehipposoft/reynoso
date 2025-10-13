@@ -42,7 +42,7 @@ const Explora = ({desarrollos}:ExploraTypes) => {
   })
 
   return (
-    <div ref={container} className='flex flex-col items-center md:w-[1300px] w-[90vw] mx-auto my-2'>
+    <div ref={container} className='flex flex-col items-center lg:w-[1300px] w-[90vw] mx-auto my-2'>
         <div className='flex box'>
             <div className='w-7 h-36 bg-primary-green'/>
             <div className='flex flex-col items-center justify-center text-center md:w-[450px] shadow-2xl'>
@@ -50,9 +50,9 @@ const Explora = ({desarrollos}:ExploraTypes) => {
                 <h3>Proyectos</h3>
             </div>
         </div>
-        <div className='box2 bg-[#f7f7f7] md:w-auto w-[90vw] md:h-72 flex flex-col md:px-16 px-8 py-10 md:py-0 gap-12 justify-center'>
-            <p className='font-semibold md:text-3xl md:-tracking-wide text-4xl leading-7'>Explorá nuestros Desarrollos Inmobiliarios</p>
-            <div className='flex flex-wrap md:flex-nowrap items-center justify-around gap-4'>
+        <div className='box2 bg-[#f7f7f7] lg:w-auto w-[90vw] lg:h-72 flex flex-col md:px-16 px-8 py-10 lg:py-0 gap-12 justify-center'>
+            <p className='font-semibold lg:text-3xl md:-tracking-wide text-4xl leading-7'>Explorá nuestros Desarrollos Inmobiliarios</p>
+            <div className='flex flex-wrap lg:flex-nowrap items-center justify-around gap-4'>
               {
                 desarrollos.map((val, index) => (
                   <Link 
@@ -64,7 +64,7 @@ const Explora = ({desarrollos}:ExploraTypes) => {
                       src={val.logo}
                       alt={`Logo ${val.nombre}`}
                       fill
-                      className='hover:brightness-100 duration-500 hover:scale-110 brightness-0 object-contain md:p-4 p-1'
+                      className='hover:brightness-100 duration-500 hover:scale-110 brightness-0 object-contain lg:p-4 p-1'
                       sizes='120px'
                      />
                   </Link>

@@ -51,15 +51,15 @@ const Menu = ({hiddeOnDesktop, desarrollos}:MenuTypes) => {
     }, [openMenu])
 
   return (
-    <div ref={container} className={`${hiddeOnDesktop ? 'md:hidden block' : ''} fixed top-0 right-0 z-50`}>
+    <div ref={container} className={`${hiddeOnDesktop ? 'lg:hidden block' : ''} fixed top-0 right-0 z-50`}>
         <button 
-            className='fixed z-50 px-1 py-1 duration-500 cursor-pointer top-7 right-8 hover:bg-black/30 bg-green-title rounded-xl'
+            className='fixed z-50 px-1 py-1 duration-500 cursor-pointer top-7 right-8 hover:bg-black/30 bg-green-blur backdrop-blur-md rounded-xl'
             onClick={openMenuFunc}
         >
             <svg width="35" height="35" viewBox="0 0 30 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect className={`duration-700  origin-left ${openMenu ? 'rotate-45 -translate-y-[6px]' : ''}`} width="30" height="2.75" rx="1.375" fill="#D9D9D9"/>
-                <rect className={`duration-700  ${openMenu ? 'opacity-0' : ''}`} y="6.125" width="30" height="2.75" rx="1.375" fill="#D9D9D9"/>
-                <rect className={`duration-700  origin-left ${openMenu ? '-rotate-45 translate-y-[6px]' : ''}`} y="12.25" width="30" height="2.75" rx="1.375" fill="#D9D9D9"/>
+                <rect className={`duration-700 origin-left ${openMenu ? 'rotate-45 -translate-y-[6px]' : ''}`} width="30" height="2.75" rx="1.375" fill="#FFFFFF"/>
+                <rect className={`duration-700 ${openMenu ? 'opacity-0' : ''}`} y="6.125" width="30" height="2.75" rx="1.375" fill="#FFFFFF"/>
+                <rect className={`duration-700 origin-left ${openMenu ? '-rotate-45 translate-y-[6px]' : ''}`} y="12.25" width="30" height="2.75" rx="1.375" fill="#FFFFFF"/>
             </svg>
         </button>
         <nav className={`menu top-0 opacity-0 md:rounded-l-xl md:w-lg w-screen min-h-screen absolute bg-primary-green flex flex-col justify-center md:justify-between px-12 py-16 z-40`}>
@@ -72,6 +72,10 @@ const Menu = ({hiddeOnDesktop, desarrollos}:MenuTypes) => {
                 <div className={'relative overflow-hidden '}>
                     <h4 onClick={openDesarrolloFunc} className='hover:text-title-color hover:border-title-color duration-500 text-left menu_item border-b border-white pb-2 uppercase text-3xl text-white max-h-fit overflow-hidden cursor-pointer'>Desarrollos</h4>
                     <div className={`${openDesarrollos ? 'top-0 max-h-68' : '-top-full  max-h-0'} relative overflow-hidden duration-700 flex flex-col `}>
+                        <Link href={'/desarrollos'} className='uppercase tracking-wider text-white text-center
+                         bg-verde-oscuro py-1 hover:underline font-semibold'>
+                            ver todos
+                        </Link>
                         {
                             desarrollos.map((desarrollo, index) => (
                                 <Link 
@@ -85,7 +89,7 @@ const Menu = ({hiddeOnDesktop, desarrollos}:MenuTypes) => {
                                     alt={`Logo ${desarrollo.nombre}`} 
                                     width={200} 
                                     height={200} 
-                                    className='w-28 min-h-12 max-h-12 object-contain group-hover:scale-125 duration-500 brightness-0 invert-100' />
+                                    className='w-24 min-h-8 max-h-9 object-contain group-hover:scale-125 duration-500 brightness-0 invert-100' />
                                 </Link>
                             ))
                         }

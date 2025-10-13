@@ -12,7 +12,7 @@ const Contact = () => {
         sizes='100vw'
         className='object-cover'
        />
-       <div className='md:w-1/3 w-[90vw] md:h-[95vh] bg-primary-green/40 backdrop-blur-md flex flex-col gap-6'>
+       <div className='lg:w-1/3 w-[90vw] md:h-[95vh] bg-primary-green/40 backdrop-blur-md flex flex-col gap-6'>
           <h4 id='contacto' className='text-white text-4xl pt-20 px-16 font-jakarta'>Contactanos</h4>
           <Form
               fields={[

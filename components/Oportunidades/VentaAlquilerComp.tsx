@@ -55,20 +55,21 @@ const VentaAlquilerComp = () => {
   return (
     <div className='bg-[#E6E6E6] relative' ref={container}>
         <Image src={'/assets/images/vectors/lines.png'} alt='' width={197} height={240} className='absolute -left-28' />
-          <div className='flex py-20 flex-col md:w-[1300px] w-[90vw] mx-auto'>
-              <div className='flex md:flex-row flex-col justify-between md:px-12 px-6'>
+          <div className='flex py-20 flex-col lg:w-[1300px] w-[90vw] mx-auto'>
+              <div className='flex lg:flex-row flex-col justify-between lg:px-12 px-6'>
                 <div className='flex flex-col gap-8 pt-8'>
                     <div className='flex flex-col'>
                         <h2 className='title__one font-inter text-4xl font-inter'>Oportunidades<br /> Inmobiliarias</h2>
                         <h3 className='title__two text-4xl font-baileys'>A Medida</h3>
                     </div>
-                    <p className='content md:w-[410px] text-[17px]'>Ya sea que busques alquilar, comprar o vender, te ofrecemos oportunidades inmobiliarias pensadas para vos.</p>
-                    <div className='content flex md:flex-row flex-col md:gap-16 gap-8'>
+                    <p className='content lg:w-[410px] text-[17px]'>Ya sea que busques alquilar, comprar o vender, te ofrecemos oportunidades inmobiliarias pensadas para vos.</p>
+                    <div className='content flex lg:flex-row flex-col lg:gap-16 gap-8'>
                         <div className='flex flex-col gap-4'>
                             <h4 className='font-bold text-xl'>¿Buscás alquilar?</h4>
-                            <p className='md:w-52 font-light text-justify'>Te ayudamos a encontrar la propiedad que se ajuste a tus necesidades, con el respaldo y la claridad que nos caracteriza</p>
+                            <p className='lg:w-52 font-light text-justify'>Te ayudamos a encontrar la propiedad que se ajuste a tus necesidades, con el respaldo y la claridad que nos caracteriza</p>
                             <Link 
-                                href={'/'}
+                                href={'https://propiedades.reynosobienesraices.com.ar/listado-de-propiedades/'}
+                                rel='noreferrer' target='_blank'
                                 className='group cursor-pointer relative z-40 text-white w-fit bg-primary-green rounded-xl overflow-hidden
                                 py-2 px-7 before:w-full before:h-full hover:before:translate-y-0 before:duration-300 before:ease-out before:absolute before:bg-[#333333] before:left-0 before:top-0 before:rounded-xl before:translate-y-full'>
                                 
@@ -78,9 +79,10 @@ const VentaAlquilerComp = () => {
                         <div className='h-full w-[1px] bg-[#333333]' />
                         <div className='flex flex-col gap-4'>
                             <h4 className='font-bold text-xl'>Venta de propiedades</h4>
-                            <p className='md:w-52 font-light'>Sabemos que la venta de propiedades no es tarea sencilla.<br />Tasamos tu propiedad y la vendemos al mejor precio del mercado.</p>
+                            <p className='lg:w-52 font-light'>Sabemos que la venta de propiedades no es tarea sencilla.<br />Tasamos tu propiedad y la vendemos al mejor precio del mercado.</p>
                             <Link 
-                                href={'/'}
+                                href={'https://propiedades.reynosobienesraices.com.ar/listado-de-propiedades/'}
+                                rel='noreferrer' target='_blank'
                                 className='group cursor-pointer relative z-40 text-white w-fit bg-primary-green rounded-xl overflow-hidden
                                 py-2 px-7 before:w-full before:h-full hover:before:translate-y-0 before:duration-300 before:ease-out before:absolute before:bg-[#333333] before:left-0 before:top-0 before:rounded-xl before:translate-y-full'>
                                 
@@ -89,7 +91,7 @@ const VentaAlquilerComp = () => {
                         </div>
                     </div>
                 </div>
-                <div className='content bg-slate-50 md:w-[496px] md:h-[600px] relative hidden md:block'>
+                <div className='content bg-slate-50 md:w-[496px] md:h-[600px] relative hidden lg:block'>
                     <Image 
                         src={'/assets/images/banner/banner.jpg'} 
                         alt='Oportunidades alquileres fondo de familia' 

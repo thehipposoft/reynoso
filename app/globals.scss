@@ -9,6 +9,7 @@
   --color-dark-blue: #090B19;
   --color-overlay-bg: #3A3937;
   --color-title-color: #383838;
+  --color-verde-oscuro: #046658;
   --font-jakarta: 'Plus Jakarta Sans', sans-serif;
   --font-inter: 'Inter', sans-serif;
   --font-kadwa: 'Kadwa', serif;
@@ -71,5 +72,16 @@ h5 {
   }
   .swiper {
     max-width: 95vw;
+  }
+}
+
+@media (max-width: 1300px) {
+  .mySwiper {
+    max-width: 90vw;
+    margin: 0 auto;
+  }
+  .SwiperBanner {
+    max-width: 90vw;
+    margin: 0 auto;
   }
 }

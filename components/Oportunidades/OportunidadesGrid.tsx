@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useRef, use } from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useGSAP } from '@gsap/react'
@@ -34,9 +34,6 @@ const GRID_DATA = [
 const OportunidadesGrid = () => {
 
     const [currentIndex, setCurrentIndex] = useState<number>(0);
-
-    const getIndex = (offset: number) =>
-    (currentIndex + offset + GRID_DATA.length) % GRID_DATA.length
 
     useGSAP(() => {
         if (currentIndex === 1) {
@@ -108,7 +105,7 @@ const OportunidadesGrid = () => {
 
   return (
     <div>
-        <div className='md:grid hidden flex-col md:grid-cols-3 md:grid-rows-10 md:h-[615px] my-12'>
+        <div className='lg:grid hidden flex-col md:grid-cols-3 md:grid-rows-10 md:h-[615px] my-12'>
             <div className={`flex flex-col flex-wrap relative min-h-60 md:row-span-10 overflow-hidden`}>
                 {
                     GRID_DATA.map((item, index) => {

@@ -9,7 +9,7 @@ interface MenuDesarrollosType {
 
 const MenuDesarrollos = ({proyectos}:MenuDesarrollosType) => {
   return (
-    <div className='hidden md:block w-screen relative z-30 bg-[#062C30]'>
+    <div className='hidden lg:block w-screen relative z-30 bg-[#062C30]'>
       <div className='w-[90vw] md:w-[1200px] flex justify-between items-center mx-auto py-4 '>
         <Link href={'/'}>
           <Image src={'/assets/images/logo/logo-white.png'} alt='Reynoso Bienes Raices Logo' width={120} height={120} className='w-auto' />

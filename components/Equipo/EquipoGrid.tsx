@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 const EquipoGrid = () => {
   return (
-    <div className='hidden md:grid md:grid-cols-3 grid-cols-1 grid-rows-2 mt-8 w-[90vw] md:w-full mx-auto md:mx-0 gap-2'>
+    <div className='hidden lg:grid md:grid-cols-3 grid-cols-1 grid-rows-2 mt-8 w-[90vw] md:w-full mx-auto md:mx-0 gap-2'>
         <div className='md:min-w-[430px] h-[430px] bg-black/30 relative flex items-end justify-end pb-16 pr-8'>
             <Image src={EQUIPO[0].imagen} alt={`${EQUIPO[0].nombre} foto de perfil`} fill sizes='430px' className='object-cover' />
             <div className='flex flex-col items-end relative z-10'>

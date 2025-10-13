@@ -9,7 +9,7 @@ interface ProyectosListProps {
 
 const ProyectosList = ({proyectos}:ProyectosListProps) => {
   return (
-    <div className='grid md:grid-cols-2 grid-cols-1 gap-4 w-[90vw] md:w-[1200px] mx-auto'>
+    <div className='grid lg:grid-cols-2 grid-cols-1 gap-4 w-[90vw] lg:w-[1200px] mx-auto'>
         {
             proyectos.map((proyecto, index) => (
                 <div className='flex md:h-[310px] h-[250px] shadow-2xl rounded-tr-xl rounded-br-xl' key={index}>

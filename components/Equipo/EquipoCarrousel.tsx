@@ -1,19 +1,16 @@
 'use client'
 import { useState, useRef } from "react";
-// Asumiendo que EQUIPO y su estructura ya están definidos y exportados en './constants'
 import { EQUIPO } from "./constants";
 
-// Define una interfaz para un miembro del equipo para seguridad de tipos
 interface MiembroEquipo {
     nombre: string;
     puesto: string;
-    imagen: string; // URL de la imagen
-    redes: string[]; // URLs o identificadores de las redes sociales
+    imagen: string; 
+    redes: string[];
 }
 
 
 export default function EquipoCarrousel() {
-  // 1. Usar la longitud de EQUIPO para el total de slides
   const totalSlides = EQUIPO.length;
   const [current, setCurrent] = useState(0);
 
@@ -21,7 +18,6 @@ export default function EquipoCarrousel() {
   const touchEndX = useRef<number | null>(null);
 
   const nextSlide = () => {
-    // Usamos totalSlides aquí
     if (current < totalSlides - 1) setCurrent((prev) => prev + 1);
   };
 
@@ -41,7 +37,6 @@ export default function EquipoCarrousel() {
     if (!touchStartX.current || !touchEndX.current) return;
     const distance = touchStartX.current - touchEndX.current;
 
-    // umbral para considerar swipe
     const minSwipeDistance = 50;
 
     if (distance > minSwipeDistance) {
@@ -58,7 +53,7 @@ export default function EquipoCarrousel() {
   };
 
   return (
-    <div className="md:hidden w-[90vw] overflow-hidden my-8 mx-auto relative">
+    <div className="lg:hidden w-[90vw] overflow-hidden my-8 mx-auto relative">
       <div
         className="flex transition-transform duration-500 ease-in-out"
         style={{ transform: `translateX(-${current * 90}vw)` }}
@@ -69,7 +64,7 @@ export default function EquipoCarrousel() {
         {EQUIPO.map((miembro: MiembroEquipo, index: number) => (
           <div
             key={index}
-            className="min-w-[90vw] h-[430px] bg-black/30 relative flex items-end justify-end pb-16 pr-8"
+            className="min-w-[90vw] h-[430px] md:h-[525px] bg-black/30 relative flex items-end justify-end pb-16 pr-8"
             style={{ backgroundImage: `url(${miembro.imagen})`, backgroundSize: 'cover' }}
           >
             <div className="flex flex-col items-end">
