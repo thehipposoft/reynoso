@@ -71,7 +71,7 @@ const VentaAlquilerComp = () => {
                                 href={'https://propiedades.reynosobienesraices.com.ar/listado-de-propiedades/'}
                                 rel='noreferrer' target='_blank'
                                 className='group cursor-pointer relative z-40 text-white w-fit bg-primary-green rounded-xl overflow-hidden
-                                py-2 px-7 before:w-full before:h-full hover:before:translate-y-0 before:duration-300 before:ease-out before:absolute before:bg-[#333333] before:left-0 before:top-0 before:rounded-xl before:translate-y-full'>
+                                py-2 px-7 before:w-full before:h-full hover:before:translate-y-0 before:duration-500 before:ease-out before:absolute before:bg-[#333333] before:left-0 before:top-0 before:rounded-xl before:translate-y-full'>
                                 
                                 <p className='relative z-10 font-light'>Alquileres</p>
                             </Link>
@@ -84,7 +84,7 @@ const VentaAlquilerComp = () => {
                                 href={'https://propiedades.reynosobienesraices.com.ar/listado-de-propiedades/'}
                                 rel='noreferrer' target='_blank'
                                 className='group cursor-pointer relative z-40 text-white w-fit bg-primary-green rounded-xl overflow-hidden
-                                py-2 px-7 before:w-full before:h-full hover:before:translate-y-0 before:duration-300 before:ease-out before:absolute before:bg-[#333333] before:left-0 before:top-0 before:rounded-xl before:translate-y-full'>
+                                py-2 px-7 before:w-full before:h-full hover:before:translate-y-0 before:duration-500 before:ease-out before:absolute before:bg-[#333333] before:left-0 before:top-0 before:rounded-xl before:translate-y-full'>
                                 
                                 <p className='relative z-10 font-light'>Venta</p>
                             </Link>

@@ -3,16 +3,15 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const initialValues = {
-    interest: '',
-    name: '',
-    phoneNumber: 0,
-    customerEmail: '',
+    yourName: '',
+    email: '',
+    number: 0,
     message: '',
 };
 
 type FieldsType = {
-    name: 'interest' | 'name' | 'customerEmail' | 'message' | 'phoneNumber' ;
-    type: 'text' | 'textArea' | 'select' | 'email' | 'tel';
+    name: 'yourName' | 'email' | 'number' | 'message' ;
+    type: 'text' | 'textArea' | 'email' | 'number';
     label: string;
     placeholder: string;
     required?: boolean;
@@ -27,10 +26,9 @@ type MyCustomFormProps = {
 };
 
 type FormValues = {
-    interest: string;
-    name: string;
-    phoneNumber: number;
-    customerEmail: string;
+    yourName: string;
+    number: number;
+    email: string;
     message: string;
 };
 
@@ -45,23 +43,22 @@ const MyCustomForm = ({
     const [isAPILoading, setIsAPILoading] = useState<boolean>(false);
     const [messageDescription, setMessageDescription] = useState<string>('');
     const [values, setValues] = useState<FormValues>({
-        interest: '',
-        name: '',
-        phoneNumber: 0,
-        customerEmail: '',
+        yourName: '',
+        number: 0,
+        email: '',
         message: '',
     });
 
     const renderSentMessage = () => {
         if (messageSent === 'succeed') {
             return <div className={`message succeed w-full text-center mb-6`}>
-                <h2 className={'text-2xl text-white'}>Thanks! </h2>
+                <h2 className={'text-2xl text-white'}>Gracias! </h2>
                 <p className='text-white'>{onSuccessMessage}</p>
             </div>
         }
         if (messageSent === 'error') {
             return <div className={`message error w-full text-center mb-6`}>
-                <h2 className={'mb-4 text-red-500'}>Something went wrong</h2>
+                <h2 className={'mb-4 text-red-500'}>Algo salió Mal</h2>
                 <p>{onErrorMessage}</p>
                 <p>{messageDescription}</p>
             </div>
@@ -79,33 +76,40 @@ const MyCustomForm = ({
         });
     };
 
+
     const handleSubmit = (event:React.FormEvent<HTMLFormElement>) => {
         if (event) event.preventDefault();
 
+        const formToSend = new FormData();
+
+        formToSend.append('name', values.yourName);
+        formToSend.append('number', values.number.toString());   
+        formToSend.append('email', values.email);    
+        formToSend.append('message', values.message);
         setIsAPILoading(true);
         axios.post(
             emailServiceURL,
-            {
-                interest: values.interest,
-                message: values.message,
-                name: values.name,
-                phoneNumber: values.phoneNumber,
-                customerEmail: values.customerEmail,
-            },
+            formToSend,
             {
                 headers: {
-                    'Content-Type': 'application/json',
                     'accept': 'application/json, text/plain, */*',
                 },
             }
         )
             .then(function (response) {
-                setValues(initialValues);
-                setMessageSent('succeed');
+                if (response.data.status === 'mail_sent') {
+                    setValues(initialValues);
+                    setMessageSent('succeed');
+                } else {
+                    // Maneja otros estados de CF7 como 'validation_failed' o 'mail_failed'
+                    const errorMessage = response.data.message || 'Error de envío de CF7.';
+                    setMessageDescription(errorMessage);
+                    setMessageSent('error');
+                }
                 setIsAPILoading(false);
             })
             .catch(function (error) {
-                setMessageDescription(error.toString());
+                setMessageDescription(`Error de red: ${error.message}`);
                 setMessageSent('error');
                 setIsAPILoading(false);
             });
@@ -138,7 +142,7 @@ const MyCustomForm = ({
                                     />
                                 </section>
                             );
-                        case 'tel':
+                        case 'number':
                             return (
                                 <section className='mb-4' key={index}>
                                     <label className={'contact-label'}>{label}</label>
@@ -146,7 +150,7 @@ const MyCustomForm = ({
                                         type={type}
                                         name={name}
                                         id={name}
-                                        className={'py-3 lg:w-full lg:max-w-[500px] text-white w-full max-w-[70vw] md:max-w-[525px] border-b border-b-[#89ADCD] focus:outline-none focus:placeholder:text-white/70 placeholder:text-white'}
+                                        className={'py-3 lg:w-full lg:max-w-[500px] appearance-none text-white w-full max-w-[70vw] md:max-w-[525px] border-b border-b-[#89ADCD] focus:outline-none focus:placeholder:text-white/70 placeholder:text-white'}
                                         onChange={handleChange}
                                         placeholder={placeholder}
                                         required={field.required}

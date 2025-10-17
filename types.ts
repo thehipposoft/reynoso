@@ -25,7 +25,8 @@ export type Proyecto = {
     mapa_url: string,
     imagen_decorativa_dos: string,
     ubicacion: string,
-    agotado: string[],
+    estado: string,
+    fecha_de_entrega?: string,
 }
 
 export type Proyectos = {

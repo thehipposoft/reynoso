@@ -4,6 +4,7 @@ import ProyectosList from '@/components/Proyecto/ProyectosList'
 import getAllProjects from '@/api/getAllProjects'
 import MenuDesarrollos from '@/components/MenuDesarrollos'
 import Menu from '@/components/Menu'
+import Footer from '@/components/commons/Footer'
 
 export default async function DesarrollosPage() {
 
@@ -28,11 +29,14 @@ export default async function DesarrollosPage() {
                         </div>
                     </div>
                 </div>
-                <div className='flex py-12 flex-col  bg-[#93959206]'>
+                <div className='flex py-12 flex-col bg-[#93959206]'>
                     <ProyectosList proyectos={proyectos} />
                 </div>
             </div>
         </main>
+        <footer>
+            <Footer proyectos={proyectos} />
+        </footer>
     </div>
   )
 }

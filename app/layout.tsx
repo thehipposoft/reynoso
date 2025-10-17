@@ -2,6 +2,7 @@ import "./globals.scss"
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Inter, Kadwa, Poppins } from 'next/font/google';
 import SmoothScroll from "@/components/commons/SmoothScroll";
+import Transitions from "@/components/commons/Transitions";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -43,6 +44,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${jakarta.variable} ${kadwa.variable} ${poppins.variable}`}
       >
         <SmoothScroll>
+          <Transitions />
           {children}
         </SmoothScroll>
       </body>

@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import AnimatedLink from '@/components/commons/AnimatedLink'
 import React from 'react'
 import Image from 'next/image'
 
@@ -11,13 +11,13 @@ export default function NotFoundPage() {
                 <h1>Esta página no se encuentra disponible</h1>
                 <p className='font-jakarta text-xl text-center relative z-10'>Disculpá las molestias ocasionadas. </p>
             </div>
-            <Link 
+            <AnimatedLink 
                 href={'/'}
                 className='cursor-pointer uppercase group relative tracking-[2px] w-fit text-xs text-white bg-title-color font-light rounded-4xl overflow-hidden 
                 py-5 px-10 before:w-full before:h-full hover:before:translate-y-0 before:duration-500 before:ease-out before:absolute before:bg-[#f5f5f53a] before:left-0 before:top-0 before:rounded-4xl before:translate-y-full'>
                 
                 <p className='relative z-10 '>volver al inicio</p>
-            </Link>
+            </AnimatedLink>
         </div>
     </div>
   )

@@ -17,22 +17,22 @@ const Contact = () => {
           <Form
               fields={[
                   {
-                      name: 'name',
+                      name: 'yourName',
                       type: 'text',
                       label: '',
                       placeholder: 'Nombre*',
                       required: true,
                   },
                   {
-                      name: 'customerEmail',
+                      name: 'email',
                       type: 'email',
                       label: '',
                       placeholder: 'Email*',
                       required: true,
                   },
                   {
-                      name: 'phoneNumber',
-                      type: 'tel',
+                      name: 'number',
+                      type: 'number',
                       label: '',
                       placeholder: 'Teléfono*',
                       required: true,
@@ -45,10 +45,10 @@ const Contact = () => {
                       required: true,
                   },
               ]}
-              onSuccessMessage={'Your message was submited succesfully. We will contact you soon.'}
-              onErrorMessage={'Please, try again in some minutes'}
+              onSuccessMessage={'Tu mensaje fue enviado. Te contactaremos pronto.'}
+              onErrorMessage={'Por favor intenta de nuevo en unos minutos'}
               submitButtonLabel={'Enviar'}
-              emailServiceURL={'https://thehippoapi.netlify.app/.netlify/functions/api/tem-architecture-email'}
+              emailServiceURL={'https://propiedades.reynosobienesraices.com.ar/wp-json/contact-form-7/v1/contact-forms/0eb85e7/feedback'}
           />
         <div className='bg-white w-full h-full flex flex-col text-center justify-center items-center py-8 md:py-0'>
               <h4 className='font-jakarta text-3xl leading-6'>Un paso más <br /> cerca de tu</h4>

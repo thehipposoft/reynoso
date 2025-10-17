@@ -1,11 +1,12 @@
 import { ResolvingMetadata, Metadata } from "next";
-import getProject from "@/api/getProject";
 import getAllProjects from "@/api/getAllProjects";
 import ProyectoLayout from "@/components/Proyecto/ProyectoLayout";
 import { Proyecto } from "@/types";
 import Footer from "@/components/commons/Footer";
 import Menu from "@/components/Menu";
 import Contact from "@/components/Contact";
+import { redirect } from "next/navigation";
+import Explora from "@/components/Explora";
 
 type Params = {
     params: Promise<{
@@ -17,7 +18,8 @@ export async function generateMetadata({
   params
 }: Params, parent: ResolvingMetadata): Promise<Metadata> {
   const resolvedParams = await params;
-  const project:Proyecto | null = await getProject(resolvedParams.slug);
+  const proyectos:Proyecto[] = await getAllProjects() || [];
+  const project = proyectos.find((proyecto) => proyecto.slug === resolvedParams.slug)
 
   if (project) {
     const previousImages = (await parent).openGraph?.images || [];
@@ -42,9 +44,13 @@ export async function generateMetadata({
 
 export default async function ProjectPage({ params }: Params) {
   const resolvedParams = await params;
-  const project:Proyecto | null = await getProject(resolvedParams.slug);
-  const proyectos = await getAllProjects();
-  
+  const proyectos:Proyecto[] = await getAllProjects() || [];
+  const project = proyectos.find((proyecto) => proyecto.slug === resolvedParams.slug)
+  if(!project) {
+    return(
+      redirect('/not-found')
+    )
+  }
 
   return(
     <div>
@@ -52,7 +58,12 @@ export default async function ProjectPage({ params }: Params) {
       {
         project && <ProyectoLayout proyecto={project} />
       }
-      <Contact />
+      {
+        project.estado === "Unidades Agotadas" ? 
+        <Explora desarrollos={proyectos} agotado />
+        :
+        <Contact />
+      }
       <Footer proyectos={proyectos} backgroundColor={project?.color_primario} />
     </div>
   )

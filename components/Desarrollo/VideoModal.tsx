@@ -2,10 +2,11 @@ import React from 'react'
 
 interface VideoModal {
     openModal: boolean,
+    videoUrl: string,
     toggleModal: () => void;
 }
 
-const VideoModal = ({openModal, toggleModal}:VideoModal) => {
+const VideoModal = ({openModal, videoUrl, toggleModal}:VideoModal) => {
 
   return (
     <div className={`${openModal ? 'block' : 'hidden'} fixed top-0 left-0 w-screen h-screen z-50 bg-black/90 flex justify-center items-center`}>
@@ -17,7 +18,7 @@ const VideoModal = ({openModal, toggleModal}:VideoModal) => {
           ✕
         </button>
         <video
-            src="https://res.cloudinary.com/hipposoft/video/upload/v1759981849/Reynoso/HD_ELCAUCE_pmlcnj.mp4"
+            src={videoUrl}
             className='w-[80vw] h-[80vh]'
             autoPlay
             controls

@@ -140,7 +140,7 @@ const OportunidadesGrid = () => {
                 <Link 
                     href={'/#contacto'}
                     className=' group relative text-white bg-primary-green rounded-lg overflow-hidden
-                    py-3 px-8 before:w-full before:h-full hover:before:translate-y-0 before:duration-300 before:ease-out before:absolute before:bg-[#333333] before:left-0 before:top-0 before:rounded-lg before:translate-y-full'>
+                    py-3 px-8 before:w-full before:h-full hover:before:translate-y-0 before:duration-500 before:ease-out before:absolute before:bg-[#333333] before:left-0 before:top-0 before:rounded-lg before:translate-y-full'>
                     
                     <p className='relative z-10 font-jakarta'>Contactanos</p>
                 </Link>

@@ -39,12 +39,24 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
                     </div>
                 </div>
             </div>
+
             {
-                proyecto.agotado.length === 0 ?
-                 <></> : 
-                <div className='flex justify-center top-40 lg:top-0 items-center bg-green-blur backdrop-blur-xs relative z-30 h-fit rounded-tl-2xl rounded-bl-2xl'>
+                proyecto.estado === "Unidades Agotadas" ?
+                <div className='flex justify-center top-40 lg:top-0 items-center bg-red-blur backdrop-blur-xs relative z-30 h-fit rounded-tl-2xl rounded-bl-2xl'>
                     <h4 className='font-extrabold text-white font-jakarta text-2xl md:text-5xl 2xl:text-6xl uppercase md:py-12 py-6 md:px-20 px-12'>unidades agotadas</h4>
                 </div>
+                :
+                proyecto.estado === "Ultimos lotes disponibles" ?
+                <div className='flex justify-center top-40 lg:top-0 items-center bg-green-blur backdrop-blur-xs relative z-30 h-fit rounded-tl-2xl rounded-bl-2xl'>
+                    <h4 className='font-extrabold text-white font-jakarta text-2xl md:text-5xl 2xl:text-6xl uppercase md:py-12 py-6 md:pl-20 px-6'>ultimos lotes disponibles</h4>
+                </div>
+                :
+                proyecto.estado === "Fecha de entrega" ?
+                <div className='flex justify-center top-40 lg:top-0 items-center bg-black/40 backdrop-blur-xs relative z-30 h-fit rounded-tl-2xl rounded-bl-2xl'>
+                    <p className='font-semibold text-white font-jakarta text-2xl md:text-5xl 2xl:text-6xl uppercase md:py-12 py-6 md:px-20 px-6'>Entrega <strong>{proyecto.fecha_de_entrega}</strong></p>
+                </div>
+                :
+                <></>
             }
         </div>
         <div className='flex md:max-w-[1450px] mx-auto'>
@@ -81,7 +93,7 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
                 <h4 className='font-jakarta text-4xl md:text-5xl -tracking-wider font-bold pl-12' style={{color: `${proyecto.color_secundario}`}}>{proyecto.subtitulo_bicolor_segunda}</h4>
             </div>
             {
-                proyecto.agotado.length > 0 && proyecto.galeria.length > 0 ?
+                proyecto.estado === "Unidades Agotadas" && proyecto.galeria.length > 0 ?
                 <div className=''>
                     <Galeria images={proyecto.galeria} />
                 </div>
@@ -89,7 +101,7 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
                 <></>
             }
             {
-                proyecto.agotado.length === 0 && proyecto.galeria.length > 0 ?
+                proyecto.estado !== "Unidades Agotadas" && proyecto.galeria.length > 0 ?
                 <div className='max-h-[500px]'>
                     <SwiperGallery images={proyecto.galeria}/>
                 </div>
@@ -117,7 +129,7 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
                 </div>
             }
         </div>
-        <div className='h-screen hidden bg-black/30  justify-center items-center '>
+        <div className='h-screen hidden bg-black/30 justify-center items-center '>
             <h2>Video</h2>
         </div>
         <div className='flex lg:flex-row flex-col justify-center lg:gap-40 md:gap-12 lg:items-end md:items-center md:max-w-[1250px] w-[90vw] py-8 mx-auto md:min-h-screen'>

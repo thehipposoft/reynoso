@@ -1,10 +1,11 @@
 'use client';
 import Image from 'next/image';
-import Link from 'next/link';
 import React, {useState, useEffect, useRef} from 'react'
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { Proyecto } from '@/types';
+import AnimatedLink from '../commons/AnimatedLink';
+import Link from 'next/link';
 
 type MenuTypes = {
     hiddeOnDesktop?: boolean;
@@ -51,7 +52,7 @@ const Menu = ({hiddeOnDesktop, desarrollos}:MenuTypes) => {
     }, [openMenu])
 
   return (
-    <div ref={container} className={`${hiddeOnDesktop ? 'lg:hidden block' : ''} fixed top-0 right-0 z-50`}>
+    <div ref={container} className={`${hiddeOnDesktop ? 'lg:hidden block' : ''} fixed top-0 right-0 z-40`}>
         <button 
             className='fixed z-50 px-1 py-1 duration-500 cursor-pointer top-7 right-8 hover:bg-black/30 bg-green-blur backdrop-blur-md rounded-xl'
             onClick={openMenuFunc}
@@ -63,22 +64,22 @@ const Menu = ({hiddeOnDesktop, desarrollos}:MenuTypes) => {
             </svg>
         </button>
         <nav className={`menu top-0 opacity-0 md:rounded-l-xl md:w-lg w-screen min-h-screen absolute bg-primary-green flex flex-col justify-center md:justify-between px-12 py-16 z-40`}>
-            <ul className='menu__items flex flex-col gap-6 md:gap-6'>
-                <div className='group relative overflow-hidden border-b border-white hover:border-title-color pb-2 w-full cursor-pointer '>
-                    <Link href={'/'} onClick={openMenuFunc} className='group-hover:text-title-color hover:border-title-color duration-500 w-full flex text-left menu_item uppercase text-3xl text-white font-medium font-jakarta'>
+            <ul className='menu__items flex flex-col gap-6 md:gap-4'>
+                <div onClick={openMenuFunc} className='group relative overflow-hidden border-b border-white hover:border-title-color pb-2 w-full cursor-pointer '>
+                    <AnimatedLink href={'/'} className='group-hover:text-title-color hover:border-title-color duration-500 w-full flex text-left menu_item uppercase text-[26px] text-white font-medium font-jakarta'>
                         Inicio
-                    </Link> 
+                    </AnimatedLink> 
                 </div>
                 <div className={'relative overflow-hidden '}>
-                    <h4 onClick={openDesarrolloFunc} className='hover:text-title-color hover:border-title-color duration-500 text-left menu_item border-b border-white pb-2 uppercase text-3xl text-white max-h-fit overflow-hidden cursor-pointer'>Desarrollos</h4>
-                    <div className={`${openDesarrollos ? 'top-0 max-h-68' : '-top-full  max-h-0'} relative overflow-hidden duration-700 flex flex-col `}>
-                        <Link href={'/desarrollos'} className='uppercase tracking-wider text-white text-center
+                    <h4 onClick={openDesarrolloFunc} className='hover:text-title-color hover:border-title-color duration-500 text-left menu_item border-b border-white pb-2 uppercase text-[26px] text-white max-h-fit overflow-hidden cursor-pointer'>Desarrollos</h4>
+                    <div className={`${openDesarrollos ? 'top-0 max-h-72' : '-top-full  max-h-0'} relative overflow-hidden duration-700 flex flex-col `}>
+                        <AnimatedLink href={'/desarrollos'} className='uppercase tracking-wider text-white text-center
                          bg-verde-oscuro py-1 hover:underline font-semibold'>
                             ver todos
-                        </Link>
+                        </AnimatedLink>
                         {
                             desarrollos.map((desarrollo, index) => (
-                                <Link 
+                                <AnimatedLink 
                                     href={`/desarrollos/${desarrollo.slug}`}
                                     key={index} 
                                     style={{backgroundColor: `${desarrollo.color_primario}`}} 
@@ -89,31 +90,31 @@ const Menu = ({hiddeOnDesktop, desarrollos}:MenuTypes) => {
                                     alt={`Logo ${desarrollo.nombre}`} 
                                     width={200} 
                                     height={200} 
-                                    className='w-24 min-h-8 max-h-9 object-contain group-hover:scale-125 duration-500 brightness-0 invert-100' />
-                                </Link>
+                                    className='w-24 min-h-9 max-h-10 object-contain group-hover:scale-125 duration-500 brightness-0 invert-100' />
+                                </AnimatedLink>
                             ))
                         }
                     </div>
                 </div>
                 <div className='group relative overflow-hidden border-b border-white hover:border-title-color pb-2 w-full cursor-pointer '>
-                    <Link href={'https://propiedades.reynosobienesraices.com.ar/listado-de-propiedades/'} rel='noreferrer' target='_blank'  className='group-hover:text-title-color hover:border-title-color duration-500 w-full flex text-left menu_item uppercase text-3xl text-white font-medium font-jakarta'>
+                    <Link href={'https://propiedades.reynosobienesraices.com.ar/listado-de-propiedades/'} rel='noreferrer' target='_blank'  className='group-hover:text-title-color hover:border-title-color duration-500 w-full flex text-left menu_item uppercase text-[26px] text-white font-medium font-jakarta'>
                         Alquileres
                     </Link> 
                 </div>
                 <div className='group relative overflow-hidden border-b border-white hover:border-title-color pb-2 w-full cursor-pointer '>
-                    <Link href={'https://propiedades.reynosobienesraices.com.ar/listado-de-propiedades/'} rel='noreferrer' target='_blank' className='group-hover:text-title-color hover:border-title-color duration-500 w-full flex text-left menu_item uppercase text-3xl text-white font-medium font-jakarta'>
+                    <Link href={'https://propiedades.reynosobienesraices.com.ar/listado-de-propiedades/'} rel='noreferrer' target='_blank' className='group-hover:text-title-color hover:border-title-color duration-500 w-full flex text-left menu_item uppercase text-[26px] text-white font-medium font-jakarta'>
                         Ventas
                     </Link> 
                 </div>
-                <div className='group relative overflow-hidden border-b border-white hover:border-title-color pb-2 w-full cursor-pointer '>
-                    <Link href={'/#nosotros'} onClick={openMenuFunc} className='group-hover:text-title-color hover:border-title-color duration-500 w-full flex text-left menu_item uppercase text-3xl text-white font-medium font-jakarta'>
+                <div onClick={openMenuFunc} className='group relative overflow-hidden border-b border-white hover:border-title-color pb-2 w-full cursor-pointer '>
+                    <AnimatedLink href={'/#nosotros'} className='group-hover:text-title-color hover:border-title-color duration-500 w-full flex text-left menu_item uppercase text-[26px] text-white font-medium font-jakarta'>
                         Nosotros
-                    </Link> 
+                    </AnimatedLink> 
                 </div>
-                <div className='group relative overflow-hidden border-b border-white hover:border-title-color pb-2 w-full cursor-pointer '>
-                    <Link href={'/#contacto'} onClick={openMenuFunc} className='group-hover:text-title-color hover:border-title-color duration-500 w-full flex text-left menu_item uppercase text-3xl text-white font-medium font-jakarta'>
+                <div onClick={openMenuFunc} className='group relative overflow-hidden border-b border-white hover:border-title-color pb-2 w-full cursor-pointer '>
+                    <AnimatedLink href={'/#contacto'} className='group-hover:text-title-color hover:border-title-color duration-500 w-full flex text-left menu_item uppercase text-[26px] text-white font-medium font-jakarta'>
                         Contacto
-                    </Link> 
+                    </AnimatedLink> 
                 </div>
             </ul>
             <Image 
