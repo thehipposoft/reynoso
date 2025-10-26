@@ -82,10 +82,14 @@ const MyCustomForm = ({
 
         const formToSend = new FormData();
 
-        formToSend.append('name', values.yourName);
-        formToSend.append('number', values.number.toString());   
-        formToSend.append('email', values.email);    
-        formToSend.append('message', values.message);
+        //Get page where the form is located
+        const pageURL = window.location.href;
+
+        formToSend.append('page-url', pageURL);
+        formToSend.append('your-name', values.yourName);
+        formToSend.append('your-email', values.email);
+        formToSend.append('your-message', values.message);
+
         setIsAPILoading(true);
         axios.post(
             emailServiceURL,
@@ -109,7 +113,7 @@ const MyCustomForm = ({
                 setIsAPILoading(false);
             })
             .catch(function (error) {
-                setMessageDescription(`Error de red: ${error.message}`);
+                setMessageDescription(`Error: ${error.message}`);
                 setMessageSent('error');
                 setIsAPILoading(false);
             });

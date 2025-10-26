@@ -5,9 +5,9 @@ import { Form }from '../Form'
 const Contact = () => {
   return (
     <div className='md:h-screen md:py-0 py-12 relative flex justify-center'>
-      <Image 
-        src={'/assets/images/contact.jpg'} 
-        alt='Contact section background:' 
+      <Image
+        src={'/assets/images/contact.jpg'}
+        alt='Contact section background:'
         fill
         sizes='100vw'
         className='object-cover'
@@ -48,7 +48,8 @@ const Contact = () => {
               onSuccessMessage={'Tu mensaje fue enviado. Te contactaremos pronto.'}
               onErrorMessage={'Por favor intenta de nuevo en unos minutos'}
               submitButtonLabel={'Enviar'}
-              emailServiceURL={'https://propiedades.reynosobienesraices.com.ar/wp-json/contact-form-7/v1/contact-forms/0eb85e7/feedback'}
+              emailServiceURL={'https://propiedades.reynosobienesraices.com.ar/wp-json/reynoso/v1/contact'}
+              //emailServiceURL={'https://propiedades.reynosobienesraices.com.ar/wp-json/contact-form-7/v1/contact-forms/0eb85e7/feedback'}
           />
         <div className='bg-white w-full h-full flex flex-col text-center justify-center items-center py-8 md:py-0'>
               <h4 className='font-jakarta text-3xl leading-6'>Un paso más <br /> cerca de tu</h4>
