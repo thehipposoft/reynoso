@@ -59,7 +59,8 @@ const VentaAlquilerComp = () => {
               <div className='flex lg:flex-row flex-col justify-between lg:px-12 px-6'>
                 <div className='flex flex-col gap-8 pt-8'>
                     <div className='flex flex-col'>
-                        <h2 className='title__one font-inter text-4xl font-inter'>Oportunidades<br /> Inmobiliarias</h2>
+                        <h2 className='title__one font-inter text-5xl '>Oportunidades</h2>
+                        <h2 className='title__one font-inter text-5xl font-semibold'>Inmobiliarias</h2>
                         <h3 className='title__two text-4xl font-baileys'>A Medida</h3>
                     </div>
                     <p className='content lg:w-[410px] text-[17px]'>Ya sea que busques alquilar, comprar o vender, te ofrecemos oportunidades inmobiliarias pensadas para vos.</p>

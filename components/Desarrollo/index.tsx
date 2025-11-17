@@ -3,6 +3,7 @@ import React, {useRef, useState} from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import VideoModal from './VideoModal'
+import Image from 'next/image'
 
 const Desarrollo = () => {
 
@@ -36,11 +37,18 @@ const Desarrollo = () => {
     const toggleModal = () => setOpenModal(!openModal)
 
   return (
-    <div className='relative' id='explora'>
+    <div className='relative bg-title-color pb-24' id='explora'>
+        <Image 
+            className='absolute top-0 right-0 z-10' 
+            src={"/assets/images/white-dot.svg"}
+            alt='Nuestro Equipo imagen decorativa' 
+            width={260} 
+            height={140}
+        />
         <div ref={container} className='flex pt-12 flex-col w-[90vw] lg:w-[1300px] mx-auto '>
             <div className='flex flex-col md:px-12 px-6'>
-                <h2 className='title__one font-inter text-4xl'>Una nueva forma<br /> de vivir cada</h2>
-                <h3 className='title__two text-4xl'>Desarrollo</h3>
+                <h4 className='title__one text-4xl text-white font-light font-jakarta'>Una nueva forma<br /> de vivir</h4>
+                <h4 className='title__two text-4xl font-semibold text-green-title font-jakarta'>cada Desarrollo</h4>
             </div>
             <div className='relative z-10 mt-8 md:mt-0 w-full lg:h-[95vh] h-[60vh] overflow-hidden flex flex-col gap-16 justify-center items-center md:translate-y-16'>
                 <h5 className='text-white hidden'>explore me</h5>
