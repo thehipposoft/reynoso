@@ -32,3 +32,14 @@ export type Proyecto = {
 export type Proyectos = {
     proyectos: Proyecto[]
 }
+
+export type Empleado = {
+    id: number,
+    nombre: string,
+    puesto: string,
+    foto: string,
+}
+
+export type Empleados = {
+    empleados: Empleado[]
+}

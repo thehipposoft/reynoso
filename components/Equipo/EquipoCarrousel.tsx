@@ -1,17 +1,9 @@
 'use client'
 import { useState, useRef } from "react";
-import { EQUIPO } from "./constants";
+import { Empleados, Empleado } from "@/types";
 
-interface MiembroEquipo {
-    nombre: string;
-    puesto: string;
-    imagen: string; 
-    redes: string[];
-}
-
-
-export default function EquipoCarrousel() {
-  const totalSlides = EQUIPO.length;
+export default function EquipoCarrousel({empleados}:Empleados) {
+  const totalSlides = empleados.length;
   const [current, setCurrent] = useState(0);
 
   const touchStartX = useRef<number | null>(null);
@@ -61,11 +53,11 @@ export default function EquipoCarrousel() {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {EQUIPO.map((miembro: MiembroEquipo, index: number) => (
+        {empleados.map((miembro: Empleado, index: number) => (
           <div
             key={index}
             className="min-w-[90vw] h-[430px] md:h-[525px] bg-black/30 relative flex items-end justify-end pb-16 pr-8"
-            style={{ backgroundImage: `url(${miembro.imagen})`, backgroundSize: 'cover' }}
+            style={{ backgroundImage: `url(${miembro.foto})`, backgroundSize: 'cover' }}
           >
             <div className="flex flex-col items-end">
               <h4 className="font-bold text-2xl text-white text-right">
