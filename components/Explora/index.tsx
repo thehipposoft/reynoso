@@ -6,7 +6,6 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { Proyecto } from '@/types'
 
-
 type ExploraTypes = {
     desarrollos: Proyecto[];
     agotado?: boolean;

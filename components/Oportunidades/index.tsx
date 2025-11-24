@@ -46,7 +46,7 @@ const Oportunidades = () => {
           <div ref={container} className='flex py-12 flex-col lg:w-[1300px] w-[90vw] mx-auto'>
               <div className='flex lg:flex-row flex-col justify-between pt-12 pb-4 gap-8 md:gap-0'>
                 <div className='titles flex flex-col'>
-                  <h2 className='title__one'>¡Invertí sin preocupaciones!</h2>
+                  <h2 className='title__one text-5xl'>¡Invertí<br /> <strong className='font-semibold'>sin preocupaciones!</strong></h2>
                 </div>
                 <div className='md:w-[650px]'>
                   <Counter />

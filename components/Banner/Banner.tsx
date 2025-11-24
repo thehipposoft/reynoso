@@ -9,7 +9,6 @@ type Props = {
   proyectos: Proyecto[];
 }
 
-
 const Banner = ({
   proyectos = []
 }:Props) => {
@@ -32,7 +31,6 @@ const Banner = ({
   function handleSecondMouseLeave() {
     setIsSecondHovered(false);
   }
-
 
   return (
     <div className='flex lg:flex-row flex-col h-screen bg-black/60 relative'>
