@@ -9,6 +9,7 @@ import VentaAlquilerComp from "@/components/Oportunidades/VentaAlquilerComp";
 import Redes from "@/components/Redes";
 import Footer from "@/components/commons/Footer";
 import Menu from "@/components/Menu";
+import WhatsApp from "@/components/commons/WhatsApp";
 
 export default async function Home() {
 
@@ -27,6 +28,7 @@ export default async function Home() {
         <Desarrollo />
         <Equipo />
         <Redes />
+        <WhatsApp />
         <Contact />
       </main>
       <footer>
