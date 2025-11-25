@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { Proyecto, ServiciosType } from '@/types'
 import SwiperGallery from '../SwiperGallery'
 import Galeria from '../SwiperGallery/Galeria'
+import AnimatedLink from '../commons/AnimatedLink'
 
 type ProyectoLayoutProps = {
   proyecto: Proyecto
@@ -12,7 +13,16 @@ type ProyectoLayoutProps = {
 
 const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
   return (
-    <div>
+    <div className='relative'>
+        <AnimatedLink href={"/"} className='absolute hidden lg:block top-4 left-6 z-30 hover:bg-white/15 py-2 rounded-lg duration-500'>
+            <Image 
+                src={'/assets/images/logo/logo-white.png'} 
+                alt='Reynoso Bienes Raices Logo' 
+                width={160} 
+                height={120} 
+                className='mx-auto w-40'
+            />
+        </AnimatedLink>
         <div className='h-screen w-screen flex lg:flex-row flex-col-reverse justify-between lg:items-center items-end relative'>
             <Image src={proyecto.imagen_banner} alt={`Imagen principal proyecto: ${proyecto.nombre}`} fill sizes='100vw' className='duration-700 object-cover z-10' />
             <div className='absolute left-0 top-0 w-full h-full bg-black/30 z-20' />

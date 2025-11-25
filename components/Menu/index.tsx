@@ -117,12 +117,6 @@ const Menu = ({hiddeOnDesktop, desarrollos}:MenuTypes) => {
                     </AnimatedLink> 
                 </div>
             </ul>
-            <Image 
-                src={'/assets/images/logo/logo-white.svg'} 
-                alt='Reynoso Bienes Raices Logo' 
-                width={160} 
-                height={120} 
-                className='menu__image mx-auto mt-6 w-44'/>
         </nav>
     </div>
   )

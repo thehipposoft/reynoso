@@ -35,9 +35,10 @@ const Banner = ({
   return (
     <div className='flex lg:flex-row flex-col h-screen bg-black/60 relative'>
         <Image 
-          src={'/assets/images/banner/banner.jpg'} 
+          src={'/assets/images/banner/familia.webp'} 
           alt='Descubri oportunidades inmobiliarias imagen' 
           sizes={'100vw'}
+          quality={100}
           fill 
           className={`${isSecondHovered ? 'opacity-100 z-10' : '-z-10'} duration-700 object-cover z-10 opacity-0`}
         />

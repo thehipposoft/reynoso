@@ -65,7 +65,7 @@ const BannerCarrousel = ({proyectos}:BannerCarrouselTypes) => {
         {proyectos.map((val:Proyecto, index:number) => (
           <div
             key={index}
-            className={`absolute flex flex-col justify-center items-center md:gap-6 transition-opacity duration-500`}
+            className={`absolute flex flex-col md:justify-center items-center md:gap-6 transition-opacity duration-500`}
             style={{
               opacity: currentSlideIndex === index ? 1 : 0,
               zIndex: currentSlideIndex === index ? 50 : 20,
@@ -76,17 +76,17 @@ const BannerCarrousel = ({proyectos}:BannerCarrouselTypes) => {
               alt={`Logo de proyecto: ${val.nombre}`} 
               width={260} 
               height={160} 
-              className='scale-75 md:scale-100 brightness-0 invert-100 w-auto' 
+              className='scale-75 md:scale-100 brightness-0 invert-100 w-auto max-w-[180px] md:max-w-max ' 
               />
             <p className="uppercase tracking-[3px] text-center text-white text-xs font-extralight">
               {val.titulo}
             </p>
-                <AnimatedLink href={`desarrollos/${val.slug}`} className='group flex  justify-center items-center md:mt-6 md:gap-8 gap-2'>
-                    <div className='border relative border-white rounded-full md:h-13 md:w-13 p-1 md:p-0 overflow-hidden flex justify-center items-center group-hover:scale-125 duration-700'>
-                        <svg width="25" height="25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m21.1058 12.1776-17.99984.0678M15.1284 18.2002l5.9774-6.0226-6.0226-5.97732" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    </div>
-                    <p className='group-hover:scale-105 duration-500 group-hover:underline underline md:no-underline  uppercase tracking-[3px] text-center text-white text-xs font-extralight'>descubrí este desarrollo</p>
-                </AnimatedLink>
+              <AnimatedLink href={`desarrollos/${val.slug}`} className='group flex justify-center items-center md:mt-6 md:gap-8 gap-2'>
+                  <div className='border relative border-white rounded-full md:h-13 h-8 md:w-13 w-8 p-1 md:p-0 overflow-hidden flex justify-center items-center group-hover:scale-125 duration-700'>
+                      <svg width="25" height="25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m21.1058 12.1776-17.99984.0678M15.1284 18.2002l5.9774-6.0226-6.0226-5.97732" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </div>
+                  <p className='group-hover:scale-105 duration-500 group-hover:underline underline md:no-underline uppercase tracking-[3px] text-center text-white text-xs font-extralight'>descubrí este desarrollo</p>
+              </AnimatedLink>
           </div>
         ))}
 
