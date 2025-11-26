@@ -31,9 +31,9 @@ const Counters: React.FC = () => {
     <div ref={sectionRef} className="flex md:flex-row flex-col justify-around md:items-center ">
       {isVisible ? (
         <>
-          <CircleCounter duration={4} color='#3A3938' target={215} label="Familias Felices" />
-          <CircleCounter duration={3} color='#3A3938CC' target={33} label="Lotes Vendidos" />
-          <CircleCounter duration={2} color='#3a393899' target={45} label="Casas Entregadas" />
+          <CircleCounter duration={5} color='#3A3938' target={220} text='mil' label="M2 Desarrollados y entregados" />
+          <CircleCounter duration={4} color='#3A3938CC' target={1600} label="Lotes" />
+          <CircleCounter duration={3} color='#3a393899' target={8} label="Desarrollos Actuales" />
         </>
       ) : (
         // placeholders para preservar layout (opcional)

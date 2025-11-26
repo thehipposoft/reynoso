@@ -3,8 +3,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 
 interface CircleCounterProps {
-  target: number
-  duration: number
+  target: number,
+  duration: number,
+  text?: string,
   label: string,
   color: string,
 }
@@ -13,6 +14,7 @@ const CircleCounter: React.FC<CircleCounterProps> = ({
   target,
   duration,
   label,
+  text,
   color,
 }) => {
   const [count, setCount] = useState<number>(0)
@@ -60,7 +62,7 @@ const CircleCounter: React.FC<CircleCounterProps> = ({
 
   return (
     <div className="flex items-center">
-      <svg width={140} height={100} viewBox="0 0 120 120">
+      <svg className='max-w-28' width={120} height={100} viewBox="0 0 120 120">
         {/* círculo de fondo */}
         <circle
           cx={60}
@@ -89,13 +91,13 @@ const CircleCounter: React.FC<CircleCounterProps> = ({
           dominantBaseline="middle"
           textAnchor="middle"
           className="fill-current text-title-color"
-          fontSize="20"
+          fontSize="18"
           fontWeight="bold"
         >
-          +{count}
+          +{count}{text}
         </text>
       </svg>
-      <p className="text-xl font-light leading-5 font-title-color font-poppins">{label}</p>
+      <p className="text-lg font-light leading-5 font-title-color font-poppins md:w-min">{label}</p>
     </div>
   )
 }
