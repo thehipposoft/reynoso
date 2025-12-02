@@ -4,9 +4,9 @@ import ProyectoLayout from "@/components/Proyecto/ProyectoLayout";
 import { Proyecto } from "@/types";
 import Footer from "@/components/commons/Footer";
 import Menu from "@/components/Menu";
-import Contact from "@/components/Contact";
 import { redirect } from "next/navigation";
 import Explora from "@/components/Explora";
+import ContactDesarrollos from "@/components/Contact/ContactDesarrollos";
 
 type Params = {
     params: Promise<{
@@ -62,7 +62,7 @@ export default async function ProjectPage({ params }: Params) {
         project.estado === "Unidades Agotadas" ? 
         <Explora desarrollos={proyectos} agotado />
         :
-        <Contact />
+        <ContactDesarrollos proyecto={project} />
       }
       <Footer proyectos={proyectos} backgroundColor={project?.color_primario} />
     </div>
