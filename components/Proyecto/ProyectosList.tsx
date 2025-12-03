@@ -1,7 +1,7 @@
 import { Proyecto } from '@/types'
 import React from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
+import AnimatedLink from '../commons/AnimatedLink'
 
 interface ProyectosListProps {
     proyectos: Proyecto[]
@@ -21,13 +21,13 @@ const ProyectosList = ({proyectos}:ProyectosListProps) => {
                                     </div>
                                     <p className='font-inter uppercase tracking-[2px] text-sm font-light w-4/5 text-center'><strong>{proyecto.nombre}</strong>, {proyecto.titulo}</p>
                                     <div className='flex flex-col items-center gap-2'>
-                                        <Link 
+                                        <AnimatedLink 
                                             href={`/desarrollos/${proyecto.slug}`}
                                             className='cursor-pointer uppercase group relative bg-primary-green tracking-[2px] w-fit text-xs text-white rounded-4xl overflow-hidden 
                                             py-4 px-10 before:w-full before:h-full hover:before:translate-y-0 before:duration-500 before:ease-out before:absolute before:bg-title-color before:left-0 before:top-0 before:rounded-4xl before:translate-y-full'>
                                             
                                             <p className='relative z-10 '>ver más</p>
-                                        </Link>
+                                        </AnimatedLink>
                                     </div>
                                 </div>
                                 :
@@ -36,13 +36,13 @@ const ProyectosList = ({proyectos}:ProyectosListProps) => {
                                     <p className='font-inter uppercase tracking-[2px] text-sm font-light w-4/5 text-center'><strong>{proyecto.nombre}</strong>, {proyecto.titulo}</p>
                                     <div className='flex flex-col items-center gap-2'>
                                         <h6 className='tracking-[2px] text-xs md:text-sm  text-green-light w-3/4 text-center font-inter font-semibold uppercase'>Ultimos lotes disponibles</h6>
-                                        <Link 
+                                        <AnimatedLink 
                                             href={`/desarrollos/${proyecto.slug}`}
                                             className='cursor-pointer uppercase group relative bg-primary-green tracking-[2px] w-fit text-xs text-white rounded-4xl overflow-hidden 
                                             py-4 px-10 before:w-full before:h-full hover:before:translate-y-0 before:duration-500 before:ease-out before:absolute before:bg-title-color before:left-0 before:top-0 before:rounded-4xl before:translate-y-full'>
                                             
                                             <p className='relative z-10 '>ver más</p>
-                                        </Link>
+                                        </AnimatedLink>
                                     </div>
                                 </div>
                                 :
@@ -51,13 +51,13 @@ const ProyectosList = ({proyectos}:ProyectosListProps) => {
                                     <p className='font-inter uppercase tracking-[2px] text-sm font-light w-4/5 text-center'><strong>{proyecto.nombre}</strong>, {proyecto.titulo}</p>
                                     <div className='flex flex-col items-center gap-2'>
                                         <h6 className='tracking-[2px] text-xs md:text-sm  text-title-color text-center font-inter font-semibold uppercase'>entrega {proyecto.fecha_de_entrega}</h6>
-                                        <Link 
+                                        <AnimatedLink 
                                             href={`/desarrollos/${proyecto.slug}`}
                                             className='cursor-pointer uppercase group relative bg-primary-green tracking-[2px] w-fit text-xs text-white rounded-4xl overflow-hidden 
                                             py-4 px-10 before:w-full before:h-full hover:before:translate-y-0 before:duration-500 before:ease-out before:absolute before:bg-title-color before:left-0 before:top-0 before:rounded-4xl before:translate-y-full'>
                                             
                                             <p className='relative z-10 '>ver más</p>
-                                        </Link>
+                                        </AnimatedLink>
                                     </div>
                                 </div>
                                 :
@@ -65,13 +65,13 @@ const ProyectosList = ({proyectos}:ProyectosListProps) => {
                                     <p className='font-inter uppercase tracking-[2px] text-sm font-light w-4/5 text-center'><strong>{proyecto.nombre}</strong>, {proyecto.titulo}</p>
                                     <div className='flex flex-col items-center gap-2'>
                                         <h6 className='tracking-[2px] text-xs md:text-sm text-title-color font-inter font-semibold uppercase'>Lotes disponibles</h6>
-                                        <Link 
+                                        <AnimatedLink 
                                             href={`/desarrollos/${proyecto.slug}`}
                                             className='cursor-pointer uppercase group relative bg-primary-green tracking-[2px] w-fit text-xs text-white rounded-4xl overflow-hidden 
                                             py-4 px-10 before:w-full before:h-full hover:before:translate-y-0 before:duration-500 before:ease-out before:absolute before:bg-title-color before:left-0 before:top-0 before:rounded-4xl before:translate-y-full'>
                                             
                                             <p className='relative z-10 '>ver más</p>
-                                        </Link>
+                                        </AnimatedLink>
                                     </div>
                                 </div>
                         }

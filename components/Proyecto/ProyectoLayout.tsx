@@ -168,8 +168,8 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
                         
                         <p className='relative z-10'>ver en mapa</p>
                     </Link>
-                    <div className='flex flex-col'>
-                        <h2>Estratégicamente</h2>
+                    <div className='flex flex-col gap-1'>
+                        <h4 className='md:text-2xl text-3xl '>Estratégicamente</h4>
                         <h3 style={{color: `${proyecto.color_secundario}`}}>Ubicado</h3>
                     </div>
                     <h4 className='font-light text-xl w-3/5'>{proyecto.ubicacion}</h4>
