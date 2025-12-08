@@ -2,7 +2,6 @@
 import React, {useState, useEffect, useRef} from 'react'
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { Proyecto } from '@/types';
 import AnimatedLink from '../commons/AnimatedLink';
 import Link from 'next/link';
 
