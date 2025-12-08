@@ -14,7 +14,7 @@ export default async function DesarrollosPage() {
     <div>
         <header>
             <MenuDesarrollos proyectos={proyectos} />
-            <Menu desarrollos={proyectos} hiddeOnDesktop />
+            <Menu hiddeOnDesktop />
         </header>
         <main>
             <div className='flex flex-col'>
