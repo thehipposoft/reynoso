@@ -39,7 +39,7 @@ const Footer = ({proyectos, backgroundColor}:FooterProps) => {
                             </div>
                         </div>
                     </div>
-                    <div className='flex justify-between flex-wrap gap-12'>
+                    <div className='flex justify-between flex-wrap gap-16'>
                         <ul className='flex flex-col gap-2'>
                             <h4 className='text-white font-bold text-lg font-jakarta'>Desarrollos</h4>
                             {
@@ -54,7 +54,6 @@ const Footer = ({proyectos, backgroundColor}:FooterProps) => {
                                 ))
                             }
                         </ul>
-                        <Link href={'https://propiedades.reynosobienesraices.com.ar/listado-de-propiedades/'} rel='noreferrer' target='_blank' className='text-white h-fit text-lg font-bold font-jakarta hover:underline'>Alquileres</Link>
                         <Link href={'/#nosotros'} className='text-white h-fit text-lg font-bold font-jakarta hover:underline'>Nosotros</Link>
                         <Link href={'/#contacto'} className='text-white h-fit text-lg font-bold font-jakarta hover:underline'>Contacto</Link>
                         <Link href={'/#explora'} className='text-white h-fit text-lg font-bold font-jakarta hover:underline'>Explora</Link>
