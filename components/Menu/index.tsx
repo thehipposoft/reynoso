@@ -1,5 +1,4 @@
 'use client';
-import Image from 'next/image';
 import React, {useState, useEffect, useRef} from 'react'
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -9,16 +8,13 @@ import Link from 'next/link';
 
 type MenuTypes = {
     hiddeOnDesktop?: boolean;
-    desarrollos: Proyecto[];
 }
 
-const Menu = ({hiddeOnDesktop, desarrollos}:MenuTypes) => {
+const Menu = ({hiddeOnDesktop}:MenuTypes) => {
 
     const [openMenu, setOpenMenu] = useState<boolean>(false);
-    const [openDesarrollos, setOpenDesarrollos] = useState<boolean>(false);
 
     const openMenuFunc = () => setOpenMenu(!openMenu);
-    const openDesarrolloFunc = () => setOpenDesarrollos(!openDesarrollos);
     const container = useRef<HTMLDivElement>(null);
     const tl = useRef<gsap.core.Timeline>(null);
 

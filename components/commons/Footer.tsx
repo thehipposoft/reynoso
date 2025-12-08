@@ -15,14 +15,30 @@ const Footer = ({proyectos, backgroundColor}:FooterProps) => {
     <div style={{backgroundColor: `${backgroundColor}`}} className='bg-[#3A3937]'>
         <div className='max-w-[80vw] lg:max-w-[1250px] mx-auto flex flex-col'>
             <div className='flex flex-col py-12 border-b border-primary-green'>
-                <div className='flex flex-col md:flex-row justify-between items-center gap-8 lg:gap-0'>
-                    <Image 
-                        src={'/assets/images/logo/reynoso.svg'} 
-                        alt='Logo Reynoso' 
-                        width={260} 
-                        height={140}
-                        className='w-auto max-w-[260px]' 
-                    />
+                <div className='flex flex-col md:flex-row justify-between items-center md:items-start gap-8 lg:gap-0'>
+                    <div className='flex flex-col gap-10 items-center md:items-start'>
+                        <Image 
+                            src={'/assets/images/logo/logo-white.png'} 
+                            alt='Logo Reynoso' 
+                            width={260} 
+                            height={140}
+                            className='w-auto max-w-[280px] object-contain' 
+                        />
+                        <div className='flex flex-col gap-2 md:w-72'>
+                            <div className='flex items-center gap-2'>
+                                <svg className='min-w-6 max-w-6' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000"><path d="M2 20h2m0 0h5m-5 0V7.2002c0-1.12011 0-1.68058.21799-2.1084.19174-.37633.49748-.68207.87381-.87381C5.51962 4 6.08009 4 7.2002 4h1.6c1.1201 0 1.6794 0 2.1072.21799.3763.19174.6831.49748.8748.87381C12 5.5192 12 6.07899 12 7.19691v2.80329M9 20h11M9 20v-5.6318c0-.5254 0-.7882.063-1.0332.05583-.2172.14773-.4232.27196-.6098.14009-.2105.33617-.3868.72654-.7375l2.3016-2.06773c.7547-.67805 1.1324-1.01733 1.5594-1.14604.3764-.11348.7782-.11348 1.1546 0 .4274.12882.8056.46827 1.5616 1.14746l2.3 2.06631c.3908.3511.5858.5269.726.7375.1242.1866.216.3926.2718.6098.063.245.0635.5078.0635 1.0332V20m0 0h2" stroke="#FFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                                <Link href={'https://maps.app.goo.gl/uEYeRbV7cRkBSJfK9'} target='_blank' rel='noreferrer' className='text-white text-sm hover:underline'>J. M. Leguizamón 515, OF. 201, Piso 2 (CP 4400) Salta, Argentina</Link>
+                            </div>
+                            <div className='flex items-center gap-2'>
+                                <svg className='w-6' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 5.5C3 14.0604 9.93959 21 18.5 21c.3862 0 .7691-.0141 1.1483-.0419.4351-.0319.6526-.0478.8507-.1618.164-.0944.3195-.2618.4017-.4323.0993-.2058.0993-.4459.0993-.926v-2.8173c0-.4038 0-.6057-.0665-.7787-.0586-.1529-.154-.289-.2776-.3964-.1399-.1216-.3297-.1906-.7091-.3286L16.74 13.9509c-.4415-.1605-.6623-.2408-.8717-.2272-.1847.012-.3624.0751-.5134.1821-.1712.1213-.292.3227-.5337.7256L14 16c-2.6499-1.2001-4.7981-3.3511-6-6l1.36863-.82118c.40282-.24169.60423-.36254.72557-.53376.107-.15098.1701-.32869.1821-.51336.0136-.20943-.0667-.43017-.2272-.87165L8.88299 4.05321c-.13799-.37945-.20698-.56918-.32857-.70911-.10741-.12361-.24353-.21895-.3964-.27765C7.98496 3 7.78308 3 7.37932 3H4.56201c-.48013 0-.7202 0-.92603.09925-.17048.08221-.33784.23776-.43228.40178-.11402.19804-.12995.41559-.16181.8507C3.01413 4.73086 3 5.11378 3 5.5Z" stroke="#FFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                                <Link href={'tel:3874063402'} className='text-white text-sm w-2/3 hover:underline'>+54 387 4063 402</Link>
+                            </div>
+                            <div className='flex items-center gap-2'>
+                                <svg className='w-6' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m4 18 5-6m11 6-5-6M3 8l7.225 4.8166c.6415.4277.9622.6416 1.3089.7246.3064.0735.6258.0735.9322 0 .3467-.083.6674-.2969 1.3089-.7246L21 8M6.2 19h11.6c1.1201 0 1.6802 0 2.108-.218.3763-.1917.6823-.4977.874-.874.218-.4278.218-.9879.218-2.108V8.2c0-1.1201 0-1.68016-.218-2.10798-.1917-.37633-.4977-.68229-.874-.87403C19.4802 5 18.9201 5 17.8 5H6.2c-1.1201 0-1.68016 0-2.10798.21799-.37633.19174-.68229.4977-.87403.87403C3 6.51984 3 7.07989 3 8.2v7.6c0 1.1201 0 1.6802.21799 2.108.19174.3763.4977.6823.87403.874C4.51984 19 5.07989 19 6.2 19Z" stroke="#FFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                                <Link href={'mailto:info@reynosobienesraices.com.ar'} className='text-white text-sm w-2/3 hover:underline'>info@reynosobienesraices.com.ar</Link>
+                            </div>
+                        </div>
+                    </div>
                     <div className='flex justify-between flex-wrap gap-12'>
                         <ul className='flex flex-col gap-2'>
                             <h4 className='text-white font-bold text-lg font-jakarta'>Desarrollos</h4>

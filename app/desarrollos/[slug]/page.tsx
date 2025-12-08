@@ -54,7 +54,7 @@ export default async function ProjectPage({ params }: Params) {
 
   return(
     <div>
-      <Menu desarrollos={proyectos}  />
+      <Menu />
       {
         project && <ProyectoLayout proyecto={project} />
       }
