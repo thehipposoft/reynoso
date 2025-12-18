@@ -59,14 +59,13 @@ export default function EquipoCarrousel({empleados}:Empleados) {
             className="min-w-[90vw] h-[430px] md:h-[525px] bg-black/30 relative flex items-end justify-end pb-16 pr-8"
             style={{ backgroundImage: `url(${miembro.foto})`, backgroundSize: 'cover' }}
           >
-            <div className="flex flex-col items-end">
-              <h4 className="font-bold text-2xl text-white text-right">
+            <div className="flex flex-col items-end bg-black/20 backdrop-blur-sm rounded-lg p-2">
+              <h4 className="font-bold text-2xl text-white max-w-60 text-end leading-7">
                 {miembro.nombre}
               </h4>
               <span className="uppercase tracking-[4px] font-light text-sm text-white">
                 {miembro.puesto}
               </span>
-              <SocialIcons /> 
             </div>
           </div>
         ))}

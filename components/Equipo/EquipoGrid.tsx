@@ -1,63 +1,47 @@
 import Image from 'next/image'
-import React from 'react'
 import { Empleados } from '@/types'
 
-const EquipoGrid = ({empleados}:Empleados) => {
+const EquipoGrid = ({ empleados }: Empleados) => {
   return (
     <div className='hidden lg:grid md:grid-cols-3 grid-cols-1 grid-rows-2 mt-8 w-[90vw] md:w-full mx-auto md:mx-0 gap-2'>
-        <div className='md:min-w-[430px] h-[430px] bg-black/30 relative flex items-end justify-end pb-16 pr-8'>
-            <Image src={empleados[0].foto} alt={`${empleados[0].nombre} foto de perfil`} fill sizes='430px' className='object-cover' />
-            <div className='flex flex-col items-end relative z-10'>
-                <h4 className='font-bold text-2xl text-white'>{empleados[0].nombre}</h4>
-                <span className='uppercase tracking-[4px] font-light text-sm text-white'>{empleados[0].puesto}</span>
+      {empleados.map((empleado, index) => {
+        const column = index % 3
+
+        return (
+            <div
+                key={empleado.nombre}
+                className={`
+                    md:min-w-[430px] group overflow-hidden h-[430px] bg-black/30 relative flex pb-16 items-end justify-end pr-8
+                    ${index === 1 ? 'md:mt-10' : ''}
+                    ${index === 2 ? 'md:mt-20' : ''}
+                    ${index === 4 ? 'md:mt-10' : ''}
+                    ${index === 5 ? 'md:mt-20' : ''}
+                    ${index === 7 ? 'md:mt-10' : ''}
+                    ${index === 8 ? 'md:mt-20' : ''}
+                    ${index === 10 ? 'md:mt-10' : ''}
+                    ${index === 11 ? 'md:mt-20' : ''}
+
+                `}
+            >
+                <div className='absolute w-full h-full left-0 top-0 bg-black opacity-5 group-hover:opacity-0 duration-500 z-10'/>
+                <Image
+                src={empleado.foto}
+                alt={`${empleado.nombre} foto de perfil`}
+                fill
+                sizes='430px'
+                className='object-cover group-hover:scale-110 duration-500'
+                />
+                <div className='flex flex-col items-end relative z-10 bg-black/10 backdrop-blur-sm rounded-lg p-2'>
+                    <h4 className='font-bold text-2xl text-white max-w-60 text-end leading-6'>
+                        {empleado.nombre}
+                    </h4>
+                    <span className='uppercase tracking-[4px] font-light text-sm text-white'>
+                        {empleado.puesto}
+                    </span>
+                </div>
             </div>
-        </div>
-        <div className='md:translate-y-16 md:min-w-[430px] h-[430px] bg-black/30 relative flex items-end justify-end pb-16 pr-8'>
-            <Image src={empleados[1].foto} alt={`${empleados[1].nombre} foto de perfil`} fill sizes='430px' className='object-cover' />
-            <div className='flex flex-col items-end relative z-10'>
-                <h4 className='font-bold text-2xl text-white'>{empleados[1].nombre}</h4>
-                <span className='uppercase tracking-[4px] font-light text-sm text-white'>{empleados[1].puesto}</span>
-            </div>
-        </div>
-        <div className='md:translate-y-32 md:min-w-[430px] h-[430px] bg-black/30 relative flex items-end justify-start pb-16 pl-8'>
-            <Image src={empleados[2].foto} alt={`${empleados[2].nombre} foto de perfil`} fill sizes='430px' className='object-cover' />
-            <div className='flex flex-col items-start relative z-10'>
-                <h4 className='font-bold text-2xl text-white'>{empleados[2].nombre}</h4>
-                <span className='uppercase tracking-[4px] font-light text-sm text-white'>{empleados[2].puesto}</span>
-            </div>
-        </div>
-        <div className='md:min-w-[430px] h-[430px] bg-black/30 relative flex pt-16 pl-8'>
-            <Image src={empleados[3].foto} alt={`${empleados[3].nombre} foto de perfil`} fill sizes='430px' className='object-cover' />
-            <div className='flex flex-col relative z-10'>
-                <h4 className='font-bold text-2xl text-white w-4/6'>{empleados[3].nombre}</h4>
-                <span className='uppercase tracking-[4px] font-light text-sm text-white'>{empleados[3].puesto}</span>
-            </div>
-        </div>
-        <div className='md:mt-16 md:min-w-[430px] h-[430px] bg-black/30 relative flex pt-16 pl-8'>
-            <Image src={empleados[4].foto} alt={`${empleados[4].nombre} foto de perfil`} fill sizes='430px' className='object-cover' />
-            <div className='flex flex-col relative z-10'>
-                <h4 className='font-bold text-2xl text-white'>{empleados[4].nombre}</h4>
-                <span className='uppercase tracking-[4px] font-light text-sm text-white'>{empleados[4].puesto}</span>
-            </div>
-        </div>
-        <div className='md:mt-32 md:min-w-[430px] h-[430px] bg-black/30 relative flex  pt-16 pl-8'>
-            <Image src={empleados[5].foto} alt={`${empleados[5].nombre} foto de perfil`} fill sizes='430px' className='object-cover' />
-            <div className='flex flex-col relative z-10'>
-                <h4 className='font-bold text-2xl text-white'>{empleados[5].nombre}</h4>
-                <span className='uppercase tracking-[4px] font-light text-sm text-white'>{empleados[5].puesto}</span>
-{/*                 <div className='flex gap-2 pt-4'>
-                    <Link href={''} rel='noreferrer' target='_blank' className='w-12 h-12 rounded-full flex items-center justify-center group hover:bg-white/10 hover:scale-110 bg-white duration-500'>
-                        <svg className='scale-[175%]' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"><path className='group-hover:fill-white duration-300' fill="#090B19" d="M5.12.96A4.163 4.163 0 0 0 .96 5.12v5.76a4.163 4.163 0 0 0 4.16 4.16h5.76a4.163 4.163 0 0 0 4.16-4.16V5.12A4.163 4.163 0 0 0 10.88.96H5.12Zm6.72 2.56a.641.641 0 0 1 0 1.28.641.641 0 0 1 0-1.28ZM8 4.48A3.522 3.522 0 0 1 11.52 8 3.522 3.522 0 0 1 8 11.52 3.522 3.522 0 0 1 4.48 8 3.522 3.522 0 0 1 8 4.48Zm0 .64A2.884 2.884 0 0 0 5.12 8 2.884 2.884 0 0 0 8 10.88 2.884 2.884 0 0 0 10.88 8 2.884 2.884 0 0 0 8 5.12Z"/></svg>
-                    </Link>
-                    <Link href={''} rel='noreferrer' target='_blank' className='w-12 h-12 rounded-full flex items-center justify-center group hover:bg-white/10 hover:scale-110 bg-white duration-500'>
-                        <svg className='scale-[175%]' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"><path className='group-hover:fill-white duration-300' fill="#090B19" d="M10.24 3.52h1.6a.32.32 0 0 0 .32-.32V1.044a.32.32 0 0 0-.296-.319A37.075 37.075 0 0 0 9.645.64C7.68.64 6.4 1.818 6.4 3.958V6.08H4.16a.32.32 0 0 0-.32.32v2.24c0 .176.144.32.32.32H6.4v6.08c0 .176.144.32.32.32h2.24a.32.32 0 0 0 .32-.32V8.96h2.311a.32.32 0 0 0 .318-.285l.249-2.24a.32.32 0 0 0-.318-.355H9.28v-1.6c0-.53.43-.96.96-.96Z"/></svg>
-                    </Link>
-                    <Link href={''} rel='noreferrer' target='_blank' className='w-12 h-12 rounded-full flex items-center justify-center group hover:bg-white/10 hover:scale-110 bg-white duration-500'>
-                        <svg className='scale-[175%]' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"><path className='group-hover:fill-white duration-300' fill="#090B19" d="M2.56.962C1.45.962.642 1.63.642 2.544c0 .918.827 1.612 1.918 1.612 1.11 0 1.916-.677 1.916-1.631C4.426 1.606 3.635.962 2.56.962ZM.96 4.8a.32.32 0 0 0-.32.32v9.28c0 .176.144.32.32.32h3.2a.32.32 0 0 0 .32-.32V5.12a.32.32 0 0 0-.32-.32H.96Zm4.8 0a.32.32 0 0 0-.32.32v9.28c0 .176.144.32.32.32h2.88a.32.32 0 0 0 .32-.32V9.44c0-.759.582-1.376 1.325-1.434C10.324 8 10.36 8 10.4 8a1.435 1.435 0 0 1 1.44 1.44v4.96c0 .176.144.32.32.32h2.88a.32.32 0 0 0 .32-.32V8.96c0-2.07-1.111-4.16-3.588-4.16a4.329 4.329 0 0 0-2.492.796V5.12a.32.32 0 0 0-.32-.32h-3.2Z"/></svg>
-                    </Link>
-                </div> */}
-            </div>
-        </div>
+        )
+      })}
     </div>
   )
 }
