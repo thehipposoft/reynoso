@@ -1,9 +1,9 @@
 export default async function getAllProjects() {
   const res = await fetch(
     'https://propiedades.reynosobienesraices.com.ar/wp-json/wp/v2/desarrollos/?acf_format=standard&_fields=id,slug,acf',
-/*     {
+    {
       next: { revalidate: 60 * 5 }, // cachea 5 minutos en el servidor
-    } */
+    }
   );
 
   if (!res.ok) throw new Error('Failed to fetch data');
