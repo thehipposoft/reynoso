@@ -5,8 +5,20 @@ export type ServiciosType = {
     },
 }
 
+type Alianza = {
+    nombre: string,
+    portada: any,
+    tipo_de_proyecto: string,
+    fecha_de_entrega: string,
+    servicios: ServiciosType[],
+    ubicacion: string,
+    ubicacion_mapa: string,
+    galeria: []
+}
+
 export type Proyecto = {
     id: number,
+    clasificacion: string,
     slug: string,
     imagen_banner: string,
     nombre: string,
@@ -27,6 +39,7 @@ export type Proyecto = {
     ubicacion: string,
     estado: string,
     fecha_de_entrega?: string,
+    desarrollo_alianza: Alianza,
 }
 
 export type Proyectos = {

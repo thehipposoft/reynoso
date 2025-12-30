@@ -1,14 +1,15 @@
 export default async function getAllProjects() {
   const res = await fetch(
     'https://propiedades.reynosobienesraices.com.ar/wp-json/wp/v2/desarrollos/?acf_format=standard&_fields=id,slug,acf',
-    {
+/*     {
       next: { revalidate: 60 * 5 }, // cachea 5 minutos en el servidor
-    }
+    } */
   );
 
   if (!res.ok) throw new Error('Failed to fetch data');
 
   const data = await res.json();
+
   return data.map((proyecto: any) => ({
     id: proyecto.id,
     slug: proyecto.slug,
@@ -31,5 +32,7 @@ export default async function getAllProjects() {
     ubicacion: proyecto.acf.tercera_seccion.ubicacion,
     estado: proyecto.acf.estado,
     fecha_de_entrega: proyecto.acf.fecha_de_entrega,
+    clasificacion: proyecto.acf.clasificacion,
+    desarrollo_alianza: proyecto.acf.desarrollo_alianza
   })).reverse();
 }

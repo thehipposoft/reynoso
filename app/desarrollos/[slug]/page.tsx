@@ -20,12 +20,13 @@ export async function generateMetadata({
   const resolvedParams = await params;
   const proyectos:Proyecto[] = await getAllProjects() || [];
   const project = proyectos.find((proyecto) => proyecto.slug === resolvedParams.slug)
+  
 
   if (project) {
     const previousImages = (await parent).openGraph?.images || [];
 
     return {
-      title: `Reynoso | ${project.nombre} `,
+      title: `Reynoso | ${project.clasificacion !== "Desarrollo ALIANZA" ? project.nombre : project.desarrollo_alianza?.nombre} `,
       openGraph: {
         images: [
           project.imagen_banner,
@@ -59,8 +60,11 @@ export default async function ProjectPage({ params }: Params) {
         project && <ProyectoLayout proyecto={project} />
       }
       {
-        project.estado === "Unidades Agotadas" ? 
+        project.estado === "Unidades Agotadas" ?
         <Explora desarrollos={proyectos} agotado />
+        :
+        project.clasificacion === "Desarrollo ALIANZA" ? 
+        <></>
         :
         <ContactDesarrollos proyecto={project} />
       }

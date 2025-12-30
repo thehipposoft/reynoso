@@ -15,6 +15,9 @@ const Explora = ({desarrollos, agotado}:ExploraTypes) => {
 
   const container = useRef(null)
 
+  const cleanDesarrollos = desarrollos.filter((item) => item.imagen_banner);
+
+
   useGSAP(() => {
         gsap.from(".box", {
           scrollTrigger: {
@@ -54,7 +57,7 @@ const Explora = ({desarrollos, agotado}:ExploraTypes) => {
             <p className='font-semibold lg:text-2xl md:-tracking-wide text-3xl leading-7'>Explorá nuestros Desarrollos Inmobiliarios con Unidades Disponibles</p>
             <div className='flex flex-wrap lg:flex-nowrap items-center justify-around gap-4'>
               {
-                desarrollos.map((val, index) => (
+                cleanDesarrollos.map((val, index) => (
                   <AnimatedLink 
                     key={index} 
                     href={`/desarrollos/${val.slug}`}

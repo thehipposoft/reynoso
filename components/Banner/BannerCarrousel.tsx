@@ -11,9 +11,11 @@ type BannerCarrouselTypes = {
 const BannerCarrousel = ({proyectos}:BannerCarrouselTypes) => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
+  const activeBanners = proyectos.filter((item) => item.imagen_banner);
+
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlideIndex((prevIndex) => (prevIndex + 1) % proyectos.length);
+      setCurrentSlideIndex((prevIndex) => (prevIndex + 1) % activeBanners.length);
     }, 6000);
 
     return () => clearInterval(timer);
@@ -25,14 +27,14 @@ const BannerCarrousel = ({proyectos}:BannerCarrouselTypes) => {
 
   const handlePrev = () => {
     if (currentSlideIndex === 0) {
-      setCurrentSlideIndex(proyectos.length - 1);
+      setCurrentSlideIndex(activeBanners.length - 1);
     } else {
       setCurrentSlideIndex(currentSlideIndex - 1)
     }
   }
 
     const handleNext = () => {
-    if (currentSlideIndex === proyectos.length - 1) {
+    if (currentSlideIndex === activeBanners.length - 1) {
       setCurrentSlideIndex(0);
     } else {
       setCurrentSlideIndex(currentSlideIndex + 1)
@@ -41,7 +43,7 @@ const BannerCarrousel = ({proyectos}:BannerCarrouselTypes) => {
 
   return (
     <div className="relative w-full h-full">
-      {proyectos.map((val:Proyecto, index:number) => (
+      {activeBanners.map((val:Proyecto, index:number) => (
         <div
           key={index}
           className={`absolute inset-0 h-screen w-screen transition-opacity duration-[1500ms] ease-in-out`}
@@ -62,7 +64,7 @@ const BannerCarrousel = ({proyectos}:BannerCarrouselTypes) => {
       ))}
 
       <div className="relative z-40 w-full h-full flex flex-col md:gap-8 justify-center items-center bg-[#33847d80] hover:backdrop-blur-none backdrop-blur-xs  duration-500">
-        {proyectos.map((val:Proyecto, index:number) => (
+        {activeBanners.map((val:Proyecto, index:number) => (
           <div
             key={index}
             className={`absolute flex flex-col md:justify-center items-center md:gap-6 transition-opacity duration-500`}
@@ -97,7 +99,7 @@ const BannerCarrousel = ({proyectos}:BannerCarrouselTypes) => {
           >
               <svg className='rotate-180 scale-75' width="25" height="25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m21.1058 12.1776-17.99984.0678M15.1284 18.2002l5.9774-6.0226-6.0226-5.97732" stroke="#FFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </div>
-          {proyectos.map((_:Proyecto, index:number) => (
+          {activeBanners.map((_:Proyecto, index:number) => (
             <button
               key={index}
               className={`h-3 w-3 rounded-full cursor-pointer transition-colors duration-300 ${
