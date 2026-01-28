@@ -53,8 +53,8 @@ const Explora = ({desarrollos, agotado}:ExploraTypes) => {
                 <h3>Proyectos</h3>
             </div>
         </div>
-        <div className='box2 bg-[#f7f7f7] lg:w-auto w-[90vw] lg:h-72 flex flex-col md:px-16 px-8 py-10 lg:py-0 gap-12 justify-center'>
-            <p className='font-semibold lg:text-2xl md:-tracking-wide text-3xl leading-7'>Explorá nuestros Desarrollos Inmobiliarios con Unidades Disponibles</p>
+        <div className='box2 bg-[#f7f7f7] lg:w-auto w-[90vw] lg:h-72 flex flex-col md:px-16 px-8 py-10 gap-6 justify-center'>
+            <p className='font-semibold lg:text-2xl md:-tracking-wide text-3xl leading-7'>Explorá nuestros Desarrollos Inmobiliarios</p>
             <div className='flex flex-wrap lg:flex-nowrap items-center justify-around gap-4'>
               {
                 cleanDesarrollos.map((val, index) => (

@@ -7,7 +7,7 @@ const WhatsApp = () => {
     return(
         <div className='fixed cursor-pointer bottom-[30px] right-[30px] z-40 hover:scale-115 transition-all duration-500'>
            <Link
-                href={'https://walink.co/318b83'}
+                href={'https://wa.me/543874063402?text=Hola!%20Vengo%20desde%20su%20página%20web'}
                 target={'_blank'}
                 rel="noreferrer"
             >

@@ -12,6 +12,8 @@ type ProyectoLayoutProps = {
 
 const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
 
+
+    console.log(proyecto)
   return (
     <div className='relative'>
         {
@@ -88,10 +90,10 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
             //DESARROLLO PROPIO
             <div className={`relative`}>
                 <Link
-                    href={`https://wa.me/543874063402?text=Hola!%20Estoy%20interesado%20en%20el%20desarrollo:%20${proyecto.desarrollo_alianza.nombre}`}
+                    href={`https://wa.me/543874063402?text=Hola!%20Estoy%20interesado%20en%20el%20desarrollo:%20${proyecto.nombre}`}
                     rel='noreferrer'
                     target='_blank'
-                    className='cursor-pointer group fixed bottom-6 right-6 z-40 flex w-fit gap-4 items-center uppercase group tracking-[1px] text-sm rounded-4xl overflow-hidden border-2 border-[#7bf1a877]
+                    className='cursor-pointer group fixed bottom-6 right-6 z-40 flex w-fit gap-4 items-center uppercase group tracking-[1px] text-sm rounded-4xl overflow-hidden border-2 border-[#7bf1a844]
                     md:py-4 py-2 px-4 md:px-8 bg-[#7bf1a877] duration-300 hover:bg-[#7bf1a8e1] backdrop-blur-2xl'>
                     
                     <p className='relative z-10 text-white group-hover:text-black duration-300'>Contactanos</p>
