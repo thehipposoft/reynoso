@@ -83,7 +83,7 @@ const Desarrollo = () => {
                 </div>
             </div>
         </div>
-        <VideoModal openModal={openModal} toggleModal={toggleModal} videoUrl='https://res.cloudinary.com/hipposoft/video/upload/v1759981849/Reynoso/HD_ELCAUCE_pmlcnj.mp4' />
+        <VideoModal openModal={openModal} toggleModal={toggleModal} videoUrl='https://hippo-zone.b-cdn.net/Reynoso/HD_ELCAUCE.mp4' />
   </div>
   )
 }
