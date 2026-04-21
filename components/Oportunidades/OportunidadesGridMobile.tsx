@@ -96,9 +96,9 @@ export default function OportunidadesGridMobile() {
                     <Image src={item.imagen} alt={item.alt} fill className="object-cover" />
                     <div className='absolute h-full w-full left-0 top-0 bg-overlay-bg opacity-45 z-10' />
                     <div className="flex flex-col items-end relative z-20">
-                    <h4 className="font-bold text-5xl text-white text-right">
+                    <h3 className="font-bold text-5xl text-white text-right font-jakarta">
                         {item.titulo}
-                    </h4>
+                    </h3>
                     <span className="uppercase tracking-[2px] font-light text-right text-sm text-white">
                         {item.texto}
                     </span>

@@ -47,8 +47,8 @@ const Desarrollo = () => {
         />
         <div ref={container} className='flex pt-12 flex-col w-[90vw] lg:w-[1300px] mx-auto '>
             <div className='flex flex-col md:px-12 px-6'>
-                <h4 className='title__one text-4xl text-white font-light font-jakarta'>Una nueva forma<br /> de vivir</h4>
-                <h4 className='title__two text-4xl font-semibold text-green-title font-jakarta'>cada Desarrollo</h4>
+                <h2 className='title__one text-4xl text-white font-light font-jakarta tracking-normal'>Una nueva forma<br /> de vivir</h2>
+                <h2 className='title__two text-4xl font-semibold text-green-title font-jakarta tracking-normal'>cada Desarrollo</h2>
             </div>
             <div className='relative z-10 mt-8 md:mt-0 w-full lg:h-[95vh] h-[60vh] overflow-hidden flex flex-col gap-16 justify-center items-center md:translate-y-16'>
                 <h5 className='text-white hidden'>explore me</h5>
@@ -68,6 +68,8 @@ const Desarrollo = () => {
                         frameBorder="0"
                         allow="autoplay; fullscreen; picture-in-picture"
                         allowFullScreen
+                        loading="lazy"
+                        title="Video presentación de desarrollos Reynoso"
                     />
                 </div>
             </div>

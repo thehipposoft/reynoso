@@ -49,7 +49,7 @@ const Explora = ({desarrollos, agotado}:ExploraTypes) => {
         <div className='flex box'>
             <div className='w-7 h-36 bg-primary-green'/>
             <div className='flex flex-col items-center justify-center text-center md:w-[450px] md:shadow-2xl shadow-lg md:px-0 px-5'>
-                <h4 className='text-3xl font-jakarta'>Nuestros</h4>
+                <h2 className='text-3xl font-jakarta tracking-normal'>Nuestros</h2>
                 <h3>Proyectos</h3>
             </div>
         </div>
