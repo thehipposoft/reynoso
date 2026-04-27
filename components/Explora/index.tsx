@@ -15,8 +15,17 @@ const Explora = ({desarrollos, agotado}:ExploraTypes) => {
 
   const container = useRef(null)
 
-  const cleanDesarrollos = desarrollos.filter((item) => item.imagen_banner);
+  const AGOTADO = "Unidades Agotadas";
 
+  const cleanDesarrollos = desarrollos
+    .filter((item) => item.imagen_banner)
+    .sort((a, b) => {
+      if (a.estado === AGOTADO && b.estado !== AGOTADO) return 1;
+      if (a.estado !== AGOTADO && b.estado === AGOTADO) return -1;
+      return 0;
+    });
+
+  console.log(cleanDesarrollos)
 
   useGSAP(() => {
         gsap.from(".box", {
@@ -58,18 +67,23 @@ const Explora = ({desarrollos, agotado}:ExploraTypes) => {
             <div className='flex flex-wrap lg:flex-nowrap items-center justify-around gap-4'>
               {
                 cleanDesarrollos.map((val, index) => (
-                  <AnimatedLink 
-                    key={index} 
+                  <AnimatedLink
+                    key={index}
                     href={`/desarrollos/${val.slug}`}
-                    className='relative h-36 md:w-28 w-36 hover:bg-black/10 duration-300 rounded-lg'
+                    className='relative h-36 md:w-28 w-36 group hover:bg-black/10 duration-300 rounded-lg'
                   >
                     <Image
                       src={val.logo}
                       alt={`Logo ${val.nombre}`}
                       fill
-                      className='hover:brightness-100 duration-500 hover:scale-110 brightness-0 object-contain lg:p-4 p-1'
+                      className='group-hover:brightness-100 duration-500 group-hover:scale-110 brightness-0 object-contain lg:p-4 p-1'
                       sizes='120px'
                      />
+                    {val.estado === AGOTADO && (
+                      <span className='absolute bottom-2 right-2 bg-primary-gray/30 group-hover:bg-primary-gray/70 duration-300 text-white text-[10px] font-semibold uppercase px-2 py-0.5 rounded-full whitespace-nowrap'>
+                        Agotado
+                      </span>
+                    )}
                   </AnimatedLink>
                 )
               )

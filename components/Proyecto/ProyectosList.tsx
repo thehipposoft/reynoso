@@ -12,7 +12,13 @@ const ProyectosList = ({proyectos}:ProyectosListProps) => {
   return (
     <div className='grid lg:grid-cols-2 grid-cols-1 gap-4 w-[90vw] lg:w-[1200px] mx-auto'>
         {
-            proyectos.map((proyecto, index) => (
+            [...proyectos]
+              .sort((a, b) => {
+                if (a.estado === "Unidades Agotadas" && b.estado !== "Unidades Agotadas") return 1;
+                if (a.estado !== "Unidades Agotadas" && b.estado === "Unidades Agotadas") return -1;
+                return 0;
+              })
+              .map((proyecto, index) => (
                 <div className='flex md:h-[310px] h-[250px] shadow-2xl rounded-tr-xl rounded-br-xl' key={index}>
                         {
                             proyecto.estado === "Unidades Agotadas" ?

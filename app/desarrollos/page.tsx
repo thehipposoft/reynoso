@@ -16,8 +16,6 @@ export default async function DesarrollosPage() {
     item?.desarrollo_alianza?.nombre
     );
 
-    console.log(proyectosAlianza)
-
   return (
     <div>
         <header>
