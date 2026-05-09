@@ -10,11 +10,23 @@ import Redes from "@/components/Redes";
 import Footer from "@/components/commons/Footer";
 import Menu from "@/components/Menu";
 import WhatsApp from "@/components/commons/WhatsApp";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home | Reynoso Bienes Raíces",
+  description: "Explora los mejores desarrollos inmobiliarios en Salta. Viviendas, departamentos y proyectos comerciales de calidad en Argentina.",
+  openGraph: {
+    title: "Home | Reynoso Bienes Raíces",
+    description: "Explora los mejores desarrollos inmobiliarios en Salta. Viviendas, departamentos y proyectos comerciales de calidad.",
+    url: "https://reynosobienesraices.com.ar/",
+    type: "website",
+  },
+};
 
 export default async function Home() {
 
   const proyectos = await getAllProjects()
-  
+
   return (
     <div className="">
       <header>

@@ -5,6 +5,18 @@ import MenuDesarrollos from '@/components/MenuDesarrollos'
 import Menu from '@/components/Menu'
 import Footer from '@/components/commons/Footer'
 import { Proyecto } from '@/types'
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Nuestros Proyectos | Reynoso Bienes Raíces",
+  description: "Descubre todos nuestros desarrollos inmobiliarios en Salta. Proyectos residenciales y comerciales de calidad con ubicaciones privilegiadas.",
+  openGraph: {
+    title: "Nuestros Proyectos | Reynoso Bienes Raíces",
+    description: "Descubre todos nuestros desarrollos inmobiliarios en Salta. Proyectos residenciales y comerciales de calidad.",
+    url: "https://reynosobienesraices.com.ar/desarrollos",
+    type: "website",
+  },
+};
 
 export default async function DesarrollosPage() {
 
@@ -12,7 +24,7 @@ export default async function DesarrollosPage() {
 
     const proyectosPropios = proyectos.filter((item: Proyecto) => item?.imagen_banner);
 
-    const proyectosAlianza = proyectos.filter((item: Proyecto) => 
+    const proyectosAlianza = proyectos.filter((item: Proyecto) =>
     item?.desarrollo_alianza?.nombre
     );
 
