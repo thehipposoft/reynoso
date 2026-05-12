@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import AnimatedLink from './AnimatedLink'
 import Link from 'next/link'
-import React from 'react'
 import { Proyecto } from '@/types'
 
 interface FooterProps {
@@ -17,12 +16,12 @@ const Footer = ({proyectos, backgroundColor}:FooterProps) => {
             <div className='flex flex-col py-12 border-b border-primary-green'>
                 <div className='flex flex-col md:flex-row justify-between items-center md:items-start gap-8 lg:gap-0'>
                     <div className='flex flex-col gap-10 items-center md:items-start'>
-                        <Image 
-                            src={'/assets/images/logo/logo-white.png'} 
-                            alt='Logo Reynoso' 
-                            width={260} 
+                        <Image
+                            src={'/assets/images/logo/logo-white.png'}
+                            alt='Logo Reynoso'
+                            width={260}
                             height={140}
-                            className='w-auto max-w-[280px] object-contain' 
+                            className='w-auto max-w-[280px] object-contain'
                         />
                         <div className='flex flex-col gap-2 md:w-72'>
                             <div className='flex items-center gap-2'>
@@ -44,8 +43,8 @@ const Footer = ({proyectos, backgroundColor}:FooterProps) => {
                             <p className='text-white font-bold text-lg font-jakarta'>Desarrollos</p>
                             {
                                 proyectos.map((proyecto, index) => (
-                                    <AnimatedLink 
-                                        href={`/desarrollos/${proyecto.slug}`} 
+                                    <AnimatedLink
+                                        href={`/desarrollos/${proyecto.slug}`}
                                         key={index}
                                         className='text-white font-jakarta hover:underline'
                                     >
@@ -72,7 +71,7 @@ const Footer = ({proyectos, backgroundColor}:FooterProps) => {
                                         <svg className='scale-[175%]' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"><path className='group-hover:fill-white duration-300' fill="#090B19" d="M2.56.962C1.45.962.642 1.63.642 2.544c0 .918.827 1.612 1.918 1.612 1.11 0 1.916-.677 1.916-1.631C4.426 1.606 3.635.962 2.56.962ZM.96 4.8a.32.32 0 0 0-.32.32v9.28c0 .176.144.32.32.32h3.2a.32.32 0 0 0 .32-.32V5.12a.32.32 0 0 0-.32-.32H.96Zm4.8 0a.32.32 0 0 0-.32.32v9.28c0 .176.144.32.32.32h2.88a.32.32 0 0 0 .32-.32V9.44c0-.759.582-1.376 1.325-1.434C10.324 8 10.36 8 10.4 8a1.435 1.435 0 0 1 1.44 1.44v4.96c0 .176.144.32.32.32h2.88a.32.32 0 0 0 .32-.32V8.96c0-2.07-1.111-4.16-3.588-4.16a4.329 4.329 0 0 0-2.492.796V5.12a.32.32 0 0 0-.32-.32h-3.2Z"/></svg>
                                     </AnimatedLink>
                                     <AnimatedLink href={'https://www.youtube.com/@reynosobienesraices4815'} rel='noreferrer' target='_blank' aria-label='Seguinos en YouTube' className='w-12 h-12 rounded-full flex items-center justify-center group hover:bg-white/10 hover:scale-110 bg-white duration-500'>
-                                        <svg className='scale-[175%]' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"><path className='group-hover:fill-white duration-300' fill="#090B19" d="M14.367 4.64c-.127-.704-.735-1.216-1.44-1.376-1.054-.224-3.007-.384-5.12-.384-2.11 0-4.095.16-5.15.384-.705.16-1.313.64-1.44 1.376C1.086 5.44.96 6.56.96 8s.127 2.56.287 3.36c.13.704.737 1.216 1.44 1.376 1.12.224 3.04.384 5.153.384 2.112 0 4.033-.16 5.152-.384.704-.16 1.312-.64 1.44-1.376.128-.8.288-1.953.32-3.36a22.392 22.392 0 0 0-.385-3.36Zm-8.287 5.6V5.76L9.984 8 6.08 10.24Z"/></svg>                    
+                                        <svg className='scale-[175%]' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none"><path className='group-hover:fill-white duration-300' fill="#090B19" d="M14.367 4.64c-.127-.704-.735-1.216-1.44-1.376-1.054-.224-3.007-.384-5.12-.384-2.11 0-4.095.16-5.15.384-.705.16-1.313.64-1.44 1.376C1.086 5.44.96 6.56.96 8s.127 2.56.287 3.36c.13.704.737 1.216 1.44 1.376 1.12.224 3.04.384 5.153.384 2.112 0 4.033-.16 5.152-.384.704-.16 1.312-.64 1.44-1.376.128-.8.288-1.953.32-3.36a22.392 22.392 0 0 0-.385-3.36Zm-8.287 5.6V5.76L9.984 8 6.08 10.24Z"/></svg>
                                     </AnimatedLink>
                                 </div>
                             </div>
@@ -82,6 +81,11 @@ const Footer = ({proyectos, backgroundColor}:FooterProps) => {
             </div>
             <div className='flex pt-8 pb-4 justify-center items-center'>
                 <AnimatedLink className='text-center text-white font-jakarta hover:underline' href={'https://www.thehipposoft.com/'} rel='noreferrer' target='_blank'>Created by <strong>HippoSoft</strong> | All Right Reserved</AnimatedLink>
+            </div>
+            <div className='flex flex-wrap items-center justify-center gap-4 pb-8'>
+                <Link href={'/politica-de-privacidad'} className='text-sm text-white/80 font-jakarta hover:text-white hover:underline'>Politica de Privacidad</Link>
+                <span className='text-white/60'>|</span>
+                <Link href={'/terminos-y-condiciones'} className='text-sm text-white/80 font-jakarta hover:text-white hover:underline'>Terminos y Condiciones</Link>
             </div>
         </div>
     </div>

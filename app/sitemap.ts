@@ -49,5 +49,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date("2026-04-21T16:58:12+00:00"),
       priority: 0.8,
     },
+    {
+      url: `${BASE_URL}/politica-de-privacidad`,
+      lastModified: new Date("2026-05-12T00:00:00+00:00"),
+      priority: 0.4,
+    },
+    {
+      url: `${BASE_URL}/terminos-y-condiciones`,
+      lastModified: new Date("2026-05-12T00:00:00+00:00"),
+      priority: 0.4,
+    },
   ];
 }
