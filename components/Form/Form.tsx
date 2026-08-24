@@ -89,6 +89,7 @@ const MyCustomForm = ({
         formToSend.append('your-name', values.yourName);
         formToSend.append('your-email', values.email);
         formToSend.append('your-message', values.message);
+        formToSend.append('your-phone', values.number.toString());
 
         setIsAPILoading(true);
         axios.post(
