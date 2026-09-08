@@ -7,8 +7,8 @@ export default function NotFoundPage() {
     <div className='h-screen bg-amber-100 flex justify-center items-center relative'>
         <Image src={'/assets/images/not-found.png'} alt='Pagina no encontrada fondo' fill sizes='100vw' />
         <div className='flex flex-col justify-between items-center min-h-[75vh] mt-12'>
-            <div className='flex flex-col gap-6'>
-                <h1>Esta página no se encuentra disponible</h1>
+            <div className='flex flex-col gap-4'>
+                <h1 className='text-4xl'>Esta página no se encuentra disponible</h1>
                 <p className='font-jakarta text-xl text-center relative z-10'>Disculpá las molestias ocasionadas. </p>
             </div>
             <AnimatedLink 

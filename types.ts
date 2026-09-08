@@ -51,6 +51,8 @@ export type Empleado = {
     nombre: string,
     puesto: string,
     foto: string,
+    telefono: string | null,
+    slug: string,
 }
 
 export type Empleados = {

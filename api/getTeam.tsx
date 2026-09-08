@@ -1,3 +1,5 @@
+import slugify from '@/lib/slugify';
+
 export default async function getTeam() {
   try {
     const res = await fetch(
@@ -17,6 +19,8 @@ export default async function getTeam() {
       nombre: empleado.acf?.nombre,
       puesto: empleado.acf?.puesto,
       foto: empleado.acf?.foto?.url,
+      telefono: empleado.acf?.telefono || null,
+      slug: slugify(empleado.acf?.nombre || ''),
     })).reverse();
   } catch (error) {
     console.error('getTeam unexpected error', error);
