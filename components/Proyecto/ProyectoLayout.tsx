@@ -68,7 +68,7 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
                             <p className='relative z-10'>ver en mapa</p>
                         </Link>
                         <Link
-                            href={`https://wa.me/543874063402?text=Hola!%20Estoy%20interesado%20en%20el%20desarrollo:%20${proyecto.desarrollo_alianza?.nombre}`}
+                            href={`https://wa.me/5493873078333?text=Hola!%20Estoy%20interesado%20en%20el%20desarrollo:%20${proyecto.desarrollo_alianza?.nombre}`}
                             rel='noreferrer'
                             target='_blank'
                             className='cursor-pointer flex w-fit gap-4 items-center uppercase group relative tracking-[1px] text-sm rounded-4xl overflow-hidden border-2 border-green-300
@@ -90,7 +90,7 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
             //DESARROLLO PROPIO
             <div className={`relative`}>
                 <Link
-                    href={`https://wa.me/543874063402?text=Hola!%20Estoy%20interesado%20en%20el%20desarrollo:%20${proyecto.nombre}`}
+                    href={`https://wa.me/5493873078333?text=Hola!%20Estoy%20interesado%20en%20el%20desarrollo:%20${proyecto.nombre}`}
                     rel='noreferrer'
                     target='_blank'
                     className='cursor-pointer group fixed bottom-6 right-6 z-40 flex w-fit gap-4 items-center uppercase group tracking-[1px] text-sm rounded-4xl overflow-hidden border-2 border-[#7bf1a844]
