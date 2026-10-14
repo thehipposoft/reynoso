@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import getTeam from "@/api/getTeam";
 import TarjetaDigital from "@/components/TarjetaDigital";
 import { Empleado } from "@/types";
+import { vCardFor } from "@/lib/contact";
+import { createQrSvg } from "@/lib/qr";
 
 type Params = {
   params: Promise<{
@@ -46,5 +48,8 @@ export default async function EquipoSlugPage({ params }: Params) {
     notFound();
   }
 
-  return <TarjetaDigital empleado={empleado} />;
+  // El QR lleva el vCard completo: al escanearlo, la cámara ofrece agregar el contacto directamente.
+  const qrSvg = await createQrSvg(vCardFor(empleado));
+
+  return <TarjetaDigital empleado={empleado} qrSvg={qrSvg} />;
 }

@@ -2,6 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import FlipCard from '@/components/FlipCard';
+import TarjetaDorso from '@/components/TarjetaDorso';
 import { Empleado } from '@/types';
 
 const NEGOCIO = {
@@ -80,9 +82,10 @@ const IconShare = () => (
 
 type TarjetaDigitalProps = {
   empleado: Empleado;
+  qrSvg: string;
 };
 
-const TarjetaDigital = ({ empleado }: TarjetaDigitalProps) => {
+const TarjetaDigital = ({ empleado, qrSvg }: TarjetaDigitalProps) => {
   const telefonoDigits = empleado.telefono ? empleado.telefono.replace(/[^0-9]/g, '') : '';
   const tieneTelefono = telefonoDigits.length > 0;
 
@@ -109,9 +112,10 @@ const TarjetaDigital = ({ empleado }: TarjetaDigitalProps) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#f5f5f4]">
-      <div className="relative">
-        <div className="relative w-full h-[380px] md:h-[360px] overflow-hidden">
+    // Alto fijo al viewport (dvh = descuenta las barras del navegador en mobile): la tarjeta nunca scrollea.
+    <div className="h-dvh overflow-hidden flex flex-col bg-[#f5f5f4]">
+      <div className="relative shrink-0">
+        <div className="relative w-full h-[clamp(200px,38dvh,380px)] md:h-[clamp(200px,36dvh,360px)] overflow-hidden">
           <Image
             src={NEGOCIO.banner}
             alt="Reynoso Bienes Raíces"
@@ -123,56 +127,64 @@ const TarjetaDigital = ({ empleado }: TarjetaDigitalProps) => {
           <div className="absolute inset-0 bg-black/60" />
         </div>
 
-        <div className="relative z-10 -mt-32 mx-auto w-[90vw] max-w-[520px] rounded-3xl bg-primary-green/60 backdrop-blur-sm pt-24 pb-8 px-8 text-center">
-          <div className="absolute left-1/2 -top-20 -translate-x-1/2 w-40 h-40 rounded-full overflow-hidden shadow-lg z-20">
-            <Image
-              src={empleado.foto}
-              alt={`${empleado.nombre} foto de perfil`}
-              fill
-              sizes="160px"
-              className="object-cover object-top"
-            />
-          </div>
+        <FlipCard
+          className="relative z-10 -mt-32 mx-auto w-[90vw] max-w-[520px]"
+          back={<TarjetaDorso empleado={empleado} qrSvg={qrSvg} />}
+          front={
+            <div className="relative h-full rounded-3xl bg-primary-gray/60 backdrop-blur-sm pt-24 pb-8 px-8 short:pt-18 short:pb-5 text-center">
+              <div className="absolute left-1/2 -top-20 -translate-x-1/2 w-40 h-40 short:-top-16 short:w-32 short:h-32 rounded-full overflow-hidden shadow-lg z-20">
+                <Image
+                  src={empleado.foto}
+                  alt={`${empleado.nombre} foto de perfil`}
+                  fill
+                  sizes="160px"
+                  className="object-cover object-top"
+                />
+              </div>
 
-          <h1 style={{ fontFamily: 'Poppins' }} className="text-2xl md:text-4xl text-white">
-            <span className="font-semibold">{primerNombre}</span>{apellido ? ` ${apellido}` : ''}
-          </h1>
-          <div className="w-16 h-[2px] bg-white mx-auto my-4" />
-          <p style={{ fontFamily: 'Poppins' }} className="text-white text-lg">{empleado.puesto}</p>
+              <h1 style={{ fontFamily: 'Poppins' }} className="text-2xl md:text-4xl text-white">
+                <span className="font-semibold">{primerNombre}</span>{apellido ? ` ${apellido}` : ''}
+              </h1>
+              <div className="w-16 h-[2px] bg-white mx-auto my-4 short:my-2.5" />
+              <p style={{ fontFamily: 'Poppins' }} className="text-white text-lg">{empleado.puesto}</p>
 
-          <div className="flex items-center justify-center gap-4 mt-6">
-            <Link
-              href={tieneTelefono ? `https://wa.me/${telefonoDigits}` : '#'}
-              target={tieneTelefono ? '_blank' : undefined}
-              rel={tieneTelefono ? 'noreferrer' : undefined}
-              aria-disabled={!tieneTelefono}
-              title={tieneTelefono ? 'Escribir por WhatsApp' : 'Teléfono próximamente'}
-              className={`lg:w-12 w-16 lg:h-12 h-16 rounded-full bg-white flex items-center justify-center p-3 shadow-md hover:scale-110 duration-300 ${!tieneTelefono ? 'opacity-50 pointer-events-none' : ''}`}
-            >
-              <IconWhatsApp />
-            </Link>
-            <button
-              type="button"
-              onClick={handleShare}
-              title="Compartir tarjeta"
-              className="lg:w-12 w-16 lg:h-12 h-16 rounded-full bg-white flex items-center justify-center p-3 shadow-md hover:scale-110 duration-300 cursor-pointer"
-            >
-              <IconShare />
-            </button>
-            <Link
-              href={tieneTelefono ? `tel:${telefonoDigits}` : '#'}
-              aria-disabled={!tieneTelefono}
-              title={tieneTelefono ? 'Llamar' : 'Teléfono próximamente'}
-              className={`lg:w-12 w-16 lg:h-12 h-16 rounded-full bg-white flex items-center justify-center p-3 shadow-md hover:scale-110 duration-300 ${!tieneTelefono ? 'opacity-50 pointer-events-none' : ''}`}
-            >
-              <IconPhone />
-            </Link>
-          </div>
-        </div>
+              <div className="flex items-center justify-center gap-4 mt-6 short:mt-4">
+                <Link
+                  href={tieneTelefono ? `https://wa.me/${telefonoDigits}` : '#'}
+                  target={tieneTelefono ? '_blank' : undefined}
+                  rel={tieneTelefono ? 'noreferrer' : undefined}
+                  aria-disabled={!tieneTelefono}
+                  title={tieneTelefono ? 'Escribir por WhatsApp' : 'Teléfono próximamente'}
+                  className={`lg:w-12 w-16 lg:h-12 h-16 short:w-13 short:h-13 rounded-full bg-white flex items-center justify-center p-3 shadow-md hover:scale-110 duration-300 ${!tieneTelefono ? 'opacity-50 pointer-events-none' : ''}`}
+                >
+                  <IconWhatsApp />
+                </Link>
+                <button
+                  type="button"
+                  onClick={handleShare}
+                  title="Compartir tarjeta"
+                  className="lg:w-12 w-16 lg:h-12 h-16 short:w-13 short:h-13 rounded-full bg-white flex items-center justify-center p-3 shadow-md hover:scale-110 duration-300 cursor-pointer"
+                >
+                  <IconShare />
+                </button>
+                <Link
+                  href={tieneTelefono ? `tel:${telefonoDigits}` : '#'}
+                  aria-disabled={!tieneTelefono}
+                  title={tieneTelefono ? 'Llamar' : 'Teléfono próximamente'}
+                  className={`lg:w-12 w-16 lg:h-12 h-16 short:w-13 short:h-13 rounded-full bg-white flex items-center justify-center p-3 shadow-md hover:scale-110 duration-300 ${!tieneTelefono ? 'opacity-50 pointer-events-none' : ''}`}
+                >
+                  <IconPhone />
+                </Link>
+              </div>
+            </div>
+          }
+        />
       </div>
 
-      <div className="max-w-[900px] hidden lg:block mx-auto px-8 py-16 text-center">
-        <h2 className="text-2xl md:text-3xl text-title-color font-poppins mb-10">Nuestros Servicios</h2>
+      <div className="flex-1 min-h-0 flex flex-col items-center justify-evenly px-8">
+      {/* Servicios solo en desktop con pantalla alta: en una notebook de 768px de alto no entran sin scroll */}
+      <div className="max-w-[900px] w-full hidden lg:[@media(min-height:960px)]:block mx-auto text-center">
+        <h2 className="text-2xl md:text-3xl text-title-color font-poppins mb-6">Nuestros Servicios</h2>
         <div className="grid grid-cols-3 divide-x divide-title-color/20">
           {SERVICIOS.map((servicio) => (
             <div key={servicio.nombre} className="flex flex-col items-center gap-3 px-2">
@@ -183,10 +195,10 @@ const TarjetaDigital = ({ empleado }: TarjetaDigitalProps) => {
         </div>
       </div>
 
-      <div className="flex flex-col items-center gap-10 py-10 px-8">
-        <Image src={NEGOCIO.logo} alt="Logo Reynoso" width={140} height={140} className="w-36 h-auto object-contain" />
+      <div className="flex flex-col items-center gap-[clamp(12px,3dvh,40px)]">
+        <Image src={NEGOCIO.logo} alt="Logo Reynoso" width={140} height={140} className="w-[clamp(96px,16dvh,144px)] h-auto object-contain" />
 
-        <div className="flex flex-wrap items-center justify-center gap-x-8 lg:gap-y-3 gap-y-5 text-sm text-title-color font-jakarta">
+        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-[clamp(8px,1.5dvh,20px)] lg:gap-y-3 text-sm text-title-color font-jakarta">
           <Link href={NEGOCIO.direccionUrl} target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:underline">
             <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#383838"><path d="M2 20h2m0 0h5m-5 0V7.2002c0-1.12011 0-1.68058.21799-2.1084.19174-.37633.49748-.68207.87381-.87381C5.51962 4 6.08009 4 7.2002 4h1.6c1.1201 0 1.6794 0 2.1072.21799.3763.19174.6831.49748.8748.87381C12 5.5192 12 6.07899 12 7.19691v2.80329M9 20h11M9 20v-5.6318c0-.5254 0-.7882.063-1.0332.05583-.2172.14773-.4232.27196-.6098.14009-.2105.33617-.3868.72654-.7375l2.3016-2.06773c.7547-.67805 1.1324-1.01733 1.5594-1.14604.3764-.11348.7782-.11348 1.1546 0 .4274.12882.8056.46827 1.5616 1.14746l2.3 2.06631c.3908.3511.5858.5269.726.7375.1242.1866.216.3926.2718.6098.063.245.0635.5078.0635 1.0332V20m0 0h2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
             {NEGOCIO.direccion}
@@ -202,9 +214,9 @@ const TarjetaDigital = ({ empleado }: TarjetaDigitalProps) => {
         </div>
       </div>
 
-      <div className="max-w-[900px] mt-20 hidden mx-auto border-t border-primary-green" />
+      </div>
 
-      <div className="flex justify-center items-center py-6 mt-20">
+      <div className="shrink-0 flex justify-center items-center py-4 short:py-2.5">
         <Link href="https://www.thehipposoft.com/" target="_blank" rel="noreferrer" className="text-center text-title-color font-jakarta hover:underline">
           Created by <strong>Hipposoft</strong> | All Right Reserved
         </Link>

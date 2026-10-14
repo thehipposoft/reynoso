@@ -1,6 +1,9 @@
 @import "tailwindcss"; 
 @import "variables";
 
+// Teléfonos bajos (iPhone SE/8): la tarjeta digital se compacta para no tener scroll.
+@custom-variant short (@media (max-height: 700px));
+
 @theme {
   --color-primary-green: #33847D;
   --color-green-title: #038C7F;

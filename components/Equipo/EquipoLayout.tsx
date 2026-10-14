@@ -52,11 +52,11 @@ export default function EquipoLayout ({empleados}:Empleados) {
 
   return (
     <div ref={container} className='relative' id='nosotros'>
-      <Image 
-        className='absolute hidden md:block right-0 -top-[10%] -z-10 w-auto min-w-[300px]' 
-        src={"/assets/images/dots.png"} 
-        alt='Nuestro Equipo imagen decorativa' 
-        width={300} 
+      <Image
+        className='absolute hidden md:block right-0 -top-[10%] -z-10 w-auto min-w-[300px]'
+        src={"/assets/images/dots.png"}
+        alt='Nuestro Equipo imagen decorativa'
+        width={300}
         height={400}
        />
       <div className='flex relative flex-col lg:max-w-[1300px] w-[90vw] lg:w-auto mx-auto mb-16'>
@@ -84,11 +84,11 @@ export default function EquipoLayout ({empleados}:Empleados) {
           <EquipoGrid empleados={empleados} />
           <EquipoCarrousel empleados={empleados} />
         </div>
-        <Image 
-          className='absolute hidden md:block left-0 -bottom-12 -z-10 w-auto' 
+        <Image
+          className='absolute hidden md:block left-0 -bottom-12 -z-10 w-auto'
           src={"/assets/images/dots.png"}
-          alt='Nuestro Equipo imagen decorativa' 
-          width={140} 
+          alt='Nuestro Equipo imagen decorativa'
+          width={140}
           height={140}
         />
       </div>
