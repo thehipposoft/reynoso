@@ -85,6 +85,8 @@ type TarjetaDigitalProps = {
   qrSvg: string;
 };
 
+const chipClasses = 'flex min-w-0 items-center gap-2 rounded-full border border-title-color/25 bg-white px-4 py-2 font-medium shadow-sm duration-300 hover:border-title-color hover:bg-title-color hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-title-color';
+
 const TarjetaDigital = ({ empleado, qrSvg }: TarjetaDigitalProps) => {
   const telefonoDigits = empleado.telefono ? empleado.telefono.replace(/[^0-9]/g, '') : '';
   const tieneTelefono = telefonoDigits.length > 0;
@@ -181,7 +183,7 @@ const TarjetaDigital = ({ empleado, qrSvg }: TarjetaDigitalProps) => {
         />
       </div>
 
-      <div className="flex-1 min-h-0 flex flex-col items-center justify-evenly px-8">
+      <div className="flex-1 min-h-0 flex flex-col items-center justify-start pt-[clamp(16px,2dvh,48px)] lg:justify-evenly lg:pt-0 px-8">
       {/* Servicios solo en desktop con pantalla alta: en una notebook de 768px de alto no entran sin scroll */}
       <div className="max-w-[900px] w-full hidden lg:[@media(min-height:960px)]:block mx-auto text-center">
         <h2 className="text-2xl md:text-3xl text-title-color font-poppins mb-6">Nuestros Servicios</h2>
@@ -195,21 +197,24 @@ const TarjetaDigital = ({ empleado, qrSvg }: TarjetaDigitalProps) => {
         </div>
       </div>
 
-      <div className="flex flex-col items-center gap-[clamp(12px,3dvh,40px)]">
+      <div className="w-full flex flex-col items-center gap-[clamp(12px,2.5dvh,32px)]">
         <Image src={NEGOCIO.logo} alt="Logo Reynoso" width={140} height={140} className="w-[clamp(96px,16dvh,144px)] h-auto object-contain" />
 
-        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-[clamp(8px,1.5dvh,20px)] lg:gap-y-3 text-sm text-title-color font-jakarta">
-          <Link href={NEGOCIO.direccionUrl} target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:underline">
-            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#383838"><path d="M2 20h2m0 0h5m-5 0V7.2002c0-1.12011 0-1.68058.21799-2.1084.19174-.37633.49748-.68207.87381-.87381C5.51962 4 6.08009 4 7.2002 4h1.6c1.1201 0 1.6794 0 2.1072.21799.3763.19174.6831.49748.8748.87381C12 5.5192 12 6.07899 12 7.19691v2.80329M9 20h11M9 20v-5.6318c0-.5254 0-.7882.063-1.0332.05583-.2172.14773-.4232.27196-.6098.14009-.2105.33617-.3868.72654-.7375l2.3016-2.06773c.7547-.67805 1.1324-1.01733 1.5594-1.14604.3764-.11348.7782-.11348 1.1546 0 .4274.12882.8056.46827 1.5616 1.14746l2.3 2.06631c.3908.3511.5858.5269.726.7375.1242.1866.216.3926.2718.6098.063.245.0635.5078.0635 1.0332V20m0 0h2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-            {NEGOCIO.direccion}
+        <div className="grid w-full max-w-[300px] grid-cols-1 gap-[clamp(10px,1.8dvh,18px)] lg:max-w-[860px] lg:grid-cols-3 lg:gap-4 text-sm text-title-color font-jakarta">
+          <Link href={NEGOCIO.direccionUrl} target="_blank" rel="noreferrer" className={chipClasses}>
+            <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor"><path d="M2 20h2m0 0h5m-5 0V7.2002c0-1.12011 0-1.68058.21799-2.1084.19174-.37633.49748-.68207.87381-.87381C5.51962 4 6.08009 4 7.2002 4h1.6c1.1201 0 1.6794 0 2.1072.21799.3763.19174.6831.49748.8748.87381C12 5.5192 12 6.07899 12 7.19691v2.80329M9 20h11M9 20v-5.6318c0-.5254 0-.7882.063-1.0332.05583-.2172.14773-.4232.27196-.6098.14009-.2105.33617-.3868.72654-.7375l2.3016-2.06773c.7547-.67805 1.1324-1.01733 1.5594-1.14604.3764-.11348.7782-.11348 1.1546 0 .4274.12882.8056.46827 1.5616 1.14746l2.3 2.06631c.3908.3511.5858.5269.726.7375.1242.1866.216.3926.2718.6098.063.245.0635.5078.0635 1.0332V20m0 0h2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            <span className="flex-1 truncate text-left">{NEGOCIO.direccion}</span>
+            <svg className="w-4 h-4 shrink-0 opacity-60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" aria-hidden="true"><path d="m9 6 6 6-6 6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </Link>
-          <Link href={NEGOCIO.sitioWebUrl} target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:underline">
-            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#383838"><circle cx="12" cy="12" r="9" strokeWidth="1.5" /><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z" strokeWidth="1.5" /></svg>
-            {NEGOCIO.sitioWebLabel}
+          <Link href={NEGOCIO.sitioWebUrl} target="_blank" rel="noreferrer" className={chipClasses}>
+            <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor"><circle cx="12" cy="12" r="9" strokeWidth="1.5" /><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z" strokeWidth="1.5" /></svg>
+            <span className="flex-1 truncate text-left">{NEGOCIO.sitioWebLabel}</span>
+            <svg className="w-4 h-4 shrink-0 opacity-60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" aria-hidden="true"><path d="m9 6 6 6-6 6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </Link>
-          <Link href={NEGOCIO.instagramUrl} target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:underline">
-            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#383838"><rect x="3" y="3" width="18" height="18" rx="5" strokeWidth="1.5" /><circle cx="12" cy="12" r="4" strokeWidth="1.5" /><circle cx="17.5" cy="6.5" r="1" fill="#383838" /></svg>
-            {NEGOCIO.instagramLabel}
+          <Link href={NEGOCIO.instagramUrl} target="_blank" rel="noreferrer" className={chipClasses}>
+            <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="5" strokeWidth="1.5" /><circle cx="12" cy="12" r="4" strokeWidth="1.5" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" /></svg>
+            <span className="flex-1 truncate text-left">{NEGOCIO.instagramLabel}</span>
+            <svg className="w-4 h-4 shrink-0 opacity-60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" aria-hidden="true"><path d="m9 6 6 6-6 6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </Link>
         </div>
       </div>
@@ -217,8 +222,8 @@ const TarjetaDigital = ({ empleado, qrSvg }: TarjetaDigitalProps) => {
       </div>
 
       <div className="shrink-0 flex justify-center items-center py-4 short:py-2.5">
-        <Link href="https://www.thehipposoft.com/" target="_blank" rel="noreferrer" className="text-center text-title-color font-jakarta hover:underline">
-          Created by <strong>Hipposoft</strong> | All Right Reserved
+        <Link href="https://www.thehipposoft.com/" target="_blank" rel="noreferrer" className="text-center text-title-color font-jakarta hover:underline text-xs">
+          Created by <strong>Hippo</strong>
         </Link>
       </div>
     </div>
