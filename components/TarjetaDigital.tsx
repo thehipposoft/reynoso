@@ -131,7 +131,7 @@ const TarjetaDigital = ({ empleado, qrSvg }: TarjetaDigitalProps) => {
           className="relative z-10 -mt-32 mx-auto w-[90vw] max-w-[520px]"
           back={<TarjetaDorso empleado={empleado} qrSvg={qrSvg} />}
           front={
-            <div className="relative h-full rounded-3xl bg-primary-gray/60 backdrop-blur-sm pt-24 pb-8 px-8 short:pt-18 short:pb-5 text-center">
+            <div className="relative h-full rounded-3xl bg-primary-gray/80 backdrop-blur-sm pt-24 pb-8 px-8 short:pt-18 short:pb-5 text-center">
               <div className="absolute left-1/2 -top-20 -translate-x-1/2 w-40 h-40 short:-top-16 short:w-32 short:h-32 rounded-full overflow-hidden shadow-lg z-20">
                 <Image
                   src={empleado.foto}
