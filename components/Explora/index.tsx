@@ -25,7 +25,6 @@ const Explora = ({desarrollos, agotado}:ExploraTypes) => {
       return 0;
     });
 
-  console.log(cleanDesarrollos)
 
   useGSAP(() => {
         gsap.from(".box", {

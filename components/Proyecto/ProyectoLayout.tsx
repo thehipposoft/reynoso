@@ -11,9 +11,6 @@ type ProyectoLayoutProps = {
 
 
 const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
-
-
-    console.log(proyecto)
   return (
     <div className='relative'>
         {

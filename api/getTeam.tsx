@@ -1,5 +1,7 @@
 import slugify from '@/lib/slugify';
 
+const TITULO_PREFIJO = /^(lic|dr|dra|ing|arq|mg|prof|cdor|cdora|lcda|lcdo)\.?\s+/i;
+
 export default async function getTeam() {
   try {
     const res = await fetch(
@@ -20,7 +22,7 @@ export default async function getTeam() {
       puesto: empleado.acf?.puesto,
       foto: empleado.acf?.foto?.url,
       telefono: empleado.acf?.telefono || null,
-      slug: slugify(empleado.acf?.nombre || ''),
+      slug: slugify((empleado.acf?.nombre || '').replace(TITULO_PREFIJO, '')),
     })).reverse();
   } catch (error) {
     console.error('getTeam unexpected error', error);
