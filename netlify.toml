@@ -1,0 +1,22 @@
+# Build settings stay in the Netlify UI / auto-detected Next.js adapter; this file only adds headers.
+#
+# /_next/static/* already ships with "public, max-age=31536000, immutable" from Next.js (hashed filenames).
+# Files under /public keep their names when replaced, so they get 7 days instead of "immutable":
+# a 1-year immutable header would keep serving the old file if one is ever overwritten.
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/favicon.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# Transformed images (Netlify Image CDN). URLs include source + width + quality,
+# but a WordPress image replaced under the same URL would be stale for up to 7 days.
+[[headers]]
+  for = "/_next/image"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"

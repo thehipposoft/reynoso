@@ -21,6 +21,9 @@ export const metadata: Metadata = {
     url: "https://reynosobienesraices.com.ar/",
     type: "website",
   },
+  alternates: {
+    canonical: "https://reynosobienesraices.com.ar",
+  },
 };
 
 export default async function Home() {

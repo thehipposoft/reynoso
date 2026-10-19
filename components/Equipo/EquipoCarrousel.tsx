@@ -1,6 +1,7 @@
 'use client'
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Empleados, Empleado } from "@/types";
+import { useRevealedSlides } from "@/lib/useRevealedSlides";
 
 export default function EquipoCarrousel({empleados}:Empleados) {
   const totalSlides = empleados.length;
@@ -8,6 +9,26 @@ export default function EquipoCarrousel({empleados}:Empleados) {
 
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
+
+  // Las fotos son background-image, que el navegador descarga apenas se renderizan
+  // (sin lazy loading nativo). Se asignan recién cuando el carrusel se acerca al
+  // viewport, y solo para el slide actual y el siguiente.
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [nearViewport, setNearViewport] = useState(false);
+  const revealedSlides = useRevealedSlides(totalSlides ? [current, Math.min(current + 1, totalSlides - 1)] : []);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setNearViewport(true);
+        observer.disconnect();
+      }
+    }, { rootMargin: "600px 0px" });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const nextSlide = () => {
     if (current < totalSlides - 1) setCurrent((prev) => prev + 1);
@@ -45,7 +66,7 @@ export default function EquipoCarrousel({empleados}:Empleados) {
   };
 
   return (
-    <div className="lg:hidden w-[90vw] overflow-hidden my-8 mx-auto relative">
+    <div ref={containerRef} className="lg:hidden w-[90vw] overflow-hidden my-8 mx-auto relative">
       <div
         className="flex transition-transform duration-500 ease-in-out"
         style={{ transform: `translateX(-${current * 90}vw)` }}
@@ -57,7 +78,7 @@ export default function EquipoCarrousel({empleados}:Empleados) {
           <div
             key={index}
             className="min-w-[90vw] h-[430px] md:h-[525px] bg-black/30 relative flex items-end justify-end pb-16 pr-8"
-            style={{ backgroundImage: `url(${miembro.foto})`, backgroundSize: 'cover' }}
+            style={nearViewport && revealedSlides.has(index) ? { backgroundImage: `url(${miembro.foto})`, backgroundSize: 'cover' } : undefined}
           >
             <div className="flex flex-col items-end bg-black/20 backdrop-blur-sm rounded-lg p-2">
               <h4 className="font-bold text-2xl text-white max-w-60 text-end leading-7">

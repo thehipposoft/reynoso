@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Proyecto } from '@/types';
 import AnimatedLink from '../commons/AnimatedLink';
+import { useRevealedSlides } from '@/lib/useRevealedSlides';
 
 type BannerCarrouselTypes = {
   proyectos: Proyecto[],
@@ -12,6 +13,12 @@ const BannerCarrousel = ({proyectos}:BannerCarrouselTypes) => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
   const activeBanners = proyectos.filter((item) => item.imagen_banner);
+
+  // Solo se montan la imagen actual y la siguiente (precargada para el fundido);
+  // antes se descargaban todas las del carrusel al cargar la página.
+  const revealedSlides = useRevealedSlides(
+    activeBanners.length ? [currentSlideIndex, (currentSlideIndex + 1) % activeBanners.length] : []
+  );
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -52,15 +59,19 @@ const BannerCarrousel = ({proyectos}:BannerCarrouselTypes) => {
             opacity: index === currentSlideIndex ? 1 : 0,
           }}
         >
-          <Image
-            src={val.imagen_banner}
-            alt={`Imagen de fondo ${index + 1}`}
-            fill
-            style={{ objectFit: 'cover' }}
-            priority={index === 0}
-            quality={75}
-            sizes="(min-width: 1024px) 50vw, 100vw"
-          />
+          {revealedSlides.has(index) && (
+            <Image
+              src={val.imagen_banner}
+              alt={`Imagen de fondo ${index + 1}`}
+              fill
+              style={{ objectFit: 'cover' }}
+              priority={index === 0}
+              quality={75}
+              // En mobile la imagen queda detrás de un overlay al 50% con blur:
+              // 70vw (~828px en un teléfono 3x) no se distingue de 1200px.
+              sizes="(min-width: 1024px) 50vw, 70vw"
+            />
+          )}
         </div>
       ))}
 

@@ -15,6 +15,9 @@ const Banner = ({
 
   const [isFirstHovered, setIsFirstHovered] = useState(false);
   const [isSecondHovered, setIsSecondHovered] = useState(false);
+  // La imagen de fondo de la mitad derecha solo aparece en hover: se monta recién
+  // cuando el puntero entra al banner, así en mobile no se descarga si nadie la ve.
+  const [hoverImageMounted, setHoverImageMounted] = useState(false);
 
   function handleFirstMouseEnter() {
     setIsFirstHovered(true);
@@ -33,15 +36,16 @@ const Banner = ({
   }
 
   return (
-    <div className='flex lg:flex-row flex-col h-screen bg-black/60 relative'>
-        <Image 
-          src={'/assets/images/banner/familia.webp'} 
-          alt='Descubri oportunidades inmobiliarias imagen' 
-          sizes={'100vw'}
-          quality={100}
-          fill 
-          className={`${isSecondHovered ? 'opacity-100 z-10' : '-z-10'} duration-700 object-cover z-10 opacity-0`}
-        />
+    <div onPointerEnter={() => setHoverImageMounted(true)} className='flex lg:flex-row flex-col h-screen bg-black/60 relative'>
+        {hoverImageMounted && (
+          <Image 
+            src={'/assets/images/banner/familia.webp'} 
+            alt='Descubri oportunidades inmobiliarias imagen' 
+            sizes={'100vw'}
+            fill 
+            className={`${isSecondHovered ? 'opacity-100 z-10' : '-z-10'} duration-700 object-cover z-10 opacity-0`}
+          />
+        )}
         <div onMouseEnter={handleFirstMouseEnter} onMouseLeave={handleFirstMouseLeave} className={`${isSecondHovered ? 'opacity-0 z-10' : 'opacity-100 -z-10'} h-[50vh] lg:h-auto lg:w-1/2 flex justify-center items-center relative z-10 duration-700`}>
           <BannerCarrousel proyectos={proyectos} />
         </div>

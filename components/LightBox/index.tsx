@@ -120,6 +120,7 @@ export default function LightboxModal({ images, currentIndex, onClose, setIndex 
             key={displayedIndex} // fuerza re-render controlado
             src={images[displayedIndex].url}
             alt={images[displayedIndex].alt}
+            sizes="85vw"
             className="max-w-full max-h-full object-contain rounded-md shadow-2xl"
             draggable={false}
             onLoad={() => setLoaded(true)}

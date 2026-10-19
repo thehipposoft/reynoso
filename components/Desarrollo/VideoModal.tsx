@@ -17,14 +17,17 @@ const VideoModal = ({openModal, videoUrl, toggleModal}:VideoModal) => {
         >
           ✕
         </button>
-        <video
-            src={videoUrl}
-            className='w-[80vw] h-[80vh]'
-            autoPlay
-            controls
-            muted
-            playsInline
-        />
+        {/* Se monta solo al abrir el modal: si no, el navegador empieza a bajar el video igual */}
+        {openModal && (
+          <video
+              src={videoUrl}
+              className='w-[80vw] h-[80vh]'
+              autoPlay
+              controls
+              muted
+              playsInline
+          />
+        )}
     </div>
   )
 }

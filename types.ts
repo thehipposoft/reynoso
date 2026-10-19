@@ -5,6 +5,11 @@ export type ServiciosType = {
     },
 }
 
+export type GaleriaImagen = {
+    url: string,
+    alt: string,
+}
+
 type Alianza = {
     nombre: string,
     portada: any,
@@ -13,7 +18,7 @@ type Alianza = {
     servicios: ServiciosType[],
     ubicacion: string,
     ubicacion_mapa: string,
-    galeria: []
+    galeria: GaleriaImagen[]
 }
 
 export type Proyecto = {
@@ -28,7 +33,7 @@ export type Proyecto = {
     color_secundario: string,
     texto_blanco: string[],
     servicios: ServiciosType[],
-    galeria: [],
+    galeria: GaleriaImagen[],
     imagen_deco: string,
     brochure: string,
     subtitulo_bicolor_primera: string,

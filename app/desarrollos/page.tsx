@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     url: "https://reynosobienesraices.com.ar/desarrollos",
     type: "website",
   },
+  alternates: {
+    canonical: "https://reynosobienesraices.com.ar/desarrollos",
+  },
 };
 
 export default async function DesarrollosPage() {

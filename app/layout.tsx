@@ -69,9 +69,6 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  alternates: {
-    canonical: "https://reynosobienesraices.com.ar",
-  },
 };
 
 export default function RootLayout({

@@ -14,7 +14,7 @@ const NEGOCIO = {
   sitioWebUrl: 'https://reynosobienesraices.com.ar',
   instagramLabel: 'reynosobienesraicessalta',
   instagramUrl: 'https://www.instagram.com/reynosobienesraicessalta',
-  banner: '/assets/images/cards-background.png',
+  banner: '/assets/images/cards-background.webp',
   logo: '/assets/images/logo/reynoso-logo.webp',
 };
 
@@ -123,7 +123,8 @@ const TarjetaDigital = ({ empleado, qrSvg }: TarjetaDigitalProps) => {
             alt="Reynoso Bienes Raíces"
             fill
             priority
-            sizes="100vw"
+            // Queda detrás de un overlay negro al 60%: en mobile 70vw (~828px en 3x) no se distingue.
+            sizes="(min-width: 768px) 100vw, 70vw"
             className="object-cover object-center"
           />
           <div className="absolute inset-0 bg-black/60" />

@@ -98,7 +98,7 @@ const ProyectosList = ({proyectos}:ProyectosListProps) => {
                                 </div>
                         }
                     <div className='w-1/2 relative'>
-                        <Image sizes='400px' src={`${proyecto.clasificacion === "Desarrollo ALIANZA" ? proyecto.desarrollo_alianza?.portada.url : proyecto.imagen_banner}`} fill className='object-cover rounded-tr-xl rounded-br-xl' alt={`Imagen de Proyecto: ${proyecto.nombre}`} />
+                        <Image sizes='(min-width: 1024px) 300px, 45vw' src={`${proyecto.clasificacion === "Desarrollo ALIANZA" ? proyecto.desarrollo_alianza?.portada.url : proyecto.imagen_banner}`} fill className='object-cover rounded-tr-xl rounded-br-xl' alt={`Imagen de Proyecto: ${proyecto.nombre}`} />
                     </div>
                 </div>
             ))

@@ -31,6 +31,9 @@ export async function generateMetadata({ params }: Params, parent: ResolvingMeta
       openGraph: {
         images: [empleado.foto, ...previousImages],
       },
+      alternates: {
+        canonical: `https://reynosobienesraices.com.ar/miembros/${empleado.slug}`,
+      },
     };
   }
 

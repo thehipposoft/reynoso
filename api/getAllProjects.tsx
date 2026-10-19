@@ -1,3 +1,15 @@
+// ACF devuelve cada imagen con todos sus tamaños y metadatos (~1 KB por imagen).
+// Este resultado se serializa en el HTML/RSC de cada página, así que se reduce a lo que se renderiza.
+const toImage = (image: any) => ({ url: image?.url, alt: image?.alt ?? '' });
+const toGallery = (galeria: any) => (Array.isArray(galeria) ? galeria.map(toImage) : []);
+const toServicios = (servicios: any) =>
+  Array.isArray(servicios)
+    ? servicios.map((item: any) => ({
+        nombre_servicio: item?.nombre_servicio,
+        icono_servicio: { url: item?.icono_servicio?.url },
+      }))
+    : [];
+
 export default async function getAllProjects() {
   try {
     const res = await fetch(
@@ -25,8 +37,8 @@ export default async function getAllProjects() {
       color_primario: proyecto.acf?.primera_seccion?.color_primario,
       color_secundario: proyecto.acf?.primera_seccion?.color_secundario,
       texto_blanco: proyecto.acf?.primera_seccion?.texto_blanco,
-      servicios: proyecto.acf?.primera_seccion?.servicios,
-      galeria: proyecto.acf?.segunda_seccion?.galeria,
+      servicios: toServicios(proyecto.acf?.primera_seccion?.servicios),
+      galeria: toGallery(proyecto.acf?.segunda_seccion?.galeria),
       imagen_deco: proyecto.acf?.segunda_seccion?.imagen_deco?.url,
       brochure: proyecto.acf?.segunda_seccion?.brochure,
       subtitulo_bicolor_primera: proyecto.acf?.segunda_seccion?.subtitulo_bicolor_primera,
@@ -38,7 +50,11 @@ export default async function getAllProjects() {
       estado: proyecto.acf?.estado,
       fecha_de_entrega: proyecto.acf?.fecha_de_entrega,
       clasificacion: proyecto.acf?.clasificacion,
-      desarrollo_alianza: proyecto.acf?.desarrollo_alianza,
+      desarrollo_alianza: proyecto.acf?.desarrollo_alianza && {
+        ...proyecto.acf.desarrollo_alianza,
+        portada: toImage(proyecto.acf.desarrollo_alianza.portada),
+        galeria: toGallery(proyecto.acf.desarrollo_alianza.galeria),
+      },
     })).reverse();
   } catch (error) {
     console.error('getAllProjects unexpected error', error);

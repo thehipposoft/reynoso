@@ -7,6 +7,7 @@ import 'swiper/css/thumbs';
 import { EffectFade, Navigation, Pagination } from 'swiper/modules';
 import LightboxModal from '../LightBox';
 import Image from 'next/image';
+import { useRevealedSwiperSlides } from './useRevealedSwiperSlides';
 
 type ImageType = {
     url: string,
@@ -21,10 +22,12 @@ export default function Galeria({images}:GaleriaTypes) {
 
     const [lightboxOpen, setLightboxOpen] = useState(false);
     const [lightboxIndex, setLightboxIndex] = useState(0);
+    const { revealed, swiperHandlers } = useRevealedSwiperSlides(images.length);
 
   return (
     <>
       <Swiper
+        {...swiperHandlers}
         spaceBetween={30}
         speed={500}
         loop={true}
@@ -49,12 +52,15 @@ export default function Galeria({images}:GaleriaTypes) {
                         }}
                     >
                         <div className='absolute left-0 top-0 w-full h-full bg-black/10 z-10 group-hover:bg-black/5 duration-300' />
-                        <Image 
-                            src={item.url} 
-                            alt={item.alt} 
-                            fill
-                            className='object-cover object-center group-hover:scale-105 duration-500'
-                        />
+                        {revealed.has(index) && (
+                            <Image
+                                src={item.url}
+                                alt={item.alt}
+                                fill
+                                sizes='(min-width: 768px) 1200px, 95vw'
+                                className='object-cover object-center group-hover:scale-105 duration-500'
+                            />
+                        )}
                     </div>
                 </SwiperSlide>
             ))

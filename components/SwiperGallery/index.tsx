@@ -8,6 +8,7 @@ import { Pagination } from 'swiper/modules';
 import { Navigation } from 'swiper/modules';
 import Image from 'next/image';
 import LightboxModal from '../LightBox';
+import { useRevealedSwiperSlides } from './useRevealedSwiperSlides';
 
 type ImageType = {
     url: string,
@@ -22,10 +23,12 @@ export default function SwiperGallery({images}:GallerySliderProps) {
 
     const [lightboxOpen, setLightboxOpen] = useState(false);
     const [lightboxIndex, setLightboxIndex] = useState(0);
+    const { revealed, swiperHandlers } = useRevealedSwiperSlides(images.length);
 
   return (
     <>
       <Swiper
+        {...swiperHandlers}
         slidesPerView={1}
         spaceBetween={30}
         loop={true}
@@ -59,14 +62,15 @@ export default function SwiperGallery({images}:GallerySliderProps) {
                         }}
                     >
                         <div className='absolute left-0 top-0 w-full h-full bg-black/10 group-hover:opacity-0 duration-500 z-10' />
-                        <Image 
-                            src={slide.url} 
-                            alt={slide.alt} 
-                            fill
-                            sizes='(max-width: 600) 90vw, 400px'
-                            className='group-hover:scale-110 duration-500 object-cover'
-
-                        />
+                        {revealed.has(index) && (
+                            <Image
+                                src={slide.url}
+                                alt={slide.alt}
+                                fill
+                                sizes='(min-width: 1024px) 400px, (min-width: 768px) 45vw, 95vw'
+                                className='group-hover:scale-110 duration-500 object-cover'
+                            />
+                        )}
                     </div>
                 </SwiperSlide>
             ))

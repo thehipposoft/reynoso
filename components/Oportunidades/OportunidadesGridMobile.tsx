@@ -1,6 +1,7 @@
 'use client'
 import Image from "next/image";
 import { useState, useRef } from "react";
+import { useRevealedSlides } from "@/lib/useRevealedSlides";
 // Asumiendo que EQUIPO y su estructura ya están definidos y exportados en './constants'
 const DATA = [
     {
@@ -38,6 +39,8 @@ export default function OportunidadesGridMobile() {
 
     const totalSlides = DATA.length;
   const [current, setCurrent] = useState(0);
+  // Solo se montan las imágenes del slide actual y el siguiente.
+  const revealedSlides = useRevealedSlides([current, Math.min(current + 1, totalSlides - 1)]);
 
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
@@ -93,7 +96,7 @@ export default function OportunidadesGridMobile() {
                 <div
                     className="min-w-[90vw] h-[430px] bg-black/30 relative flex items-end justify-end pb-16 pr-8"
                 >
-                    <Image src={item.imagen} alt={item.alt} fill className="object-cover" />
+                    {revealedSlides.has(index) && <Image src={item.imagen} alt={item.alt} fill sizes="90vw" className="object-cover" />}
                     <div className='absolute h-full w-full left-0 top-0 bg-overlay-bg opacity-45 z-10' />
                     <div className="flex flex-col items-end relative z-20">
                     <h3 className="font-bold text-5xl text-white text-right font-jakarta">
