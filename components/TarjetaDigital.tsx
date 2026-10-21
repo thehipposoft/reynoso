@@ -117,7 +117,7 @@ const TarjetaDigital = ({ empleado, qrSvg }: TarjetaDigitalProps) => {
     // Alto fijo al viewport (dvh = descuenta las barras del navegador en mobile): la tarjeta nunca scrollea.
     <div className="h-dvh overflow-hidden flex flex-col bg-[#f5f5f4]">
       <div className="relative shrink-0">
-        <div className="relative w-full h-[clamp(200px,38dvh,380px)] md:h-[clamp(200px,36dvh,360px)] overflow-hidden">
+        <div className="relative w-full h-[clamp(200px,32dvh,380px)] md:h-[clamp(200px,36dvh,360px)] overflow-hidden">
           <Image
             src={NEGOCIO.banner}
             alt="Reynoso Bienes Raíces"
