@@ -14,6 +14,16 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      // Slug anterior (nombre mal escrito); puede estar grabado en tarjetas NFC/QR ya impresas.
+      {
+        source: '/miembros/denise-de-oliveira',
+        destination: '/miembros/denise-de-olivera',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
