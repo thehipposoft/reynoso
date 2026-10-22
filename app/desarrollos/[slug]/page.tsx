@@ -90,7 +90,7 @@ export default async function ProjectPage({ params }: Params) {
         project.clasificacion === "Desarrollo ALIANZA" ?
         <></>
         :
-        <ContactDesarrollos proyecto={project} />
+        <></>
       }
       <Footer proyectos={proyectos} backgroundColor={project?.color_primario} />
     </div>
