@@ -46,7 +46,7 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
                     </div>
                 </div>
                 <div className=''>
-                    <div className='flex flex-col md:max-w-[1200px] max-w-[85vw] mx-auto  py-12 gap-6'>
+                    <div className='flex flex-col md:max-w-[1250px] max-w-[85vw] mx-auto  py-12 gap-6'>
                         <h1 className='text-6xl pb-8 font-jakarta font-bold'>{proyecto.desarrollo_alianza?.nombre}</h1>
                         <div className='mb-8'>
                             <SwiperGallery images={proyecto.desarrollo_alianza?.galeria} />
@@ -189,7 +189,7 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
                     </div>
                 </div>
                 <div className='max-w-[1450px] relative mx-auto flex flex-col my-8 overflow-hidden gap-8'>
-                    {proyecto.imagen_deco ? <Image src={proyecto.imagen_deco} alt='Imagen Deco' width={490} height={220} className='absolute -right-40 w-auto max-w-[490px]' /> : <></>}
+                    {proyecto.imagen_deco ? <Image src={proyecto.imagen_deco} alt='Imagen Deco' width={490} height={220} className='absolute -right-40 w-auto max-w-[490px] opacity-70' /> : <></>}
                     <div className='flex flex-col justify-between relative w-[90vw] lg:w-[1250px] pt-12 mx-auto'>
                         <h4 className='font-jakarta text-4xl md:text-5xl -tracking-wider font-bold' style={{color: `${proyecto.color_primario}`}}>{proyecto.subtitulo_bicolor_primera}</h4>
                         <h4 className='font-jakarta text-4xl md:text-5xl -tracking-wider font-bold pl-12' style={{color: `${proyecto.color_secundario}`}}>{proyecto.subtitulo_bicolor_segunda}</h4>
@@ -234,14 +234,17 @@ const ProyectoLayout = ({proyecto}:ProyectoLayoutProps) => {
                 <div className='h-screen hidden bg-black/30 justify-center items-center '>
                     <h2>Video</h2>
                 </div>
-                <div className='flex lg:flex-row flex-col justify-center lg:gap-40 md:gap-12 lg:items-end md:items-center md:max-w-[1250px] w-[90vw] py-8 mx-auto md:min-h-screen'>
-                    <Image 
-                        src={proyecto.mapa_imagen} 
-                        alt='Mapa del desarrollo' 
-                        width={525} 
-                        height={800}
-                        className='max-h-[650px] lg:min-h-[500px] object-cover my-auto w-auto md:min-w-[525px]'
-                    />
+                <div className={`flex lg:flex-row flex-col lg:gap-40 md:gap-12 lg:items-end md:items-center md:max-w-[1250px] w-[90vw] py-8 mx-auto md:min-h-screen ${proyecto.mapa_imagen ? 'justify-center' : 'justify-start'}`}>
+                    {
+                        proyecto.mapa_imagen &&
+                        <Image
+                            src={proyecto.mapa_imagen}
+                            alt='Mapa del desarrollo'
+                            width={525}
+                            height={800}
+                            className='max-h-[650px] lg:min-h-[500px] object-cover my-auto w-auto md:min-w-[525px]'
+                        />
+                    }
                     <div className='md:w-[450px] flex flex-col justify-between gap-20'>
                         <Image 
                             src={`${proyecto.imagen_decorativa_dos ? proyecto.imagen_decorativa_dos : proyecto.imagen_deco}`} 
