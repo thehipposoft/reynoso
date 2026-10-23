@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
     viewTransition: true,
   },
     images: {
+    // Next 16 solo permite los valores de "quality" declarados acá (default: [75]).
+    qualities: [75, 90],
     remotePatterns: [
       {
         protocol: 'https',
