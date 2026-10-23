@@ -5,6 +5,7 @@ import Link from 'next/link';
 import FlipCard from '@/components/FlipCard';
 import TarjetaDorso from '@/components/TarjetaDorso';
 import { Empleado } from '@/types';
+import { trackEvent } from '@/lib/analytics';
 
 const NEGOCIO = {
   nombre: 'Reynoso Bienes Raíces',
@@ -22,7 +23,7 @@ const SERVICIOS = [
   {
     nombre: 'Venta de lotes',
     icono: (
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#383838" strokeWidth="1.5">
+      <svg viewBox="0 0 24 24" width="24" height="24" className="block h-full w-full" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#383838" strokeWidth="1.5">
         <path d="M4 21V8l3-4h10l3 4v13" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M4 8h16M9 21v-6h6v6" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M8 12h.01M12 12h.01M16 12h.01" strokeLinecap="round" strokeLinejoin="round" />
@@ -32,7 +33,7 @@ const SERVICIOS = [
   {
     nombre: 'Asesoramiento Personalizado',
     icono: (
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#383838" strokeWidth="1.5">
+      <svg viewBox="0 0 24 24" width="24" height="24" className="block h-full w-full" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#383838" strokeWidth="1.5">
         <path d="M4 13a8 8 0 0 1 16 0" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M20 13v4a2 2 0 0 1-2 2h-1v-6h3ZM4 13v4a2 2 0 0 0 2 2h1v-6H4Z" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M15 19a2 2 0 0 1-2 2h-2" strokeLinecap="round" strokeLinejoin="round" />
@@ -42,7 +43,7 @@ const SERVICIOS = [
   {
     nombre: 'Desarrollos Inmobiliarios',
     icono: (
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#383838" strokeWidth="1.5">
+      <svg viewBox="0 0 24 24" width="24" height="24" className="block h-full w-full" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#383838" strokeWidth="1.5">
         <path d="M3 21h18M5 21V8.5L12 3l7 5.5V21" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M9 21v-6h6v6" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
@@ -51,7 +52,7 @@ const SERVICIOS = [
 ];
 
 const IconWhatsApp = () => (
-  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 24 24" width="24" height="24" className="block h-full w-full" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.2h.01c5.46 0 9.9-4.45 9.9-9.91a9.86 9.86 0 0 0-2.9-7 9.86 9.86 0 0 0-7.01-2.91Zm0 18.15a8.23 8.23 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.32a8.24 8.24 0 0 1-1.27-4.4c0-4.55 3.7-8.25 8.26-8.25 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.84c0 4.55-3.7 8.26-8.25 8.26Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.63.8-.77.97-.14.16-.28.18-.53.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.23-1.46-1.37-1.7-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.24-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.23.24-.85.83-.85 2.03s.87 2.36 1 2.52c.12.16 1.71 2.6 4.14 3.65.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.15.2-.57.2-1.05.14-1.15-.06-.1-.22-.16-.47-.28Z"
       fill="#33847D"
@@ -60,7 +61,7 @@ const IconWhatsApp = () => (
 );
 
 const IconPhone = () => (
-  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 24 24" width="24" height="24" className="block h-full w-full" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"
       stroke="#33847D"
@@ -72,7 +73,7 @@ const IconPhone = () => (
 );
 
 const IconShare = () => (
-  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 24 24" width="24" height="24" className="block h-full w-full" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="6" cy="12" r="2.2" stroke="#33847D" strokeWidth="1.5" />
     <circle cx="17" cy="6" r="2.2" stroke="#33847D" strokeWidth="1.5" />
     <circle cx="17" cy="18" r="2.2" stroke="#33847D" strokeWidth="1.5" />
@@ -94,6 +95,9 @@ const TarjetaDigital = ({ empleado, qrSvg }: TarjetaDigitalProps) => {
   const [primerNombre, ...resto] = empleado.nombre.split(' ');
   const apellido = resto.join(' ');
 
+  const track = (evento: string, params: Record<string, string> = {}) =>
+    trackEvent(evento, { miembro: empleado.slug, ...params });
+
   const handleShare = async () => {
     const shareData = {
       title: `${empleado.nombre} | Reynoso Bienes Raíces`,
@@ -103,8 +107,10 @@ const TarjetaDigital = ({ empleado, qrSvg }: TarjetaDigitalProps) => {
 
     try {
       if (typeof navigator !== 'undefined' && navigator.share) {
+        track('share', { method: 'native' });
         await navigator.share(shareData);
       } else if (typeof navigator !== 'undefined' && navigator.clipboard) {
+        track('share', { method: 'clipboard' });
         await navigator.clipboard.writeText(shareData.url);
         alert('Enlace copiado al portapapeles');
       }
@@ -133,6 +139,7 @@ const TarjetaDigital = ({ empleado, qrSvg }: TarjetaDigitalProps) => {
         <FlipCard
           className="relative z-10 -mt-32 mx-auto w-[90vw] max-w-[520px]"
           back={<TarjetaDorso empleado={empleado} qrSvg={qrSvg} />}
+          onFlip={(flipped) => flipped && track('ver_qr')}
           front={
             <div className="relative h-full rounded-3xl bg-primary-gray/80 backdrop-blur-sm pt-24 pb-8 px-8 short:pt-18 short:pb-5 text-center">
               <div className="absolute left-1/2 -top-20 -translate-x-1/2 w-40 h-40 short:-top-16 short:w-32 short:h-32 rounded-full overflow-hidden shadow-lg z-20">
@@ -158,6 +165,7 @@ const TarjetaDigital = ({ empleado, qrSvg }: TarjetaDigitalProps) => {
                   rel={tieneTelefono ? 'noreferrer' : undefined}
                   aria-disabled={!tieneTelefono}
                   title={tieneTelefono ? 'Escribir por WhatsApp' : 'Teléfono próximamente'}
+                  onClick={() => track('contacto_whatsapp')}
                   className={`lg:w-12 w-16 lg:h-12 h-16 short:w-13 short:h-13 rounded-full bg-white flex items-center justify-center p-3 shadow-md hover:scale-110 duration-300 ${!tieneTelefono ? 'opacity-50 pointer-events-none' : ''}`}
                 >
                   <IconWhatsApp />
@@ -174,6 +182,7 @@ const TarjetaDigital = ({ empleado, qrSvg }: TarjetaDigitalProps) => {
                   href={tieneTelefono ? `tel:${telefonoDigits}` : '#'}
                   aria-disabled={!tieneTelefono}
                   title={tieneTelefono ? 'Llamar' : 'Teléfono próximamente'}
+                  onClick={() => track('contacto_llamada')}
                   className={`lg:w-12 w-16 lg:h-12 h-16 short:w-13 short:h-13 rounded-full bg-white flex items-center justify-center p-3 shadow-md hover:scale-110 duration-300 ${!tieneTelefono ? 'opacity-50 pointer-events-none' : ''}`}
                 >
                   <IconPhone />
@@ -202,17 +211,17 @@ const TarjetaDigital = ({ empleado, qrSvg }: TarjetaDigitalProps) => {
         <Image src={NEGOCIO.logo} alt="Logo Reynoso" width={140} height={140} className="w-[clamp(96px,16dvh,144px)] h-auto object-contain" />
 
         <div className="grid w-full max-w-[300px] grid-cols-1 gap-[clamp(10px,1.8dvh,18px)] lg:max-w-[860px] lg:grid-cols-3 lg:gap-4 text-sm text-title-color font-jakarta">
-          <Link href={NEGOCIO.direccionUrl} target="_blank" rel="noreferrer" className={chipClasses}>
+          <Link href={NEGOCIO.direccionUrl} target="_blank" rel="noreferrer" className={chipClasses} onClick={() => track('click_direccion')}>
             <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor"><path d="M2 20h2m0 0h5m-5 0V7.2002c0-1.12011 0-1.68058.21799-2.1084.19174-.37633.49748-.68207.87381-.87381C5.51962 4 6.08009 4 7.2002 4h1.6c1.1201 0 1.6794 0 2.1072.21799.3763.19174.6831.49748.8748.87381C12 5.5192 12 6.07899 12 7.19691v2.80329M9 20h11M9 20v-5.6318c0-.5254 0-.7882.063-1.0332.05583-.2172.14773-.4232.27196-.6098.14009-.2105.33617-.3868.72654-.7375l2.3016-2.06773c.7547-.67805 1.1324-1.01733 1.5594-1.14604.3764-.11348.7782-.11348 1.1546 0 .4274.12882.8056.46827 1.5616 1.14746l2.3 2.06631c.3908.3511.5858.5269.726.7375.1242.1866.216.3926.2718.6098.063.245.0635.5078.0635 1.0332V20m0 0h2" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
             <span className="flex-1 truncate text-left">{NEGOCIO.direccion}</span>
             <svg className="w-4 h-4 shrink-0 opacity-60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" aria-hidden="true"><path d="m9 6 6 6-6 6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </Link>
-          <Link href={NEGOCIO.sitioWebUrl} target="_blank" rel="noreferrer" className={chipClasses}>
+          <Link href={NEGOCIO.sitioWebUrl} target="_blank" rel="noreferrer" className={chipClasses} onClick={() => track('click_sitio_web')}>
             <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor"><circle cx="12" cy="12" r="9" strokeWidth="1.5" /><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z" strokeWidth="1.5" /></svg>
             <span className="flex-1 truncate text-left">{NEGOCIO.sitioWebLabel}</span>
             <svg className="w-4 h-4 shrink-0 opacity-60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" aria-hidden="true"><path d="m9 6 6 6-6 6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
           </Link>
-          <Link href={NEGOCIO.instagramUrl} target="_blank" rel="noreferrer" className={chipClasses}>
+          <Link href={NEGOCIO.instagramUrl} target="_blank" rel="noreferrer" className={chipClasses} onClick={() => track('click_instagram')}>
             <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="5" strokeWidth="1.5" /><circle cx="12" cy="12" r="4" strokeWidth="1.5" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" /></svg>
             <span className="flex-1 truncate text-left">{NEGOCIO.instagramLabel}</span>
             <svg className="w-4 h-4 shrink-0 opacity-60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" aria-hidden="true"><path d="m9 6 6 6-6 6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>

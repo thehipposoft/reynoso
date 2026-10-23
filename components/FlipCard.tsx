@@ -21,6 +21,7 @@ type FlipCardProps = {
   front: ReactNode;
   back: ReactNode;
   className?: string;
+  onFlip?: (flipped: boolean) => void;
 };
 
 type Arrastre = {
@@ -32,13 +33,26 @@ type Arrastre = {
   activo: boolean;
 };
 
-const FlipCard = ({ front, back, className = '' }: FlipCardProps) => {
+const FlipCard = ({ front, back, className = '', onFlip }: FlipCardProps) => {
   const rootRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
   const rotacion = useRef(0);
   const arrastre = useRef<Arrastre | null>(null);
   const suprimirClick = useRef(false);
   const [flipped, setFlipped] = useState(false);
+  const onFlipRef = useRef(onFlip);
+  const flippedPrevio = useRef(false);
+
+  useEffect(() => {
+    onFlipRef.current = onFlip;
+  });
+
+  // Solo cambios reales de cara: un arrastre corto que vuelve a la misma cara no cuenta.
+  useEffect(() => {
+    if (flipped === flippedPrevio.current) return;
+    flippedPrevio.current = flipped;
+    onFlipRef.current?.(flipped);
+  }, [flipped]);
 
   const duracion = () =>
     typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 0.7;
