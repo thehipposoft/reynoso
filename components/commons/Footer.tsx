@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import AnimatedLink from './AnimatedLink'
 import Link from 'next/link'
+import { WHATSAPP_URL } from '@/lib/contact';
 import { Proyecto } from '@/types'
 
 interface FooterProps {
@@ -54,7 +55,7 @@ const Footer = ({proyectos, backgroundColor}:FooterProps) => {
                             }
                         </ul>
                         <Link href={'/#nosotros'} className='text-white h-fit text-lg font-bold font-jakarta hover:underline'>Nosotros</Link>
-                        <Link href={'/#contacto'} className='text-white h-fit text-lg font-bold font-jakarta hover:underline'>Contacto</Link>
+                        <Link href={WHATSAPP_URL} target='_blank' rel='noreferrer' className='text-white h-fit text-lg font-bold font-jakarta hover:underline'>Contacto</Link>
                         <Link href={'/#explora'} className='text-white h-fit text-lg font-bold font-jakarta hover:underline'>Explora</Link>
                         <div className='flex flex-col justify-between'>
                             <Link href={'https://propiedades.reynosobienesraices.com.ar/listado-de-propiedades/'} rel='noreferrer' target='_blank' className='text-white text-lg font-bold font-jakarta hover:underline'>Venta</Link>

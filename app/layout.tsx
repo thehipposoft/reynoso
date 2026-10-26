@@ -4,6 +4,7 @@ import { Plus_Jakarta_Sans, Inter, Kadwa, Poppins } from 'next/font/google';
 import SmoothScroll from "@/components/commons/SmoothScroll";
 import Transitions from "@/components/commons/Transitions";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import ContactTracking from "@/components/ContactTracking";
 import OrganizationSchema from "@/components/SEO/OrganizationSchema";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -86,6 +87,7 @@ export default function RootLayout({
         <SmoothScroll>
           <Transitions />
           <GoogleAnalytics />
+          <ContactTracking />
           {children}
         </SmoothScroll>
       </body>

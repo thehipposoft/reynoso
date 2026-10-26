@@ -1,13 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { WHATSAPP_URL } from '@/lib/contact';
 
 const WhatsApp = () => {
 
     return(
         <div className='fixed cursor-pointer bottom-[30px] right-[30px] z-40 hover:scale-115 transition-all duration-500'>
            <Link
-                href={'https://wa.me/5493873078333?text=Hola!%20Vengo%20desde%20su%20página%20web'}
+                href={WHATSAPP_URL}
                 target={'_blank'}
                 rel="noreferrer"
             >

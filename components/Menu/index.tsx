@@ -4,6 +4,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import AnimatedLink from '../commons/AnimatedLink';
 import Link from 'next/link';
+import { WHATSAPP_URL } from '@/lib/contact';
 
 type MenuTypes = {
     hiddeOnDesktop?: boolean;
@@ -86,9 +87,9 @@ const Menu = ({hiddeOnDesktop}:MenuTypes) => {
                     </AnimatedLink> 
                 </div>
                 <div onClick={openMenuFunc} className='group relative overflow-hidden border-b border-white hover:border-green-title pb-2 w-full cursor-pointer '>
-                    <AnimatedLink href={'/#contacto'} className='group-hover:text-green-title hover:border-green-title duration-500 w-full flex text-left menu_item uppercase text-[26px] text-white font-medium font-jakarta'>
+                    <a href={WHATSAPP_URL} target='_blank' rel='noreferrer' className='group-hover:text-green-title hover:border-green-title duration-500 w-full flex text-left menu_item uppercase text-[26px] text-white font-medium font-jakarta'>
                         Contacto
-                    </AnimatedLink> 
+                    </a>
                 </div>
             </ul>
         </nav>

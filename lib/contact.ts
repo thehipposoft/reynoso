@@ -3,6 +3,13 @@ import { Empleado } from '@/types';
 export const SITE_URL = 'https://reynosobienesraices.com.ar';
 export const EMPRESA = 'Reynoso Bienes Raíces';
 
+export const WHATSAPP_URL = 'https://wa.me/5493873078333?text=Hola!%20Vengo%20desde%20su%20p%C3%A1gina%20web';
+
+// Miembros que muestran link a su tarjeta digital (/miembros/[slug]) en "Nuestro Equipo" de la home.
+// Por id de WordPress (no por slug/nombre) para que no se rompa si corrigen el nombre.
+// 26792: Gonzalo A. Reynoso · 26795: Virginia Luque · 27449: Ivana Veliz
+export const IDS_CON_TARJETA_EN_HOME = [26792, 26795, 27449];
+
 const escapar = (valor: string) =>
   valor.replace(/\\/g, '\\\\').replace(/\n/g, '\\n').replace(/([,;])/g, '\\$1');
 

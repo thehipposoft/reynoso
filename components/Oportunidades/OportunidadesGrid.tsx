@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { WHATSAPP_URL } from '@/lib/contact'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
@@ -138,7 +139,9 @@ const OportunidadesGrid = () => {
             </div>
             <div className='bg-[#F5F5F5] row-span-4 flex justify-center items-center py-8 md:py-0 relative'>
                 <Link 
-                    href={'/#contacto'}
+                    href={WHATSAPP_URL}
+                    target='_blank'
+                    rel='noreferrer'
                     className=' group relative text-white bg-primary-green rounded-lg overflow-hidden
                     py-3 px-8 before:w-full before:h-full hover:before:translate-y-0 before:duration-500 before:ease-out before:absolute before:bg-[#333333] before:left-0 before:top-0 before:rounded-lg before:translate-y-full'>
                     
@@ -203,7 +206,9 @@ export default OportunidadesGrid
         </div>
         <div className='bg-grey-bg row-span-4 flex justify-center items-center py-8 md:py-0'>
             <Link 
-                href={'/#contacto'}
+                href={WHATSAPP_URL}
+                target='_blank'
+                rel='noreferrer'
                 className='uppercase group relative tracking-[3px] text-xs text-white font-thin bg-primary-green rounded-4xl overflow-hidden
                 py-5 px-10  before:w-full before:h-full hover:before:translate-y-0 before:duration-300 before:ease-out before:absolute before:bg-[#333333] before:left-0 before:top-0 before:rounded-4xl before:translate-y-full'>
                 

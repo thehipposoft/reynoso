@@ -1,6 +1,5 @@
 import getAllProjects from "@/api/getAllProjects";
 import Banner from "@/components/Banner/Banner";
-import Contact from "@/components/Contact";
 import Desarrollo from "@/components/Desarrollo";
 import Equipo from "@/components/Equipo";
 import Explora from "@/components/Explora";

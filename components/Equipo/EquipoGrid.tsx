@@ -1,11 +1,13 @@
 import Image from 'next/image'
+import AnimatedLink from '../commons/AnimatedLink'
 import { Empleados } from '@/types'
+import { IDS_CON_TARJETA_EN_HOME } from '@/lib/contact'
 
 const EquipoGrid = ({ empleados }: Empleados) => {
   return (
     <div className='hidden lg:grid md:grid-cols-3 grid-cols-1 grid-rows-2 mt-8 w-[90vw] md:w-full mx-auto md:mx-0 gap-2'>
       {empleados.map((empleado, index) => {
-        const column = index % 3
+        const conTarjeta = IDS_CON_TARJETA_EN_HOME.includes(empleado.id)
 
         return (
             <div
@@ -38,7 +40,19 @@ const EquipoGrid = ({ empleados }: Empleados) => {
                     <span className='uppercase tracking-[4px] font-light text-sm text-white'>
                         {empleado.puesto}
                     </span>
+                    {conTarjeta && (
+                        <span className='mt-1 text-xs text-white underline underline-offset-4 group-hover:no-underline'>
+                            Ver tarjeta digital →
+                        </span>
+                    )}
                 </div>
+                {conTarjeta && (
+                    <AnimatedLink
+                        href={`/miembros/${empleado.slug}`}
+                        aria-label={`Ver tarjeta digital de ${empleado.nombre}`}
+                        className='absolute inset-0 z-20'
+                    >{null}</AnimatedLink>
+                )}
             </div>
         )
       })}

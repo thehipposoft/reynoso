@@ -2,6 +2,8 @@
 import { useState, useRef, useEffect } from "react";
 import { Empleados, Empleado } from "@/types";
 import { useRevealedSlides } from "@/lib/useRevealedSlides";
+import AnimatedLink from "../commons/AnimatedLink";
+import { IDS_CON_TARJETA_EN_HOME } from "@/lib/contact";
 
 export default function EquipoCarrousel({empleados}:Empleados) {
   const totalSlides = empleados.length;
@@ -87,7 +89,19 @@ export default function EquipoCarrousel({empleados}:Empleados) {
               <span className="uppercase tracking-[4px] font-light text-sm text-white">
                 {miembro.puesto}
               </span>
+              {IDS_CON_TARJETA_EN_HOME.includes(miembro.id) && (
+                <span className="mt-1 text-xs text-white underline underline-offset-4">
+                  Ver tarjeta digital →
+                </span>
+              )}
             </div>
+            {IDS_CON_TARJETA_EN_HOME.includes(miembro.id) && (
+              <AnimatedLink
+                href={`/miembros/${miembro.slug}`}
+                aria-label={`Ver tarjeta digital de ${miembro.nombre}`}
+                className="absolute inset-0 z-20"
+              >{null}</AnimatedLink>
+            )}
           </div>
         ))}
       </div>

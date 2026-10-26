@@ -11,14 +11,18 @@ type Props = {
   className?: string
   rel?: string,
   target?: string,
-  style?: CSSProperties
+  style?: CSSProperties,
+  'aria-label'?: string
 }
 
-export default function AnimatedLink({ href, children, className, rel, target, style }: Props) {
+export default function AnimatedLink({ href, children, className, rel, target, style, 'aria-label': ariaLabel }: Props) {
   const router = useRouter()
   const pathname = usePathname()
 
   const handleClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // Cmd/Ctrl/Shift/clic del medio: dejar que el navegador abra en otra pestaña/ventana
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return
+
     e.preventDefault()
 
     // Si el href tiene hash (ej: /#contacto)
@@ -62,6 +66,7 @@ export default function AnimatedLink({ href, children, className, rel, target, s
       rel={rel}
       target={target}
       style={style}
+      aria-label={ariaLabel}
     >
       {children}
     </a>
