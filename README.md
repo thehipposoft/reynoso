@@ -34,3 +34,18 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Módulo de propiedades (`/propiedades`)
+
+Listado y ficha de propiedades leídos desde Odoo vía XML-RPC (`lib/odoo/`).
+Las imágenes se sirven desde `/api/property-cover/[id]` y
+`/api/property-image/[lineId]` con marca de agua (`sharp`).
+
+Variables de entorno requeridas (en `.env.local` y en Netlify; nunca commitear valores):
+
+| Variable | Descripción |
+|---|---|
+| `ODOO_URL` | URL base de la instancia de Odoo (https) |
+| `ODOO_DB` | Nombre de la base de datos de Odoo |
+| `ODOO_USERNAME` | Usuario de la integración |
+| `ODOO_API_KEY` | API key de ese usuario |

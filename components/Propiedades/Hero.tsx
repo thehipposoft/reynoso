@@ -1,0 +1,57 @@
+"use client";
+
+import Image from "next/image";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { BusquedaAvanzada } from "./BusquedaAvanzada";
+import type { CategoriaPropiedad } from "@/lib/odoo/categories";
+
+const HERO_IMAGE = "/assets/images/hero.jpg";
+
+interface Props {
+  categorias: CategoriaPropiedad[];
+}
+
+export const Hero = ({ categorias }: Props) => {
+  const scope = useRef<HTMLElement>(null);
+
+  useGSAP(() => {
+    gsap
+      .timeline({ defaults: { ease: "power2.out" } })
+      .fromTo(".hero-title", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.9 })
+      .fromTo(".hero-form", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7 }, "-=0.4");
+  }, { scope });
+
+  return (
+    <section
+      ref={scope}
+      className="relative flex min-h-screen flex-col items-center justify-center px-6 pb-12 pt-24"
+    >
+      {/* Fondo */}
+      <div className="absolute inset-0 z-0 overflow-hidden bg-primary-green">
+        <Image
+          src={HERO_IMAGE}
+          alt="Propiedades en el norte argentino"
+          fill
+          priority
+          className="object-cover brightness-45"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-surface/5 to-surface" />
+      </div>
+
+      {/* Título */}
+      <div className="hero-title relative z-10 mb-4 max-w-4xl text-center">
+        <h4 className="font-headline text-5xl font-extrabold leading-tight tracking-tight text-white drop-shadow-lg md:text-7xl">
+          Encontrá tu hogar ideal
+        </h4>
+      </div>
+
+      {/* Formulario */}
+      <div className="hero-form relative z-10 flex w-full justify-center">
+        <BusquedaAvanzada categorias={categorias} />
+      </div>
+    </section>
+  );
+};

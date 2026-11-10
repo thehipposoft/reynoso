@@ -58,7 +58,7 @@ const Footer = ({proyectos, backgroundColor}:FooterProps) => {
                         <Link href={WHATSAPP_URL} target='_blank' rel='noreferrer' className='text-white h-fit text-lg font-bold font-jakarta hover:underline'>Contacto</Link>
                         <Link href={'/#explora'} className='text-white h-fit text-lg font-bold font-jakarta hover:underline'>Explora</Link>
                         <div className='flex flex-col justify-between'>
-                            <Link href={'https://propiedades.reynosobienesraices.com.ar/listado-de-propiedades/'} rel='noreferrer' target='_blank' className='text-white text-lg font-bold font-jakarta hover:underline'>Venta</Link>
+                            <Link href={'/propiedades'} className='text-white text-lg font-bold font-jakarta hover:underline'>Propiedades</Link>
                             <div className='flex flex-col pt-4'>
                                 <p className='text-white text-lg font-bold font-jakarta '>Seguinos!</p>
                                 <div className='flex lg:gap-2 gap-4 pt-4'>

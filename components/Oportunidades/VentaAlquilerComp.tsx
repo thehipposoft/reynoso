@@ -69,8 +69,7 @@ const VentaAlquilerComp = () => {
                             <h4 className='font-bold text-xl'>¿Buscás alquilar?</h4>
                             <p className='lg:w-52 font-light text-justify'>Te ayudamos a encontrar la propiedad que se ajuste a tus necesidades, con el respaldo y la claridad que nos caracteriza</p>
                             <Link 
-                                href={'https://propiedades.reynosobienesraices.com.ar/listado-de-propiedades/'}
-                                rel='noreferrer' target='_blank'
+                                href={'/propiedades/busqueda?operacion=alquiler'}
                                 className='group cursor-pointer relative z-40 text-white w-fit bg-primary-green rounded-xl overflow-hidden
                                 py-2 px-7 before:w-full before:h-full hover:before:translate-y-0 before:duration-500 before:ease-out before:absolute before:bg-[#333333] before:left-0 before:top-0 before:rounded-xl before:translate-y-full'>
                                 
@@ -82,8 +81,7 @@ const VentaAlquilerComp = () => {
                             <h4 className='font-bold text-xl'>Venta de propiedades</h4>
                             <p className='lg:w-52 font-light'>Sabemos que la venta de propiedades no es tarea sencilla.<br />Tasamos tu propiedad y la vendemos al mejor precio del mercado.</p>
                             <Link 
-                                href={'https://propiedades.reynosobienesraices.com.ar/listado-de-propiedades/'}
-                                rel='noreferrer' target='_blank'
+                                href={'/propiedades/busqueda?operacion=venta'}
                                 className='group cursor-pointer relative z-40 text-white w-fit bg-primary-green rounded-xl overflow-hidden
                                 py-2 px-7 before:w-full before:h-full hover:before:translate-y-0 before:duration-500 before:ease-out before:absolute before:bg-[#333333] before:left-0 before:top-0 before:rounded-xl before:translate-y-full'>
                                 

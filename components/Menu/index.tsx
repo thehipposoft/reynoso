@@ -71,15 +71,10 @@ const Menu = ({hiddeOnDesktop}:MenuTypes) => {
                         Desarrollos
                     </AnimatedLink> 
                 </div>
-                <div className='group relative overflow-hidden border-b border-white hover:border-green-title pb-2 w-full cursor-pointer '>
-                    <Link href={'https://propiedades.reynosobienesraices.com.ar/listado-de-propiedades/'} rel='noreferrer' target='_blank'  className='group-hover:text-green-title hover:border-title-color duration-500 w-full flex text-left menu_item uppercase text-[26px] text-white font-medium font-jakarta'>
-                        Alquileres
-                    </Link> 
-                </div>
-                <div className='group relative overflow-hidden border-b border-white hover:border-green-title pb-2 w-full cursor-pointer '>
-                    <Link href={'https://propiedades.reynosobienesraices.com.ar/listado-de-propiedades/'} rel='noreferrer' target='_blank' className='group-hover:text-green-title hover:border-title-color duration-500 w-full flex text-left menu_item uppercase text-[26px] text-white font-medium font-jakarta'>
-                        Ventas
-                    </Link> 
+                <div onClick={openMenuFunc} className='group relative overflow-hidden border-b border-white hover:border-green-title pb-2 w-full cursor-pointer '>
+                    <AnimatedLink href={'/propiedades'} className='group-hover:text-green-title hover:border-title-color duration-500 w-full flex text-left menu_item uppercase text-[26px] text-white font-medium font-jakarta'>
+                        Propiedades
+                    </AnimatedLink> 
                 </div>
                 <div onClick={openMenuFunc} className='group relative overflow-hidden border-b border-white hover:border-green-title pb-2 w-full cursor-pointer '>
                     <AnimatedLink href={'/#nosotros'} className='group-hover:text-green-title hover:border-green-title duration-500 w-full flex text-left menu_item uppercase text-[26px] text-white font-medium font-jakarta'>
