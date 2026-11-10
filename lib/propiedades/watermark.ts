@@ -1,11 +1,15 @@
 import 'server-only';
-import sharp from 'sharp';
+import type { Sharp } from 'sharp';
 import { LOGO_BASE64 } from './watermark-logo';
 
 const logoBuffer = Buffer.from(LOGO_BASE64, 'base64');
 
 export async function applyWatermark(imageBuffer: Buffer): Promise<Buffer> {
-  const base = sharp(imageBuffer);
+  // Import dinámico: si quedara estático, Next lo evalúa en "Collecting page
+  // data" al buildear la ruta (aunque nunca se ejecute en build), y un sharp
+  // nativo no cargable ahí tira abajo todo el build en vez de fallar solo en runtime.
+  const { default: sharp } = await import('sharp');
+  const base: Sharp = sharp(imageBuffer);
   const { width = 1200, height = 800 } = await base.metadata();
 
   const targetLogoWidth = Math.round(width * 0.25);

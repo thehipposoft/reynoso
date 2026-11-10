@@ -1,40 +1,70 @@
 import 'server-only';
 import xmlrpc from 'xmlrpc';
 
-const ODOO_URL = process.env.ODOO_URL!;
-const ODOO_DB = process.env.ODOO_DB!;
-const ODOO_USERNAME = process.env.ODOO_USERNAME!;
-const ODOO_API_KEY = process.env.ODOO_API_KEY!;
+// Lazy a propósito: nada de esto corre al importar el módulo. Next evalúa los
+// módulos de una ruta en "Collecting page data" durante el build; si una env
+// var faltara ahí, un `new URL(...)` a nivel de módulo tiraría abajo todo el
+// build en vez de fallar solo cuando efectivamente se llama a odooExecute.
+function requiredEnv(name: string): string {
+  const value = process.env[name];
+  if (!value) {
+    throw new Error(`Falta la variable de entorno ${name} (configuración de Odoo)`);
+  }
+  return value;
+}
 
-const { hostname } = new URL(ODOO_URL);
+type OdooClients = {
+  commonClient: xmlrpc.Client;
+  objectClient: xmlrpc.Client;
+  db: string;
+  username: string;
+  apiKey: string;
+};
 
-const commonClient = xmlrpc.createSecureClient({
-  host: hostname,
-  port: 443,
-  path: '/xmlrpc/2/common',
-});
+let clients: OdooClients | null = null;
 
-const objectClient = xmlrpc.createSecureClient({
-  host: hostname,
-  port: 443,
-  path: '/xmlrpc/2/object',
-});
+function getClients(): OdooClients {
+  if (clients) return clients;
+
+  const ODOO_URL = requiredEnv('ODOO_URL');
+  const db = requiredEnv('ODOO_DB');
+  const username = requiredEnv('ODOO_USERNAME');
+  const apiKey = requiredEnv('ODOO_API_KEY');
+
+  const { hostname } = new URL(ODOO_URL);
+
+  clients = {
+    commonClient: xmlrpc.createSecureClient({
+      host: hostname,
+      port: 443,
+      path: '/xmlrpc/2/common',
+    }),
+    objectClient: xmlrpc.createSecureClient({
+      host: hostname,
+      port: 443,
+      path: '/xmlrpc/2/object',
+    }),
+    db,
+    username,
+    apiKey,
+  };
+
+  return clients;
+}
 
 let cachedUid: number | null = null;
 
 function authenticate(): Promise<number> {
   if (cachedUid) return Promise.resolve(cachedUid);
 
+  const { commonClient, db, username, apiKey } = getClients();
+
   return new Promise((resolve, reject) => {
-    commonClient.methodCall(
-      'authenticate',
-      [ODOO_DB, ODOO_USERNAME, ODOO_API_KEY, {}],
-      (err, uid) => {
-        if (err) return reject(err);
-        cachedUid = uid as number;
-        resolve(uid as number);
-      }
-    );
+    commonClient.methodCall('authenticate', [db, username, apiKey, {}], (err, uid) => {
+      if (err) return reject(err);
+      cachedUid = uid as number;
+      resolve(uid as number);
+    });
   });
 }
 
@@ -45,11 +75,12 @@ export async function odooExecute<T = any>(
   kwargs: Record<string, any> = {}
 ): Promise<T> {
   const uid = await authenticate();
+  const { objectClient, db, apiKey } = getClients();
 
   return new Promise((resolve, reject) => {
     objectClient.methodCall(
       'execute_kw',
-      [ODOO_DB, uid, ODOO_API_KEY, model, method, args, kwargs],
+      [db, uid, apiKey, model, method, args, kwargs],
       (err, result) => (err ? reject(err) : resolve(result as T))
     );
   });

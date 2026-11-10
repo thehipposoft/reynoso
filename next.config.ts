@@ -1,9 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    viewTransition: true,
-  },
     images: {
     // Next 16 solo permite los valores de "quality" declarados acá (default: [75]).
     qualities: [75, 90],
