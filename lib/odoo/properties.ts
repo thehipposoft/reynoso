@@ -100,6 +100,17 @@ function mapMany2OneId(value: unknown): number | null {
   return Array.isArray(value) ? (value[0] as number) : null;
 }
 
+// Todo lo que sigue a "Nota interna" / "Notas internas" (cualquier
+// mayúscula/minúscula) es para uso interno y no debe publicarse.
+const NOTA_INTERNA_REGEX = /notas?\s+internas?/i;
+
+function limpiarDescripcion(texto: string | null | undefined): string | null {
+  if (!texto) return null;
+  const match = NOTA_INTERNA_REGEX.exec(texto);
+  const publica = (match ? texto.slice(0, match.index) : texto).trim();
+  return publica || null;
+}
+
 function mapPropiedad(raw: any, fotos: OdooPropiedadFoto[]): OdooPropiedad {
   const responsableId = mapMany2OneId(raw[ODOO_FIELDS.RESPONSABLE]);
 
@@ -119,7 +130,7 @@ function mapPropiedad(raw: any, fotos: OdooPropiedadFoto[]): OdooPropiedad {
     banos: firstNonEmpty(raw[ODOO_FIELDS.BANOS], raw[ODOO_FIELDS.BANOS_ALT]),
     superficieCubierta: raw[ODOO_FIELDS.SUPERFICIE_CUBIERTA] || null,
     superficieTotal: raw[ODOO_FIELDS.SUPERFICIE_TOTAL] || null,
-    descripcion: raw[ODOO_FIELDS.DESCRIPCION] || null,
+    descripcion: limpiarDescripcion(raw[ODOO_FIELDS.DESCRIPCION]),
     fotoPortada: raw[ODOO_FIELDS.FOTO_PORTADA] ? `/api/property-cover/${raw.id}` : null,
     fotos,
     responsableNombre: mapMany2One(raw[ODOO_FIELDS.RESPONSABLE]),
