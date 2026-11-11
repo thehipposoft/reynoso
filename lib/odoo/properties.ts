@@ -9,9 +9,10 @@ import {
   FILTRAR_SOLO_PUBLICADAS,
   type TipoOperacion,
 } from './models';
-import slugify from '@/lib/slugify';
-import { getAgentePorOdooId } from '@/lib/propiedades/agentes';
-import type { OdooPropiedad, OdooPropiedadFoto } from '@/lib/odoo/types';
+import { slugify } from '@/src/lib/slug';
+import { getAgentePorOdooId } from '@/src/lib/agentes';
+import { WATERMARK_QUERY } from '@/src/lib/watermark-version';
+import type { OdooPropiedad, OdooPropiedadFoto } from '@/src/types/OdooPropiedad';
 
 const PROPERTY_FIELDS = [
   'id',
@@ -35,17 +36,6 @@ const PROPERTY_FIELDS = [
   ODOO_FIELDS.RESPONSABLE,
   ODOO_FIELDS.ZONA,
 ];
-
-// "Estado de Publicación" en blanco (campo sin cargar todavía en el catálogo existente)
-// cuenta como publicable, igual que "Publicado" explícito. Solo se ocultan los estados
-// de trabajo intermedio (Borrador, En Proceso, Listo para revisión).
-function domainPublicadaOEnBlanco(): unknown[] {
-  return [
-    '|',
-    [ODOO_FIELDS.ESTADO_PUBLICACION, '=', ESTADO_PUBLICADO],
-    [ODOO_FIELDS.ESTADO_PUBLICACION, '=', false],
-  ];
-}
 
 export interface PropertyFilters {
   operacion?: TipoOperacion;
@@ -72,13 +62,17 @@ function buildSlug(nombre: string, id: number): string {
   return `${slugify(nombre)}-${id}`;
 }
 
-function idFromSlug(slug: string): number | null {
+export function idFromSlug(slug: string): number | null {
   const match = slug.match(/-(\d+)$/);
   return match ? Number(match[1]) : null;
 }
 
-async function fetchFotos(lineIds: number[]): Promise<OdooPropiedadFoto[]> {
-  if (lineIds.length === 0) return [];
+type FotoConOrden = OdooPropiedadFoto & { orden: number };
+
+// Un solo request para todas las líneas: evita cientos de llamadas en paralelo
+// que Odoo corta por rate limit (responde HTML y rompe el parser XML-RPC).
+async function fetchLineasGaleria(lineIds: number[]): Promise<Map<number, FotoConOrden>> {
+  if (lineIds.length === 0) return new Map();
 
   const lineas = await odooExecute<any[]>(
     ODOO_MODELS.GALERIA_LINE,
@@ -87,28 +81,36 @@ async function fetchFotos(lineIds: number[]): Promise<OdooPropiedadFoto[]> {
     { fields: ['id', 'x_name', ODOO_FIELDS.GALERIA_SEQUENCE], context: { bin_size: true } }
   );
 
-  return lineas
-    .sort((a, b) => a[ODOO_FIELDS.GALERIA_SEQUENCE] - b[ODOO_FIELDS.GALERIA_SEQUENCE])
-    .map((linea) => ({
-      id: linea.id,
-      url: `/api/property-image/${linea.id}`,
-      descripcion: linea.x_name || null,
-    }));
+  return new Map(
+    lineas.map((linea) => [
+      linea.id as number,
+      {
+        id: linea.id,
+        url: `/api/property-image/${linea.id}${WATERMARK_QUERY}`,
+        descripcion: linea.x_name || null,
+        orden: linea[ODOO_FIELDS.GALERIA_SEQUENCE],
+      },
+    ])
+  );
+}
+
+function fotosDePropiedad(
+  lineIds: number[],
+  lineas: Map<number, FotoConOrden>
+): OdooPropiedadFoto[] {
+  return lineIds
+    .map((id) => lineas.get(id))
+    .filter((foto): foto is FotoConOrden => foto !== undefined)
+    .sort((a, b) => a.orden - b.orden)
+    .map(({ id, url, descripcion }) => ({ id, url, descripcion }));
+}
+
+async function fetchFotos(lineIds: number[]): Promise<OdooPropiedadFoto[]> {
+  return fotosDePropiedad(lineIds, await fetchLineasGaleria(lineIds));
 }
 
 function mapMany2OneId(value: unknown): number | null {
   return Array.isArray(value) ? (value[0] as number) : null;
-}
-
-// Todo lo que sigue a "Nota interna" / "Notas internas" (cualquier
-// mayúscula/minúscula) es para uso interno y no debe publicarse.
-const NOTA_INTERNA_REGEX = /notas?\s+internas?/i;
-
-function limpiarDescripcion(texto: string | null | undefined): string | null {
-  if (!texto) return null;
-  const match = NOTA_INTERNA_REGEX.exec(texto);
-  const publica = (match ? texto.slice(0, match.index) : texto).trim();
-  return publica || null;
 }
 
 function mapPropiedad(raw: any, fotos: OdooPropiedadFoto[]): OdooPropiedad {
@@ -130,8 +132,8 @@ function mapPropiedad(raw: any, fotos: OdooPropiedadFoto[]): OdooPropiedad {
     banos: firstNonEmpty(raw[ODOO_FIELDS.BANOS], raw[ODOO_FIELDS.BANOS_ALT]),
     superficieCubierta: raw[ODOO_FIELDS.SUPERFICIE_CUBIERTA] || null,
     superficieTotal: raw[ODOO_FIELDS.SUPERFICIE_TOTAL] || null,
-    descripcion: limpiarDescripcion(raw[ODOO_FIELDS.DESCRIPCION]),
-    fotoPortada: raw[ODOO_FIELDS.FOTO_PORTADA] ? `/api/property-cover/${raw.id}` : null,
+    descripcion: raw[ODOO_FIELDS.DESCRIPCION] || null,
+    fotoPortada: raw[ODOO_FIELDS.FOTO_PORTADA] ? `/api/property-cover/${raw.id}${WATERMARK_QUERY}` : null,
     fotos,
     responsableNombre: mapMany2One(raw[ODOO_FIELDS.RESPONSABLE]),
     agente: responsableId !== null ? getAgentePorOdooId(responsableId) : null,
@@ -147,7 +149,7 @@ async function fetchProperties(filters: PropertyFilters = {}): Promise<OdooPropi
   const domain: unknown[] = [[ODOO_FIELDS.ESTADO, 'in', estados]];
 
   if (FILTRAR_SOLO_PUBLICADAS) {
-    domain.push(...domainPublicadaOEnBlanco());
+    domain.push([ODOO_FIELDS.ESTADO_PUBLICACION, '=', ESTADO_PUBLICADO]);
   }
 
   if (busqueda?.trim()) {
@@ -173,12 +175,12 @@ async function fetchProperties(filters: PropertyFilters = {}): Promise<OdooPropi
     { context: { bin_size: true } }
   );
 
-  const propiedades = await Promise.all(
-    rawList.map(async (raw) => {
-      const lineIds: number[] = raw[ODOO_FIELDS.GALERIA] ?? [];
-      const fotos = await fetchFotos(lineIds);
-      return mapPropiedad(raw, fotos);
-    })
+  const lineIdsDe = (raw: Record<string, unknown>): number[] =>
+    (raw[ODOO_FIELDS.GALERIA] as number[] | false) || [];
+  const lineas = await fetchLineasGaleria(rawList.flatMap(lineIdsDe));
+
+  const propiedades = rawList.map((raw) =>
+    mapPropiedad(raw, fotosDePropiedad(lineIdsDe(raw), lineas))
   );
 
   // Categoría es un many2one — filtramos por su label en JS en vez de
@@ -197,7 +199,7 @@ async function fetchPropertyBySlug(slug: string): Promise<OdooPropiedad | null> 
 
   const domain: unknown[] = [['id', '=', id]];
   if (FILTRAR_SOLO_PUBLICADAS) {
-    domain.push(...domainPublicadaOEnBlanco());
+    domain.push([ODOO_FIELDS.ESTADO_PUBLICACION, '=', ESTADO_PUBLICADO]);
   }
 
   const [raw] = await odooExecute<any[]>(

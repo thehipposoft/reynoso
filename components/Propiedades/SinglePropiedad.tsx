@@ -85,7 +85,7 @@ export const SinglePropiedad = ({ propiedad }: Props) => {
 
       {/* 5. Descripción — texto plano en Odoo, no HTML como en WordPress */}
       {propiedad.descripcion && (
-        <p className="whitespace-pre-line text-lg leading-relaxed text-on-surface-variant">
+        <p className="whitespace-pre-line text-lg leading-relaxed text-on-surface-variant hidden">
           {propiedad.descripcion}
         </p>
       )}
