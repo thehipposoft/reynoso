@@ -37,6 +37,17 @@ const PROPERTY_FIELDS = [
   ODOO_FIELDS.ZONA,
 ];
 
+// "Estado de Publicación" en blanco (campo sin cargar todavía en el catálogo existente)
+// cuenta como publicable, igual que "Publicado" explícito. Solo se ocultan los estados
+// de trabajo intermedio (Borrador, En Proceso, Listo para revisión).
+function domainPublicadaOEnBlanco(): unknown[] {
+  return [
+    '|',
+    [ODOO_FIELDS.ESTADO_PUBLICACION, '=', ESTADO_PUBLICADO],
+    [ODOO_FIELDS.ESTADO_PUBLICACION, '=', false],
+  ];
+}
+
 export interface PropertyFilters {
   operacion?: TipoOperacion;
   categoriaSlug?: string;
@@ -149,7 +160,7 @@ async function fetchProperties(filters: PropertyFilters = {}): Promise<OdooPropi
   const domain: unknown[] = [[ODOO_FIELDS.ESTADO, 'in', estados]];
 
   if (FILTRAR_SOLO_PUBLICADAS) {
-    domain.push([ODOO_FIELDS.ESTADO_PUBLICACION, '=', ESTADO_PUBLICADO]);
+    domain.push(...domainPublicadaOEnBlanco());
   }
 
   if (busqueda?.trim()) {
@@ -199,7 +210,7 @@ async function fetchPropertyBySlug(slug: string): Promise<OdooPropiedad | null> 
 
   const domain: unknown[] = [['id', '=', id]];
   if (FILTRAR_SOLO_PUBLICADAS) {
-    domain.push([ODOO_FIELDS.ESTADO_PUBLICACION, '=', ESTADO_PUBLICADO]);
+    domain.push(...domainPublicadaOEnBlanco());
   }
 
   const [raw] = await odooExecute<any[]>(
