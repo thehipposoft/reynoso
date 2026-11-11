@@ -1,5 +1,5 @@
 import type { NextConfig } from "next";
-import { WATERMARK_QUERY } from "./src/lib/watermark-version";
+import { WATERMARK_QUERY } from "./lib/watermark-version";
 
 const nextConfig: NextConfig = {
     images: {

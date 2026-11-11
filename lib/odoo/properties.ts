@@ -9,10 +9,10 @@ import {
   FILTRAR_SOLO_PUBLICADAS,
   type TipoOperacion,
 } from './models';
-import { slugify } from '@/src/lib/slug';
-import { getAgentePorOdooId } from '@/src/lib/agentes';
-import { WATERMARK_QUERY } from '@/src/lib/watermark-version';
-import type { OdooPropiedad, OdooPropiedadFoto } from '@/src/types/OdooPropiedad';
+import slugify from '@/lib/slugify';
+import { getAgentePorOdooId } from '@/lib/propiedades/agentes';
+import { WATERMARK_QUERY } from '@/lib/watermark-version';
+import type { OdooPropiedad, OdooPropiedadFoto } from '@/lib/odoo/types';
 
 const PROPERTY_FIELDS = [
   'id',
