@@ -37,6 +37,6 @@ export function getAgentePorOdooId(odooUserId: number): Agente | null {
   return AGENTES.find((agente) => agente.odooUserId === odooUserId) ?? null;
 }
 
-// Número general de la inmobiliaria — fallback cuando la propiedad no tiene
-// un agente de AGENTES asociado (mismo número que usa el Footer).
-export const TELEFONO_CONTACTO_GENERAL = "+54 387 406-3402";
+// Número general de la inmobiliaria. Todo contacto de propiedades usa este
+// número (no el de cada agente individual) — mismo número que el Footer/WhatsApp del sitio.
+export const TELEFONO_CONTACTO_GENERAL = "+54 9 3873 07-8333";

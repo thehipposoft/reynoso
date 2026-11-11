@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useRef, useState, type ChangeEvent, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ChangeEvent, type FormEvent, type ReactNode } from "react";
 import type { CategoriaPropiedad } from "@/lib/odoo/categories";
 import { CATEGORIA_EN_POZO, MONEDAS, ZONAS } from "@/lib/propiedades/filtros";
 
@@ -51,12 +51,19 @@ export const FiltrosPropiedades = ({ categorias }: Props) => {
   const monedaActual = searchParams.get("moneda") ?? "";
   const precioMinActual = searchParams.get("precioMin") ?? "";
   const precioMaxActual = searchParams.get("precioMax") ?? "";
+  const busquedaActual = searchParams.get("q") ?? "";
 
   const [precioAbierto, setPrecioAbierto] = useState(false);
   const [monedaBorrador, setMonedaBorrador] = useState(monedaActual || "Dolares");
   const [precioMinBorrador, setPrecioMinBorrador] = useState(precioMinActual);
   const [precioMaxBorrador, setPrecioMaxBorrador] = useState(precioMaxActual);
+  const [busquedaBorrador, setBusquedaBorrador] = useState(busquedaActual);
   const precioRef = useRef<HTMLDivElement>(null);
+
+  // Si cambia por fuera (p. ej. "Limpiar filtros"), reflejarlo en el input.
+  useEffect(() => {
+    setBusquedaBorrador(busquedaActual);
+  }, [busquedaActual]);
 
   useEffect(() => {
     const alClickearFuera = (e: MouseEvent) => {
@@ -117,8 +124,19 @@ export const FiltrosPropiedades = ({ categorias }: Props) => {
     monedaActual === "Pesos" ? "Precio ARS" : monedaActual === "Dolares" ? "Precio USD" : "Precio";
 
   const hayFiltrosActivos = Boolean(
-    operacionActual || categoriaActual || zonaActual || monedaActual || precioMinActual || precioMaxActual
+    operacionActual ||
+      categoriaActual ||
+      zonaActual ||
+      monedaActual ||
+      precioMinActual ||
+      precioMaxActual ||
+      busquedaActual
   );
+
+  const buscarPorTexto = (e: FormEvent) => {
+    e.preventDefault();
+    irCon({ q: busquedaBorrador.trim() || undefined });
+  };
 
   return (
     <div className="mb-8">
@@ -139,6 +157,27 @@ export const FiltrosPropiedades = ({ categorias }: Props) => {
           </button>
         ))}
       </div>
+
+      {/* Búsqueda por texto */}
+      <form onSubmit={buscarPorTexto} className="mx-auto mb-4 flex w-full max-w-md items-center gap-2">
+        <input
+          type="text"
+          value={busquedaBorrador}
+          onChange={(e) => setBusquedaBorrador(e.target.value)}
+          placeholder="Buscar por nombre, dirección o barrio..."
+          className="h-11 w-full rounded-full border border-outline-variant bg-surface-container-lowest px-5 text-sm font-inter text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:ring-2 focus:ring-primary/20"
+        />
+        <button
+          type="submit"
+          className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-full bg-verde-oscuro text-on-primary transition-colors duration-300 hover:bg-verde-oscuro/80"
+          aria-label="Buscar"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="11" cy="11" r="7" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+        </button>
+      </form>
 
       {/* Pills de filtro */}
       <div className="flex flex-col lg:flex-row flex-wrap justify-center lg:items-center gap-3">

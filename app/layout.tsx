@@ -6,6 +6,8 @@ import Transitions from "@/components/commons/Transitions";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import ContactTracking from "@/components/ContactTracking";
 import OrganizationSchema from "@/components/SEO/OrganizationSchema";
+import Script from 'next/script'
+
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -84,10 +86,16 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${jakarta.variable} ${kadwa.variable} ${poppins.variable}`}
       >
+
         <SmoothScroll>
           <Transitions />
           <GoogleAnalytics />
           <ContactTracking />
+          <Script
+            src="https://hub.redtec.ai/widget/v1/widget.js"
+            data-widget-id="wgt_5478d56ed18168c1"
+            strategy="lazyOnload"
+          />
           {children}
         </SmoothScroll>
       </body>

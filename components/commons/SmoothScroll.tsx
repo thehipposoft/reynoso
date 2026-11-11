@@ -8,7 +8,13 @@ interface SmoothScrollProps {
 
 function SmoothScroll({children}:SmoothScrollProps) {
   return (
-    <ReactLenis root options={{ lerp: 0.06}}>
+    <ReactLenis
+      root
+      options={{
+        lerp: 0.06,
+        prevent: (node) => !!node.closest?.('#isabella-chat-root'),
+      }}
+    >
       { children }
     </ReactLenis>
   )

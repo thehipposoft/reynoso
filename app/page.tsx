@@ -42,7 +42,6 @@ export default async function Home() {
         <Desarrollo />
         <Equipo />
         <Redes />
-        <WhatsApp />
       </main>
       <footer>
         <Footer proyectos={proyectos} />

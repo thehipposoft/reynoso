@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { OdooPropiedad } from "@/lib/odoo/types";
-import { formatPrecio, formatLabel, operacionDesdeEstado } from "@/lib/propiedades/format";
+import { formatPrecio, formatLabel, operacionDesdeEstado, parsePositiveNumber } from "@/lib/propiedades/format";
 import { esInversionEnPozo } from "@/lib/propiedades/filtros";
 import { TELEFONO_CONTACTO_GENERAL } from "@/lib/propiedades/agentes";
 import { GaleriaPropiedad } from "./GaleriaPropiedad";
@@ -31,7 +31,7 @@ export const SinglePropiedad = ({ propiedad }: Props) => {
   const stats: StatProps[] = [
     propiedad.ambientes && { label: "Ambientes", value: propiedad.ambientes },
     propiedad.dormitorios && { label: "Dormitorios", value: propiedad.dormitorios },
-    propiedad.banos && { label: "Baños", value: propiedad.banos },
+    parsePositiveNumber(propiedad.banos) && { label: "Baños", value: propiedad.banos },
     propiedad.superficieTotal && { label: "Superficie", value: `${propiedad.superficieTotal} m²` },
     propiedad.superficieCubierta && { label: "Sup. cubierta", value: `${propiedad.superficieCubierta} m²` },
   ].filter(Boolean) as StatProps[];
@@ -41,7 +41,7 @@ export const SinglePropiedad = ({ propiedad }: Props) => {
 
       {/* Volver */}
       <Link
-        href="/propiedades"
+        href="/propiedades/busqueda"
         className="mb-10 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-on-surface-variant transition-colors hover:text-primary-green"
       >
         ← Volver a propiedades
@@ -85,7 +85,7 @@ export const SinglePropiedad = ({ propiedad }: Props) => {
 
       {/* 5. Descripción — texto plano en Odoo, no HTML como en WordPress */}
       {propiedad.descripcion && (
-        <p className="whitespace-pre-line text-lg leading-relaxed text-on-surface-variant hidden">
+        <p className="whitespace-pre-line text-lg leading-relaxed text-on-surface-variant">
           {propiedad.descripcion}
         </p>
       )}
@@ -121,7 +121,7 @@ export const SinglePropiedad = ({ propiedad }: Props) => {
               <p className="text-[10px] font-bold uppercase leading-0 tracking-widest text-on-surface-variant">Agente</p>
               <p className="text-lg font-bold text-on-surface">{propiedad.agente.nombre}</p>
               <Link
-                href={`https://wa.me/${(propiedad.agente?.telefono ?? TELEFONO_CONTACTO_GENERAL).replace(/\D/g, "")}`}
+                href={`https://wa.me/${TELEFONO_CONTACTO_GENERAL.replace(/\D/g, "")}?text=${encodeURIComponent(`Hola! Me interesa: ${propiedad.nombre}`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`relative z-10 flex w-fit items-center gap-2 rounded-full border border-verde-oscuro bg-surface-container-lowest px-5 py-2 text-sm font-bold text-on-surface shadow-md transition-all duration-300 hover:bg-verde-oscuro hover:text-white ${propiedad.agente?.fotoUrl ? "-left-6 mt-2" : ""}`}

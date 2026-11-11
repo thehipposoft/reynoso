@@ -58,11 +58,18 @@ export interface PropertyFilters {
   precioMax?: number;
 }
 
+function esCero(v: unknown): boolean {
+  return v === 0 || v === '0';
+}
+
+// Cuando los dos campos de Odoo tienen datos (p. ej. duplicados por Studio) y uno
+// vale 0, preferimos el que tiene un valor real: un 0 suele ser "nunca se cargó"
+// más que "la cantidad real es cero" cuando el otro campo sí tiene un número.
 function firstNonEmpty(...values: unknown[]): string | null {
-  for (const v of values) {
-    if (v !== false && v !== null && v !== undefined && v !== '') return String(v);
-  }
-  return null;
+  const noVacios = values.filter((v) => v !== false && v !== null && v !== undefined && v !== '');
+  if (noVacios.length === 0) return null;
+  const noCero = noVacios.find((v) => !esCero(v));
+  return String(noCero ?? noVacios[0]);
 }
 
 function mapMany2One(value: unknown): string | null {
@@ -227,12 +234,16 @@ async function fetchPropertyBySlug(slug: string): Promise<OdooPropiedad | null> 
   return mapPropiedad(raw, fotos);
 }
 
+// 10 min: compromiso entre no pegarle a Odoo en cada visita y que un cambio de
+// Estado de Publicación (publicar/despublicar) tarde poco en verse en la web.
+const REVALIDATE_SECONDS = 600;
+
 export const getProperties = unstable_cache(fetchProperties, ['odoo-properties'], {
-  revalidate: 3600,
+  revalidate: REVALIDATE_SECONDS,
   tags: ['properties'],
 });
 
 export const getPropertyBySlug = unstable_cache(fetchPropertyBySlug, ['odoo-property-by-slug'], {
-  revalidate: 3600,
+  revalidate: REVALIDATE_SECONDS,
   tags: ['properties'],
 });

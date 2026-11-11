@@ -16,10 +16,10 @@ export function formatLabel(value: string): string {
   return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
 }
 
+// Antes poníamos cada palabra en Title Case, pero rompía nombres con números
+// romanos (p. ej. "LOTE III" pasaba a "Lote Iii"). Mostramos todo en mayúsculas.
 export function formatTitulo(value: string): string {
-  return value
-    .toLowerCase()
-    .replace(/(^|\s)\S/g, (letra) => letra.toUpperCase());
+  return value.toUpperCase();
 }
 
 export function operacionDesdeEstado(estado: string | null): string | null {

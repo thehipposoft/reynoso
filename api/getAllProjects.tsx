@@ -38,7 +38,9 @@ export default async function getAllProjects() {
       id: proyecto.id,
       slug: proyecto.slug,
       imagen_banner: withVersion(proyecto.acf?.primera_seccion?.imagen_banner?.url, proyecto.acf?.primera_seccion?.imagen_banner?.filesize),
-      nombre: proyecto.acf?.primera_seccion?.nombre,
+      // Si cargaron el desarrollo a medias y "nombre" quedó vacío, usamos "titulo"
+      // (p. ej. Campo Nuevo 3 Etapa 2) — evita links/cards vacíos en todo el sitio.
+      nombre: proyecto.acf?.primera_seccion?.nombre || proyecto.acf?.primera_seccion?.titulo,
       titulo: proyecto.acf?.primera_seccion?.titulo,
       logo: proyecto.acf?.primera_seccion?.logo,
       color_primario: proyecto.acf?.primera_seccion?.color_primario,

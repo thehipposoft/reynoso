@@ -14,13 +14,13 @@ const MenuDesarrollos = ({proyectos}:MenuDesarrollosType) => {
         <AnimatedLink href={'/'}>
           <Image src={'/assets/images/logo/logo-white.png'} alt='Reynoso Bienes Raices Logo' width={120} height={120} className='w-auto' />
         </AnimatedLink>
-        <nav className='flex gap-8 pr-10'>
+        <nav className='flex gap-6 pr-10'>
           {
             proyectos.map((item, index) => (
               <AnimatedLink 
                 href={`desarrollos/${item.slug}`} 
                 key={index} 
-                className='hover:underline text-white uppercase text-sm font-jakarta font-light tracking-[2px]'
+                className='hover:underline text-white uppercase text-xs font-jakarta font-light tracking-[1px]'
               >
                 {item.nombre}
               </AnimatedLink>
