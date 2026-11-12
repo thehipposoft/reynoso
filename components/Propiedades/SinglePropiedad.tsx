@@ -28,6 +28,13 @@ export const SinglePropiedad = ({ propiedad }: Props) => {
   const esPozo = esInversionEnPozo(propiedad.tipoPropiedad);
   const precioFormateado = esPozo ? null : formatPrecio(propiedad.precio, propiedad.moneda);
 
+  const urlPropiedad = `https://reynosobienesraices.com.ar/propiedades/${propiedad.slug}`;
+  const mensajeWhatsapp =
+    `Hola estoy interesado en la siguiente propiedad:\n\n` +
+    `Nombre: ${propiedad.nombre}\n` +
+    `Link propiedad: ${urlPropiedad}\n` +
+    `Agente: ${propiedad.agente?.nombre ?? ""}`;
+
   const stats: StatProps[] = [
     propiedad.ambientes && { label: "Ambientes", value: propiedad.ambientes },
     propiedad.dormitorios && { label: "Dormitorios", value: propiedad.dormitorios },
@@ -121,7 +128,7 @@ export const SinglePropiedad = ({ propiedad }: Props) => {
               <p className="text-[10px] font-bold uppercase leading-0 tracking-widest text-on-surface-variant">Agente</p>
               <p className="text-lg font-bold text-on-surface">{propiedad.agente.nombre}</p>
               <Link
-                href={`https://wa.me/${TELEFONO_CONTACTO_GENERAL.replace(/\D/g, "")}?text=${encodeURIComponent(`Hola! Me interesa: ${propiedad.nombre}`)}`}
+                href={`https://wa.me/${TELEFONO_CONTACTO_GENERAL.replace(/\D/g, "")}?text=${encodeURIComponent(mensajeWhatsapp)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`relative z-10 flex w-fit items-center gap-2 rounded-full border border-verde-oscuro bg-surface-container-lowest px-5 py-2 text-sm font-bold text-on-surface shadow-md transition-all duration-300 hover:bg-verde-oscuro hover:text-white ${propiedad.agente?.fotoUrl ? "-left-6 mt-2" : ""}`}
